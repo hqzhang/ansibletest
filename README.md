@@ -1,5 +1,5 @@
 #Ansible Tutorial
-```
+
 git clone https://github.com/hqzhang/ansisble.git
 goto ansible directory
 config file: ansible.cfg define log path and inventory path
