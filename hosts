@@ -1,2 +1,5 @@
+[all:vars]
+ansible_user=ansible-usr
+
 [web]
 192.168.2.38

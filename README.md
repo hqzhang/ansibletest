@@ -13,7 +13,10 @@ log_path=./ansible.log
 ```
 hosts file: inventory is redirect to hosts
 ```
-[web]
+[all:vars]
+ansible_user=root
+
+[remoteservers]
 192.168.2.38
 ```
 playbook file: runscript.yml
