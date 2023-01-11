@@ -1,15 +1,46 @@
 #Ansible Tutorial
 ```
-under ansible directory
+git clone https://github.com/hqzhang/ansisble.git
+goto ansible directory
 config file: ansible.cfg define log path and inventory path
+```
+[defaults]
+inventory = ./hosts
+host_key_checking = false
+log_path=./ansible.log
+```
 hosts file: inventory is redirect to hosts
-run playbook file: myscript.yml
-
-ansible-playbook myscripts.yml
+```
+[web]
+192.168.2.38
+```
+playbook file: runscript.yml
+```
+---
+  - name: Shell Examples
+    hosts: remoteservers
+    tasks:
+      - include_vars: vars/values.yml
+      - name: Transfer the script
+        register: copyfile
+        copy: src=test.sh dest=/root mode=0777
+      - debug:
+          var: copyfile.stdout_lines
+      - name: Execute the script
+        register: listfile
+        command: sh /root/test.sh {{ myvar }}
+      - debug:
+          var: listfile.stdout_lines
 ```
 that copy bash file:test.sh to remote
 and run test.sh on remote
 and print(debug) output.
+
+run playbook
+```
+ansible-playbook myscripts.yml
+```
+output
 ```
 PLAY [Shell Examples] *****************************************************************************************************************
 TASK [Gathering Facts] ****************************************************************************************************************
