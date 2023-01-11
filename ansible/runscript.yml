@@ -1,0 +1,19 @@
+---
+  - name: Shell Examples
+    hosts: remoteservers
+    tasks:
+      - include_vars: vars/values.yml
+
+      - name: Transfer the script
+        register: copyfile
+        copy: src=test.sh dest=/root mode=0777
+
+      - debug:
+          var: copyfile.stdout_lines
+
+      - name: Execute the script
+        register: listfile
+        command: sh /root/test.sh {{ myvar }}
+      
+      - debug:
+          var: listfile.stdout_lines

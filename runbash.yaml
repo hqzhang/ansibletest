@@ -1,0 +1,15 @@
+    hosts: web
+    gather_facts: False
+    tasks:
+      - name: Copy & Create File.
+        copy:
+        dest: /home/justgeek/remote.sh
+        content: |
+        #!/bin/bash
+        Please place your Shell Script here.
+      - name: Run Shell Script.
+        shell: sh /home/justgeek/remote.sh
+      - name: Remove Shell Script
+        file:
+        path: /home/justgeek/remote.sh
+        state: absent

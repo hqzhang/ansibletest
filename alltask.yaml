@@ -1,0 +1,66 @@
+- hosts: web
+  vars:
+    http_port: 888888880
+    local_home: "{{ lookup('env','Office') }}"
+  tasks:
+# command, apt/yum, copy
+   - name: install collectd packages
+     sudo: yes
+     yum:
+       name: "{{ item }}"
+       state: present
+     with_items:
+       - collectd           # collectd itself
+       - libsemanage-python # for managing selinux settings here
+
+   - name: Installs nginx web server
+     apt: pkg=nginx state=installed update_cache=true
+     notify:
+       - start nginx
+
+   - name: Upload default index.php for host
+     copy: src=static_files/index.php dest=/usr/share/nginx/www/ mode=0644
+     register: php
+     ignore_errors: True
+
+   - name: Remove index.html for host
+     command: rm /usr/share/nginx/www/index.html
+     when: php|success
+
+   - name: create missing 'conf' symlink
+     sudo: yes
+     file:
+       state: link
+       src: /etc/zookeeper/conf
+       dest: /opt/mesosphere/zookeeper/conf
+
+   - name: generate zookeeper consul services
+     sudo: yes
+     template:
+       src: "{{ item.src }}"
+       dest: "{{ item.dest }}"
+     with_items:            #for loop.
+       - src: zk-consul.json.j2
+         dest: /etc/consul/zk-consul.json
+
+   - name: register zookeeper service
+     sudo: yes
+     service:
+       enabled: yes
+       name: "{{ zookeeper_service }}"
+       state: started
+     tags:
+       - zookeeper
+
+   - name: create zookeeper user
+     sudo: yes
+     user:
+       name: "{{ zookeeper_os_user }}"
+       state: present
+
+   - name: create zookeeper auth digest
+     sudo: yes
+     shell: "/usr/local/bin/zookeeper_digest.sh  {{ zk_super_user }}:{{ zk_super_user_secret }}"
+     register: zookeeper_auth_digest
+     changed_when: no
+     when: zk_super_user is defined and zk_super_user_secret is defined-

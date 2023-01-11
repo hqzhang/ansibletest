@@ -1,0 +1,25 @@
+- hosts: web
+  vars:
+    http_port: 888888880
+    local_home: "{{ lookup('env','Office') }}"
+    replace_variable: 'Hello world'
+    replace_variable2: 'hello again'
+  tasks:
+   - name: print info :debug 
+     debug:
+          msg:  hello world
+   - debug:
+          var:  local_home
+   - debug: msg="{{ lookup('env','HOME') }} is an environment variable"
+   - name: replace variable with loop: template with_items
+     sudo: yes
+     template:
+       src: "{{ item.src }}"
+       dest: "{{ item.dest }}"
+     with_items:            #for loop.
+       - src: hello_world.j2
+         dest: /Users/hongqizhang/workspace/ansibletest/hello_world.txt
+   - name: scp implement: copy
+     copy: src=hello_world.j2 dest=/Users/hongqizhang/workspace/ansibletest/copydir mode=0644
+     register: php
+     ignore_errors: True   

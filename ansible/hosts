@@ -1,0 +1,5 @@
+[all:vars]
+ansible_user=root
+
+[remoteservers]
+192.168.2.38

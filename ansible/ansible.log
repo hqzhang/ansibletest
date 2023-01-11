@@ -1,0 +1,453 @@
+2023-01-11 15:05:25,575 p=20530 u=hongqizhang n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: remoteservers
+
+2023-01-11 15:05:25,578 p=20530 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 15:05:25,578 p=20530 u=hongqizhang n=ansible | skipping: no hosts matched
+2023-01-11 15:05:25,578 p=20530 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 15:06:21,773 p=20559 u=hongqizhang n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: remoteservers
+
+2023-01-11 15:06:21,775 p=20559 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 15:06:21,775 p=20559 u=hongqizhang n=ansible | skipping: no hosts matched
+2023-01-11 15:06:21,775 p=20559 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 15:07:24,741 p=20586 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 15:07:24,762 p=20586 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 15:07:28,441 p=20586 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 15:07:28,486 p=20586 u=hongqizhang n=ansible | TASK [Execute the ls commmand] ********************************************************************************************************
+2023-01-11 15:07:35,316 p=20586 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 15:07:35,331 p=20586 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 15:07:35,410 p=20586 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 0",
+        "drwxrwxrwt.  9 root root 227 Jan 11 14:45 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 14:45 ansible_ansible.legacy.command_payload_51u9iq_e",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 15:07:35,471 p=20586 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 15:07:35,471 p=20586 u=hongqizhang n=ansible | 192.168.2.38               : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-11 15:17:27,700 p=20874 u=hongqizhang n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: remoteservers
+
+2023-01-11 15:17:27,702 p=20874 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 15:17:27,702 p=20874 u=hongqizhang n=ansible | skipping: no hosts matched
+2023-01-11 15:17:27,703 p=20874 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 15:38:41,234 p=21364 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 15:38:41,264 p=21364 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 15:38:47,061 p=21364 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 15:38:47,104 p=21364 u=hongqizhang n=ansible | TASK [Execute the ls commmand] ********************************************************************************************************
+2023-01-11 15:38:48,285 p=21364 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 15:38:48,301 p=21364 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 15:38:48,354 p=21364 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 0",
+        "drwxrwxrwt.  9 root root 227 Jan 11 15:19 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 15:19 ansible_ansible.legacy.command_payload_5eqxtxio",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 15:38:48,404 p=21364 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 15:38:48,404 p=21364 u=hongqizhang n=ansible | 192.168.2.38               : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-11 15:47:42,730 p=21598 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 15:47:42,759 p=21598 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 15:47:59,063 p=21598 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 15:47:59,115 p=21598 u=hongqizhang n=ansible | TASK [Execute the ls commmand] ********************************************************************************************************
+2023-01-11 15:48:00,180 p=21598 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 15:48:00,192 p=21598 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 15:48:00,254 p=21598 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 0",
+        "drwxrwxrwt.  9 root root 227 Jan 11 15:28 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 15:28 ansible_ansible.legacy.command_payload_xmgjx1_k",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 15:48:00,273 p=21598 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 15:48:03,236 p=21598 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 15:48:03,253 p=21598 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 15:48:20,733 p=21598 u=hongqizhang n=ansible | fatal: [192.168.2.38 -> localhost]: FAILED! => {"changed": true, "cmd": ["sudo", "sh", "/root/mybash.sh"], "delta": "0:00:17.040889", "end": "2023-01-11 15:48:20.682023", "msg": "non-zero return code", "rc": 127, "start": "2023-01-11 15:48:03.641134", "stderr": "sh: /root/mybash.sh: No such file or directory", "stderr_lines": ["sh: /root/mybash.sh: No such file or directory"], "stdout": "", "stdout_lines": []}
+2023-01-11 15:48:20,735 p=21598 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 15:48:20,735 p=21598 u=hongqizhang n=ansible | 192.168.2.38               : ok=4    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-01-11 15:49:55,597 p=21710 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 15:49:55,620 p=21710 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 15:49:59,518 p=21710 u=hongqizhang n=ansible |  [ERROR]: User interrupted execution
+
+2023-01-11 15:52:15,325 p=21784 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 15:52:15,356 p=21784 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 15:52:38,126 p=21784 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 15:52:38,238 p=21784 u=hongqizhang n=ansible | TASK [Execute the ls commmand] ********************************************************************************************************
+2023-01-11 15:52:39,492 p=21784 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 15:52:39,510 p=21784 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 15:52:39,565 p=21784 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 0",
+        "drwxrwxrwt. 10 root root 242 Jan 11 15:34 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 15:34 ansible_ansible.legacy.command_payload_1p1_d29g",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 runbash",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 15:52:39,580 p=21784 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 15:52:41,685 p=21784 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 15:52:41,697 p=21784 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 15:52:41,749 p=21784 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "copyscript.stdout_lines": "VARIABLE IS NOT DEFINED!"
+}
+2023-01-11 15:52:41,764 p=21784 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 15:52:42,413 p=21784 u=hongqizhang n=ansible | fatal: [192.168.2.38 -> localhost]: FAILED! => {"changed": true, "cmd": ["sudo", "sh", "/root/mybash.sh"], "delta": "0:00:00.047058", "end": "2023-01-11 15:52:42.344605", "msg": "non-zero return code", "rc": 127, "start": "2023-01-11 15:52:42.297547", "stderr": "sh: /root/mybash.sh: No such file or directory", "stderr_lines": ["sh: /root/mybash.sh: No such file or directory"], "stdout": "", "stdout_lines": []}
+2023-01-11 15:52:42,416 p=21784 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 15:52:42,416 p=21784 u=hongqizhang n=ansible | 192.168.2.38               : ok=5    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-01-11 15:56:40,429 p=21956 u=hongqizhang n=ansible | ERROR! 'sudo' is not a valid attribute for a Play
+
+The error appears to be in '/Users/hongqizhang/workspace/ansibletest/ansible/runscript.yml': line 2, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+---
+- name: Transfer and execute a script.
+  ^ here
+
+2023-01-11 15:58:31,269 p=22000 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 15:58:31,291 p=22000 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 15:58:34,969 p=22000 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 15:58:35,010 p=22000 u=hongqizhang n=ansible | TASK [Execute the ls commmand] ********************************************************************************************************
+2023-01-11 15:58:36,138 p=22000 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 15:58:36,154 p=22000 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 15:58:36,212 p=22000 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 4",
+        "drwxrwxrwt. 10 root root 256 Jan 11 15:40 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 15:40 ansible_ansible.legacy.command_payload_rxjtyk4w",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "-rwxrwxrwx.  1 root root  12 Jan 11 15:34 mybash",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 runbash",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 15:58:36,226 p=22000 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 15:58:38,181 p=22000 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 15:58:38,205 p=22000 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 15:58:43,930 p=22000 u=hongqizhang n=ansible |  [ERROR]: User interrupted execution
+
+2023-01-11 15:59:21,018 p=22072 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 15:59:21,057 p=22072 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 15:59:23,166 p=22072 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 15:59:23,214 p=22072 u=hongqizhang n=ansible | TASK [Execute the ls commmand] ********************************************************************************************************
+2023-01-11 15:59:24,641 p=22072 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 15:59:24,657 p=22072 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 15:59:24,740 p=22072 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 4",
+        "drwxrwxrwt. 10 root root 256 Jan 11 15:41 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 15:41 ansible_ansible.legacy.command_payload_y4xf8133",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "-rwxrwxrwx.  1 root root  12 Jan 11 15:34 mybash",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 runbash",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 15:59:24,753 p=22072 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 15:59:26,708 p=22072 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 15:59:26,747 p=22072 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 15:59:27,235 p=22072 u=hongqizhang n=ansible | fatal: [192.168.2.38 -> localhost]: FAILED! => {"changed": true, "cmd": ["sh", "/tmp/mybash/test.sh"], "delta": "0:00:00.010690", "end": "2023-01-11 15:59:27.188621", "msg": "non-zero return code", "rc": 127, "start": "2023-01-11 15:59:27.177931", "stderr": "sh: /tmp/mybash/test.sh: No such file or directory", "stderr_lines": ["sh: /tmp/mybash/test.sh: No such file or directory"], "stdout": "", "stdout_lines": []}
+2023-01-11 15:59:27,237 p=22072 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 15:59:27,237 p=22072 u=hongqizhang n=ansible | 192.168.2.38               : ok=4    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-01-11 16:03:53,331 p=22245 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 16:03:53,375 p=22245 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 16:03:57,255 p=22245 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:03:57,290 p=22245 u=hongqizhang n=ansible | TASK [Execute the ls commmand] ********************************************************************************************************
+2023-01-11 16:04:00,125 p=22245 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:04:00,145 p=22245 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:04:00,194 p=22245 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 4",
+        "drwxrwxrwt. 10 root root 256 Jan 11 15:46 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 15:46 ansible_ansible.legacy.command_payload_g8jnllg7",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "-rwxrwxrwx.  1 root root  12 Jan 11 15:34 mybash",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 runbash",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 16:04:00,211 p=22245 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 16:04:04,807 p=22245 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:04:04,825 p=22245 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 16:04:05,262 p=22245 u=hongqizhang n=ansible | fatal: [192.168.2.38 -> localhost]: FAILED! => {"changed": true, "cmd": ["sh", "/root/test.sh"], "delta": "0:00:00.012053", "end": "2023-01-11 16:04:05.209066", "msg": "non-zero return code", "rc": 127, "start": "2023-01-11 16:04:05.197013", "stderr": "sh: /root/test.sh: No such file or directory", "stderr_lines": ["sh: /root/test.sh: No such file or directory"], "stdout": "", "stdout_lines": []}
+2023-01-11 16:04:05,264 p=22245 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 16:04:05,264 p=22245 u=hongqizhang n=ansible | 192.168.2.38               : ok=4    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-01-11 16:06:18,529 p=22365 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 16:06:18,556 p=22365 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 16:06:43,656 p=22365 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:06:43,692 p=22365 u=hongqizhang n=ansible | TASK [Execute the ls commmand] ********************************************************************************************************
+2023-01-11 16:06:48,018 p=22365 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:06:48,034 p=22365 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:06:48,099 p=22365 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 4",
+        "drwxrwxrwt. 10 root root 256 Jan 11 15:49 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 15:49 ansible_ansible.legacy.command_payload_ecuwdeml",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "-rwxrwxrwx.  1 root root  12 Jan 11 15:34 mybash",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 runbash",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 16:06:48,118 p=22365 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 16:06:51,441 p=22365 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:06:51,461 p=22365 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:06:51,511 p=22365 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "trans.stdout_lines": "VARIABLE IS NOT DEFINED!"
+}
+2023-01-11 16:06:51,527 p=22365 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 16:06:51,969 p=22365 u=hongqizhang n=ansible | fatal: [192.168.2.38 -> localhost]: FAILED! => {"changed": true, "cmd": ["sh", "/root/test.sh"], "delta": "0:00:00.010216", "end": "2023-01-11 16:06:51.918586", "msg": "non-zero return code", "rc": 127, "start": "2023-01-11 16:06:51.908370", "stderr": "sh: /root/test.sh: No such file or directory", "stderr_lines": ["sh: /root/test.sh: No such file or directory"], "stdout": "", "stdout_lines": []}
+2023-01-11 16:06:51,970 p=22365 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 16:06:51,970 p=22365 u=hongqizhang n=ansible | 192.168.2.38               : ok=5    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-01-11 16:11:01,969 p=22580 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 16:11:01,991 p=22580 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 16:11:07,264 p=22580 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:11:07,322 p=22580 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 16:11:18,534 p=22580 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:11:18,550 p=22580 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:11:18,604 p=22580 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "trans.stdout_lines": "VARIABLE IS NOT DEFINED!"
+}
+2023-01-11 16:11:18,623 p=22580 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 16:11:34,844 p=22580 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:11:34,893 p=22580 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 16:11:34,893 p=22580 u=hongqizhang n=ansible | 192.168.2.38               : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-11 16:13:48,632 p=22678 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 16:13:48,663 p=22678 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 16:13:54,084 p=22678 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:13:54,126 p=22678 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 16:14:01,637 p=22678 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:14:01,660 p=22678 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:14:01,717 p=22678 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "copyfile.stdout_lines": "VARIABLE IS NOT DEFINED!"
+}
+2023-01-11 16:14:01,733 p=22678 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 16:14:06,843 p=22678 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:14:06,856 p=22678 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:14:06,909 p=22678 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 4",
+        "drwxrwxrwt. 10 root root 256 Jan 11 15:57 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 15:57 ansible_ansible.legacy.command_payload_7azbyn1g",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "-rwxrwxrwx.  1 root root  12 Jan 11 15:34 mybash",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 runbash",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 16:14:06,962 p=22678 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 16:14:06,963 p=22678 u=hongqizhang n=ansible | 192.168.2.38               : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-11 16:23:53,338 p=23011 u=hongqizhang n=ansible | ERROR! conflicting action statements: command, debug
+
+The error appears to be in '/Users/hongqizhang/workspace/ansibletest/ansible/runscript.yml': line 12, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: Execute the script
+        ^ here
+
+2023-01-11 16:26:35,329 p=23090 u=hongqizhang n=ansible | ERROR! conflicting action statements: command, debug
+
+The error appears to be in '/Users/hongqizhang/workspace/ansibletest/ansible/runscript.yml': line 12, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: Execute the script
+        ^ here
+
+2023-01-11 16:29:59,616 p=23164 u=hongqizhang n=ansible | ERROR! conflicting action statements: shell, debug
+
+The error appears to be in '/Users/hongqizhang/workspace/ansibletest/ansible/runbash.yml': line 12, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+      - name: find all txt files in /tmp
+        ^ here
+
+2023-01-11 16:37:13,906 p=23365 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 16:37:13,929 p=23365 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 16:37:23,927 p=23365 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:37:23,999 p=23365 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 16:37:40,672 p=23365 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:37:40,695 p=23365 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:37:40,768 p=23365 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "copyfile.stdout_lines": "VARIABLE IS NOT DEFINED!"
+}
+2023-01-11 16:37:40,786 p=23365 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 16:37:46,618 p=23365 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:37:46,629 p=23365 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:37:46,697 p=23365 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 4",
+        "drwxrwxrwt. 10 root root 256 Jan 11 16:22 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 16:22 ansible_ansible.legacy.command_payload_9bdk9fx5",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "-rwxrwxrwx.  1 root root  12 Jan 11 15:34 mybash",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 runbash",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 16:37:46,778 p=23365 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 16:37:46,779 p=23365 u=hongqizhang n=ansible | 192.168.2.38               : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-11 16:40:18,272 p=23486 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 16:40:18,299 p=23486 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 16:40:33,986 p=23486 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:40:34,020 p=23486 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 16:40:57,170 p=23486 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:40:57,187 p=23486 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:40:57,242 p=23486 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "copyfile.stdout_lines": "VARIABLE IS NOT DEFINED!"
+}
+2023-01-11 16:40:57,260 p=23486 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 16:41:01,178 p=23486 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:41:01,193 p=23486 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:41:01,233 p=23486 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 4",
+        "drwxrwxrwt. 10 root root 256 Jan 11 16:26 .",
+        "dr-xr-xr-x. 17 root root 224 Sep 18  2021 ..",
+        "drwx------.  2 root root  56 Jan 11 16:26 ansible_ansible.legacy.command_payload_oxxs9nhu",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .font-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .ICE-unix",
+        "-rwxrwxrwx.  1 root root  12 Jan 11 15:34 mybash",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 runbash",
+        "drwx------.  3 root root  17 Jan 11 11:32 systemd-private-5c971626e0564f378f75911ab93b064c-chronyd.service-hryBEf",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .Test-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .X11-unix",
+        "drwxrwxrwt.  2 root root   6 Jan  2 16:09 .XIM-unix"
+    ]
+}
+2023-01-11 16:41:01,284 p=23486 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 16:41:01,284 p=23486 u=hongqizhang n=ansible | 192.168.2.38               : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-11 16:42:33,650 p=23585 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 16:42:33,667 p=23585 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 16:42:53,929 p=23585 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:42:53,969 p=23585 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 16:42:59,731 p=23585 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:42:59,743 p=23585 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:42:59,796 p=23585 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "copyfile.stdout_lines": "VARIABLE IS NOT DEFINED!"
+}
+2023-01-11 16:42:59,808 p=23585 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 16:43:01,053 p=23585 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:43:01,067 p=23585 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:43:01,115 p=23585 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "total 0",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 .",
+        "drwxrwxrwt. 10 root root 256 Jan 11 16:28 .."
+    ]
+}
+2023-01-11 16:43:01,172 p=23585 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 16:43:01,173 p=23585 u=hongqizhang n=ansible | 192.168.2.38               : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-11 16:44:05,398 p=23683 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 16:44:05,426 p=23683 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 16:44:16,914 p=23683 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:44:16,977 p=23683 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 16:44:19,941 p=23683 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:44:19,955 p=23683 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:44:20,006 p=23683 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "copyfile.stdout_lines": "VARIABLE IS NOT DEFINED!"
+}
+2023-01-11 16:44:20,020 p=23683 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 16:44:21,170 p=23683 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 16:44:21,200 p=23683 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 16:44:21,274 p=23683 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "Hello hongqi!!!!!",
+        "total 0",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 .",
+        "drwxrwxrwt. 10 root root 256 Jan 11 16:30 .."
+    ]
+}
+2023-01-11 16:44:21,326 p=23683 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 16:44:21,327 p=23683 u=hongqizhang n=ansible | 192.168.2.38               : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-11 16:53:32,435 p=23970 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 16:53:32,469 p=23970 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 16:53:35,930 p=23970 u=hongqizhang n=ansible |  [ERROR]: User interrupted execution
+
+2023-01-11 16:59:47,975 p=24141 u=hongqizhang n=ansible | PLAY [Shell Examples] *****************************************************************************************************************
+2023-01-11 16:59:48,004 p=24141 u=hongqizhang n=ansible | TASK [Gathering Facts] ****************************************************************************************************************
+2023-01-11 16:59:59,064 p=24141 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:59:59,103 p=24141 u=hongqizhang n=ansible | TASK [include_vars] *******************************************************************************************************************
+2023-01-11 16:59:59,140 p=24141 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 16:59:59,159 p=24141 u=hongqizhang n=ansible | TASK [Transfer the script] ************************************************************************************************************
+2023-01-11 17:00:02,056 p=24141 u=hongqizhang n=ansible | ok: [192.168.2.38]
+2023-01-11 17:00:02,069 p=24141 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 17:00:02,113 p=24141 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "copyfile.stdout_lines": "VARIABLE IS NOT DEFINED!"
+}
+2023-01-11 17:00:02,125 p=24141 u=hongqizhang n=ansible | TASK [Execute the script] *************************************************************************************************************
+2023-01-11 17:00:03,335 p=24141 u=hongqizhang n=ansible | changed: [192.168.2.38]
+2023-01-11 17:00:03,353 p=24141 u=hongqizhang n=ansible | TASK [debug] **************************************************************************************************************************
+2023-01-11 17:00:03,421 p=24141 u=hongqizhang n=ansible | ok: [192.168.2.38] => {
+    "listfile.stdout_lines": [
+        "Hello Hongqi!!!!!",
+        "total 0",
+        "drwxr-xr-x.  2 root root   6 Jan 11 15:30 .",
+        "drwxrwxrwt. 10 root root 256 Jan 11 16:46 .."
+    ]
+}
+2023-01-11 17:00:03,500 p=24141 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
+2023-01-11 17:00:03,500 p=24141 u=hongqizhang n=ansible | 192.168.2.38               : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

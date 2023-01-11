@@ -1,0 +1,40 @@
+#!/bin/bash
+set -ex
+if true; then
+user=root
+#1.Ping Module.
+ansible web -m ping -u $user
+
+
+##2 Setup Module- get facts
+ansible web -m setup -u $user
+#
+##3. Copy/File Module
+ansible web -m copy -a 'src=/Users/$USER/workspace/ansibletest/mylog  dest=/tmp' -u $user
+#
+##5. Command/Shell Module*
+ansible web -m shell -a 'ls -la' -u $user
+ansible web -m command -a 'ls -la' -u $user
+fi
+##. apt Module
+#ansible web -m apt -a 'name=httpd state=present' -u $user --become-user root
+#
+##5. Shell Module*
+#ansible web -m shell -a 'ls -la' -u $user
+#
+##6. Service Module
+##ansible web -m service -a 'name=httpd state=started' -become -u $user --ask-become-pass 
+##ansible web -m service -a 'name=httpd state=started' -u --become-user root --ask-pass --ask-become-pass
+#ansible all -m service -a "name=httpd state=started" -u $user --become-user root --ask-pass --ask-become-pass
+##7. Debug Module
+#ansible web -m debug -a 'msg=Hello' -u $user
+#
+##8. Template Module
+##same as copy with replacement
+#ansible all -i local -m template -a "src=nginx.conf.j2 dest=nginx.conf"
+#
+##9. Include Module
+##like insert
+#
+##10. User Module
+##add user
