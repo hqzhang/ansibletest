@@ -1,6 +1,6 @@
 ---
   - name: Shell Examples
-    hosts: remoteservers
+    hosts: all
     tasks:
       - include_vars: vars/values.yml
 
