@@ -24,6 +24,9 @@ pipeline {
                 script {
                     echo "Stage: Initial and Clean..."
                     echo "Input Parameters: ${params}"
+                    sh """
+                        ssh -vvv root@192.168.2.38
+                    """
                     dir('ansible'){
                         ansiblePlaybook credentialsId: 'private_key', 
                                     inventory: 'hosts', 
