@@ -24,6 +24,9 @@ pipeline {
                     echo "Stage: Initial and Clean..."
                     echo "Input Parameters: ${params}"
                     sh """
+                        whoami
+                        pwd
+                        ls -al ~/.ssh
                         cd ansible
                         ansible-playbook runscript.yml
                     """
