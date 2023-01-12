@@ -13,7 +13,7 @@ pipeline {
     options { timestamps () }
     environment { 
        //define global variable
-       PATH="/usr/local/bin:/Users/hongqizhang/Library/Python/3.9/bin:$PATH"
+       PATH="/usr/local/bin:$PATH"
        myvar='helloworld'
     }
 
