@@ -24,6 +24,7 @@ pipeline {
                     echo "Stage: Initial and Clean..."
                     echo "Input Parameters: ${params}"
                     sh """
+                        pip3 install ansible
                         cd ansible
                         ansible-playbook runscript.sh
                     """
