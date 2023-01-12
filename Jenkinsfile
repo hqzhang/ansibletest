@@ -22,6 +22,9 @@ pipeline {
                 script {
                     echo "Stage: Initial and Clean..."
                     echo "Input Parameters: ${params}"
+                    sh """
+                        ansible-playbook runscript.sh
+                    """
 									}
 								}
 							}
