@@ -25,7 +25,7 @@ pipeline {
                     echo "Input Parameters: ${params}"
                     sh """
                         cd ansible
-                        ansible-playbook runscript.sh
+                        ansible-playbook runscript.yml
                     """
 									}
 								}

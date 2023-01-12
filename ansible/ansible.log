@@ -520,3 +520,4 @@ The offending line appears to be:
 }
 2023-01-11 18:46:23,199 p=25897 u=hongqizhang n=ansible | PLAY RECAP ****************************************************************************************************************************
 2023-01-11 18:46:23,200 p=25897 u=hongqizhang n=ansible | 192.168.2.38               : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-01-11 23:20:19,012 p=50271 u=hongqizhang n=ansible | ERROR! the playbook: runscript.sh could not be found
