@@ -13,6 +13,7 @@ pipeline {
     options { timestamps () }
     environment { 
        //define global variable
+       PATH=$PATH
     }
 
     stages {
