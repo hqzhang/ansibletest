@@ -11,7 +11,10 @@ pipeline {
     agent any
     
     options { timestamps () }
-    tools { oc params.ocversion }
+    environment { 
+       //define global variable
+    }
+
     stages {
         stage('Stage: Initial and Clean'){
             steps { 
