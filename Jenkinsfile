@@ -17,12 +17,13 @@ pipeline {
     }
 
     stages {
-        stage('Stage: Initial and Clean'){
+        stage('Stage: Run Ansible Playbook'){
             steps { 
                 script {
                     echo "Stage: Initial and Clean..."
                     echo "Input Parameters: ${params}"
                     sh """
+                        cd ansible
                         ansible-playbook runscript.sh
                     """
 									}
