@@ -13,7 +13,7 @@ pipeline {
     options { timestamps () }
     environment { 
        //define global variable
-       PATH=$PATH
+       myvar='helloworld'
     }
 
     stages {
