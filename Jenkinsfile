@@ -15,6 +15,7 @@ pipeline {
        //define global variable
        PATH="/usr/local/bin:$PATH"
        myvar='helloworld'
+       private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
     }
 
     stages {
@@ -23,6 +24,11 @@ pipeline {
                 script {
                     echo "Stage: Initial and Clean..."
                     echo "Input Parameters: ${params}"
+                    dir('ansible'){
+                        ansiblePlaybook credentialsId: 'private_key', 
+                                    inventory: 'hosts', 
+                                    playbook: 'runscript.yml'
+                    }
                     sh """
                         whoami
                         pwd
