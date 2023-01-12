@@ -27,7 +27,8 @@ pipeline {
                     dir('ansible'){
                         ansiblePlaybook credentialsId: 'private_key', 
                                     inventory: 'hosts', 
-                                    playbook: 'runscript.yml'
+                                    playbook: 'runscript.yml',
+                                    installation: 'ansible'
                     }
                     sh """
                         whoami
