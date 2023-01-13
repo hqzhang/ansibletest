@@ -14,7 +14,7 @@ pipeline {
     environment { 
        //define global variable
        PATH="/usr/local/bin:$PATH"
-       myvar='helloworld'
+       myenv='Helloworld emily!'
        private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
     }
 
@@ -25,8 +25,7 @@ pipeline {
                     echo "Stage: Initial and Clean..."
                     echo "Input Parameters: ${params}"
                     sh """
-                        ls -al
-                        echo "status=$?"
+                       
                         ssh -vvv root@192.168.2.38
                     """
                     dir('ansible'){
