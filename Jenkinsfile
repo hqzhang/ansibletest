@@ -2,11 +2,12 @@
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
-           choice(name: 'choice1', choices: ['dev','qa','prod'], description: 'input cluster'),
-           choice(name: 'ocversion', choices: ['oc-3.9.0','oc-3.10.0'], description: 'input oc version'),
-
-					 ])
-		])
+              string(name: 'config', default: 'ansible.cfg', description: 'input ansble config '),
+              string(name: 'inventory', default: 'hosts', description: 'input inventory file'),
+              string(name: 'playbook', default: 'runscript.yml', description: 'input ansible playbook'),
+              string(name: 'tool install', default: 'ansible', description: 'input tools ansible'),
+    ])
+])
 pipeline {
     agent any
     
@@ -22,12 +23,9 @@ pipeline {
         stage('Stage: Run Ansible Playbook'){
             steps { 
                 script {
-                    echo "Stage: Initial and Clean..."
+                    echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                    sh """
-                       
-                        ssh -vvv root@192.168.2.38
-                    """
+                   
                     dir('ansible'){
                         ansiblePlaybook credentialsId: 'private_key', 
                                     inventory: 'hosts', 
@@ -41,9 +39,9 @@ pipeline {
                         cd ansible
                         ansible-playbook runscript.yml
                     """
-									}
-								}
-							}
+                }
+            }
+        }
 
-			}
-		}
+    }
+}
