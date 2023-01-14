@@ -2,10 +2,10 @@
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
-              string(name: 'config', default: 'ansible.cfg', description: 'input ansble config '),
-              string(name: 'inventory', default: 'hosts', description: 'input inventory file'),
-              string(name: 'playbook', default: 'runscript.yml', description: 'input ansible playbook'),
-              string(name: 'tool install', default: 'ansible', description: 'input tools ansible'),
+              string(name: 'config', defaultValue: 'ansible.cfg', description: 'input ansble config '),
+              string(name: 'inventory', defaultValue: 'hosts', description: 'input inventory file'),
+              string(name: 'playbook', defaultValue: 'runscript.yml', description: 'input ansible playbook'),
+              string(name: 'tool install', defaultValue: 'ansible', description: 'input tools ansible'),
     ])
 ])
 pipeline {
