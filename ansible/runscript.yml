@@ -10,7 +10,7 @@
 
       - name: Execute the script
         register: listfile
-        command: sh /root/test.sh "{{ lookup('env','myenv') }}"
+        command: sh /root/test.sh "{{ myenv }}"
       
       - debug:
           var: listfile.stdout_lines
