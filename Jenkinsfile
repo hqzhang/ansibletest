@@ -26,12 +26,12 @@ pipeline {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
                    
-                    dir('ansible'){
+                   /* dir('ansible'){
                         ansiblePlaybook credentialsId: 'private_key', 
                                     inventory: 'hosts', 
                                     playbook: 'runscript.yml',
                                     installation: 'ansible'
-                    }
+                    }*/
                     sh """
                         whoami
                         pwd
