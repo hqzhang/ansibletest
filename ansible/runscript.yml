@@ -6,11 +6,11 @@
 
       - name: Transfer the script
         register: copyfile
-        copy: src=test.sh dest=/root mode=0777
+        copy: src=test.py dest=/root mode=0777
 
       - name: Execute the script
         register: listfile
-        command: sh /root/test.sh ${myenv}
+        command: sh /root/test.py ${myenv}
       
       - debug:
           var: listfile.stdout_lines
