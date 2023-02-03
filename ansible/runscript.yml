@@ -1,16 +1,25 @@
----
+b---
   - name: Shell Examples
     hosts: all
     tasks:
       - include_vars: vars/values.yml
 
-      - name: Transfer the script
-        register: copyfile
-        copy: src=test.py dest=/root mode=0777
+      - name: Execute local script in remote
+        register: listfile
+        script:
+          executable: /bin/bash 
+          cmd: localtest9.sh ${myenv}
+      - debug:
+          var: listfile.stdout_lines
+
+      - name: Execute command in remote
+        register: listfile
+        shell: cp test /tmp && cat /tmp/test
+      - debug:
+         var: listfile.stdout_lines
 
       - name: Execute the script
         register: listfile
-        command: sh /root/test.py ${myenv}
-      
+        command:  cat /tmp/test
       - debug:
-          var: listfile.stdout_lines
+         var: listfile.stdout_lines
