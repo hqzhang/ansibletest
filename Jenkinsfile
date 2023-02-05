@@ -2,6 +2,7 @@
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
+              password(name: 'PasswordSet', defaultValue: 'SECRET', description: 'Enter a password'),
               text(name: 'mytextparam', 
                  defaultValue: 'Default lines for the parameter', 
                  description: 'A description of this param'),    
@@ -28,7 +29,9 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                   
+                    def password = input message: 'Please enter the password', 
+                      parameters: [string(name: 'Mypass', defaultValue: '******', description: 'input pass')]
+                    echo "${env.Mypass}" 
                    /* dir('ansible'){
                         ansiblePlaybook credentialsId: 'private_key', 
                                     inventory: 'hosts', 
