@@ -3,13 +3,13 @@ properties([
    pipelineTriggers([githubPush()]),
    parameters([
               password(name: 'PasswordSet', defaultValue: 'SECRET', description: 'Enter a password'),
-              text(name: 'mytextparam', 
+              text(name: 'Mytextparam', 
                  defaultValue: 'Default lines for the parameter', 
                  description: 'A description of this param'),    
-              string(name: 'config', defaultValue: 'ansible.cfg', description: 'input ansble config '),
-              string(name: 'inventory', defaultValue: 'hosts', description: 'input inventory file'),
-              string(name: 'playbook', defaultValue: 'runscript.yml', description: 'input ansible playbook'),
-              string(name: 'tool install', defaultValue: 'ansible', description: 'input tools ansible'),
+              string(name: 'Config', defaultValue: 'ansible.cfg', description: 'input ansble config '),
+              string(name: 'Inventory', defaultValue: 'hosts', description: 'input inventory file'),
+              string(name: 'Playbook', defaultValue: 'runscript.yml', description: 'input ansible playbook'),
+              string(name: 'Tool_install', defaultValue: 'ansible', description: 'input tools ansible'),
     ])
 ])
 pipeline {
