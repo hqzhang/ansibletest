@@ -31,7 +31,7 @@ pipeline {
                     echo "Input Parameters: ${params}"
                     def password = input message: 'Please enter the password', 
                       parameters: [string(name: 'Mypass', defaultValue: '******', description: 'input pass')]
-                    echo "${env.Mypass}" 
+                    echo "pass=${env.Mypass}" 
                    /* dir('ansible'){
                         ansiblePlaybook credentialsId: 'private_key', 
                                     inventory: 'hosts', 
