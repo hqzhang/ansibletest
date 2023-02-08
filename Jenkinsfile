@@ -15,7 +15,7 @@ properties([
 def myfiles='/tmp/file1,      /tmp/file2'
 def mypath='./ansible/'
 echo "myfiles=$myfiles"
-myfiles=myfiles.split(',')
+myfiles=myfiles.split(',').collect{ it.trim()}
 echo "myfiles=$myfiles"
 //def mynames=myfiles.collect{ it.split('/').last() }
 //echo "mynames=$mynames"
