@@ -6,13 +6,18 @@ def call(String name = 'human') {
 }
 
 def getFilenames(String myfiles){
-     echo  "enter getFilenames with: $myfiles"
-   return myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
+    echo  "enter getFilenames with: $myfiles"
+   
+    return myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
 }
 
 def getFiles(String myfiles, String mypath){
     echo "enter getFiles with: $mypath"
-    return myfiles.split(',').collect{  it.trim()}.collect{ mypath+it.split('/').last() }
+    def var1=myfiles.split(',').collect{ it.trim()}
+    echo  "enter getFilenames with: $var1"
+    def var2=var1.collect{ mypath+it.split('/').last() }
+    echo  "enter getFilenames with: $var2"
+    return var2
 }
 
 return this
