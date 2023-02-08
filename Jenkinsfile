@@ -23,7 +23,7 @@ pipeline {
         myfiles='/tmp/file1,      /tmp/file2'
         mypath='./ansible/'
         myFilenames=utils.getFilenames(myfiles)
-        myFiles=utils.getFiles(myfiles, mypath)
+        myFilesfull=utils.getFiles(myfiles, mypath)
        
     }
 
@@ -36,7 +36,7 @@ pipeline {
                    
                     
                     echo  "myFilenames =$myFilenames"
-                    echo  "myFiles =$myFiles"
+                    echo  "myFilesfull =$myFilesfull"
                     //echo "mynames=$mynames"
                         //mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
                     //echo "mypaths=$mypaths"
