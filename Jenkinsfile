@@ -12,6 +12,13 @@ properties([
               string(name: 'Tool_install', defaultValue: 'ansible', description: 'input tools ansible'),
     ])
 ])
+def myfiles='/tmp/file1,      /tmp/file2'
+def mypath='./ansible/'
+    myfiles=myfiles.split(',').collect( it.trim() )
+def mynames=myfiles.collect{ it.split('/').last() }
+echo "mynames=$mynames"
+def mypaths=myfiles.collect{ mypath+it.split('/')}
+echo "mypaths=$mypaths"
 pipeline {
     agent any
     
@@ -21,6 +28,9 @@ pipeline {
        PATH="/usr/local/bin:$PATH"
        myenv='Helloworld emily!'
        private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
+       myfiles='/tmp/file1, /tmp/file2'
+       
+
     }
 
     stages {
