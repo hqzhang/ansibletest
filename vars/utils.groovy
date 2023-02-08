@@ -13,19 +13,16 @@ def getFilenames(String myfiles){
 
 def getFiles(String myfiles, String mypath){
     echo "enter getFiles with000: $mypath"
-    def var1=myfiles.split(',').collect{ it.trim()}
-    echo  "enter getFilenames with111: $var1"
-    def var2=var1.collect{ mypath+it.split('/').last() }
-    echo  "enter getFilenames with222: $var2"
-    return var2
+    
+    return myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
 }
 
 def getGlobals(){
-    echo "params=$params"
-    echo "Inventory=${env.Inventory}"
-    echo "myFilesfull=${env.myFilesfull}"
-    echo "myFilenames=${env.myFilenames}"
-    echo "myFilenames=$myFilenames"
+    echo "params1=$params"
+    echo "Inventory2=${env.Inventory}"
+    echo "myFilesfull3=${env.myFilesfull}"
+    echo "myFilenames4=${env.myFilenames}"
+    echo "myFilenames5=$myFilenames"
 }
 
 return this
