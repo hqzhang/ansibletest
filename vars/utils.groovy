@@ -25,6 +25,7 @@ def getGlobals(){
     echo "Inventory=${env.Inventory}"
     echo "myFilesfull=${env.myFilesfull}"
     echo "myFilenames=${env.myFilenames}"
+    echo "myFilenames=$myFilenames"
 }
 
 return this
