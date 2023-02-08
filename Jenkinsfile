@@ -41,7 +41,7 @@ pipeline {
 
                     utils.getGlobals()
                     sh ' 
-                    ./vars/test.sh '
+                    ./test.sh '
                     
                     echo  "myFilenames =$myFilenames"
                     echo  "myFilesfull =$myFilesfull"
