@@ -21,9 +21,9 @@ pipeline {
         myenv='Helloworld emily!'
         private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
         myFiles='/tmp/file1,     /tmp/file2'
-        myPath='./ansible/'
+        //myPath='./ansible/'
         myFilenames=utils.getFilenames(myFiles)
-        myFilesfull=utils.getFiles(myFiles, myPath)
+        myFilesfull=utils.getFiles(myFiles, env.myPath)
        
     }
 
