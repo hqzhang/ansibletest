@@ -22,8 +22,8 @@ pipeline {
         
         myfiles='/tmp/file1,      /tmp/file2'
         mypath='./ansible/'
-        mynames=myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
-        mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
+        //mynames=myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
+        //mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
        
     }
 
@@ -33,9 +33,9 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                    echo "mynames=$mynames"
+                    //echo "mynames=$mynames"
                         //mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
-                    echo "mypaths=$mypaths"
+                    //echo "mypaths=$mypaths"
                    /* dir('ansible'){
                         ansiblePlaybook credentialsId: 'private_key', 
                                     inventory: 'hosts', 
