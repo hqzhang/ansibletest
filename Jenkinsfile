@@ -22,9 +22,8 @@ pipeline {
         
         myfiles='/tmp/file1,      /tmp/file2'
         mypath='./ansible/'
-        myname=sayHello.xxx(myfiles)
-        //mynames=myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
-        //mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
+        myFilenames=sayHello.getFilenames(myfiles)
+        myFiles=sayHello.getFiles(myfiles,mypath)
        
     }
 
@@ -36,7 +35,8 @@ pipeline {
                     echo "Input Parameters: ${params}"
                     def myfiles='/tmp/file1,      /tmp/file2'
                     
-                    println myname
+                    echo  "myFiles =$myFiles"
+                    echo  "myFilenames =$myFilenames"
                     //echo "mynames=$mynames"
                         //mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
                     //echo "mypaths=$mypaths"
