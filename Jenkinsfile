@@ -16,7 +16,8 @@ pipeline {
     
     options { timestamps () }
     environment { 
-        //define global variable
+        //Define Gobal Variables can be used name, env.name or params.name
+
         PATH="/usr/local/bin:$PATH"
         myenv='Helloworld emily!'
         private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'

@@ -23,6 +23,7 @@ def getGlobals(){
     echo "myFilesfull3=${env.myFilesfull}"
     echo "myFilenames4=${env.myFilenames}"
     echo "myFilenames5=$myFilenames"
+    echo "Tool_install=$Tool_install"
 }
 
 return this
