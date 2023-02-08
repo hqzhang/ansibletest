@@ -2,10 +2,7 @@
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
-            
-              text(name: 'Mytextparam', 
-                 defaultValue: 'Default lines for the parameter', 
-                 description: 'A description of this param'),    
+               
               string(name: 'Config', defaultValue: 'ansible.cfg', description: 'input ansble config '),
               string(name: 'Inventory', defaultValue: 'hosts', description: 'input inventory file'),
               string(name: 'Playbook', defaultValue: 'runscript.yml', description: 'input ansible playbook'),
