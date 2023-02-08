@@ -17,7 +17,7 @@ def mypath='./ansible/'
 
 def mynames=myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
 echo "mynames=$mynames"
-def mypathsiles=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
+def mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
 echo "mypaths=$mypaths"
 
 
