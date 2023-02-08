@@ -22,6 +22,7 @@ pipeline {
         
         myfiles='/tmp/file1,      /tmp/file2'
         mypath='./ansible/'
+        myname=sayHello.xxx(myfiles)
         //mynames=myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
         //mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
        
@@ -34,8 +35,8 @@ pipeline {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
                     def myfiles='/tmp/file1,      /tmp/file2'
-                    sayHello()
-                    println sayHello.xxx(myfiles)
+                    
+                    println myname
                     //echo "mynames=$mynames"
                         //mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
                     //echo "mypaths=$mypaths"
