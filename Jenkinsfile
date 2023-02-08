@@ -2,7 +2,7 @@
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
-              password(name: 'PasswordSet', defaultValue: 'SECRET', description: 'Enter a password'),
+            
               text(name: 'Mytextparam', 
                  defaultValue: 'Default lines for the parameter', 
                  description: 'A description of this param'),    
