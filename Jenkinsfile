@@ -22,8 +22,8 @@ pipeline {
         
         myfiles='/tmp/file1,      /tmp/file2'
         mypath='./ansible/'
-        myFilenames=sayHello.getFilenames(myfiles)
-        myFiles=sayHello.getFiles(myfiles,mypath)
+        myFilenames=utils.getFilenames(myfiles)
+        myFiles=utils.getFiles(myfiles,mypath)
        
     }
 
