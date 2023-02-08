@@ -2,7 +2,8 @@
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
-               
+             string(name: 'myFiles', defaultValue: '/tmp/file1,     /tmp/file2', description: 'input ansble config '),
+              string(name: 'myPath', defaultValue: './ansible/'', description: 'input ansble config '),
               string(name: 'Config', defaultValue: 'ansible.cfg', description: 'input ansble config '),
               string(name: 'Inventory', defaultValue: 'hosts', description: 'input inventory file'),
               string(name: 'Playbook', defaultValue: 'runscript.yml', description: 'input ansible playbook'),
@@ -19,8 +20,7 @@ pipeline {
         PATH="/usr/local/bin:$PATH"
         myenv='Helloworld emily!'
         private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
-        
-        myfiles='/tmp/file1,      /tmp/file2'
+        myFiles='/tmp/file1,     /tmp/file2'
         mypath='./ansible/'
         myFilenames=utils.getFilenames(myfiles)
         myFilesfull=utils.getFiles(myfiles, mypath)
