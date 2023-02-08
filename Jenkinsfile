@@ -26,13 +26,16 @@ pipeline {
     
     options { timestamps () }
     environment { 
-       //define global variable
-       PATH="/usr/local/bin:$PATH"
-       myenv='Helloworld emily!'
-       private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
-       myfiles='/tmp/file1, /tmp/file2'
+        //define global variable
+        PATH="/usr/local/bin:$PATH"
+        myenv='Helloworld emily!'
+        private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
+        
+        myfiles='/tmp/file1,      /tmp/file2'
+        mypath='./ansible/'
+        mynames=myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
+        mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
        
-
     }
 
     stages {
@@ -41,7 +44,9 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                   
+                    echo "mynames=$mynames"
+                        //mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
+                    echo "mypaths=$mypaths"
                    /* dir('ansible'){
                         ansiblePlaybook credentialsId: 'private_key', 
                                     inventory: 'hosts', 
