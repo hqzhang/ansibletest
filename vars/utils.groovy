@@ -5,7 +5,7 @@ def call(String name = 'human') {
     echo "Hello, ${name}."
 }
 
-def getFilename(String myfiles){
+def getFilenames(String myfiles){
    return myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
 }
 
