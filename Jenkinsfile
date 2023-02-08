@@ -33,10 +33,10 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                    def myfiles='/tmp/file1,      /tmp/file2'
+                   
                     
-                    echo  "myFiles =$myFiles"
                     echo  "myFilenames =$myFilenames"
+                    echo  "myFiles =$myFiles"
                     //echo "mynames=$mynames"
                         //mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
                     //echo "mypaths=$mypaths"
