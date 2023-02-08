@@ -4,10 +4,7 @@ def call(String name = 'human') {
     // Scripted Pipeline
     echo "Hello, ${name}."
 }
-def xxx(String name){
-   sh "pwd"
-   echo "Just for Testing $name"
-   sh "pwd"
-   echo "I am in libary:master"
+def xxx(String myfiles){
+   return myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
 }
 return this
