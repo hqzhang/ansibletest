@@ -40,7 +40,7 @@ pipeline {
                     sh ' printenv'
 
                     utils.getGlobals()
-
+                    sh ' ./var/test.sh '
                     
                     echo  "myFilenames =$myFilenames"
                     echo  "myFilesfull =$myFilesfull"
