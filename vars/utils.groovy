@@ -20,4 +20,11 @@ def getFiles(String myfiles, String mypath){
     return var2
 }
 
+def getGlobals(){
+    echo "params=$params"
+    echo "Inventory=${env.Inventory}"
+    echo "myFilesfull=${env.myFilesfull}"
+    echo "myFilenames=${env.myFilenames}"
+}
+
 return this

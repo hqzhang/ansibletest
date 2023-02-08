@@ -38,6 +38,8 @@ pipeline {
                     echo "Global Environmet:"
                     sh ' printenv'
 
+                    utils.getGlobals()
+
                     
                     echo  "myFilenames =$myFilenames"
                     echo  "myFilesfull =$myFilesfull"
