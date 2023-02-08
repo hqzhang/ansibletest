@@ -12,11 +12,11 @@ def getFilenames(String myfiles){
 }
 
 def getFiles(String myfiles, String mypath){
-    echo "enter getFiles with: $mypath"
+    echo "enter getFiles with000: $mypath"
     def var1=myfiles.split(',').collect{ it.trim()}
-    echo  "enter getFilenames with: $var1"
+    echo  "enter getFilenames with111: $var1"
     def var2=var1.collect{ mypath+it.split('/').last() }
-    echo  "enter getFilenames with: $var2"
+    echo  "enter getFilenames with222: $var2"
     return var2
 }
 
