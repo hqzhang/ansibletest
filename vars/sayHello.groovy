@@ -4,7 +4,13 @@ def call(String name = 'human') {
     // Scripted Pipeline
     echo "Hello, ${name}."
 }
-def xxx(String myfiles){
+
+def getFilename(String myfiles){
    return myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
 }
+
+def getFiles(String myfiles, String mypath){
+    return myfiles.split(',').collect{  it.trim()}.collect{ mypath+it.split('/').last() }
+}
+
 return this
