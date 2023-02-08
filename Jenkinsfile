@@ -12,14 +12,6 @@ properties([
               string(name: 'Tool_install', defaultValue: 'ansible', description: 'input tools ansible'),
     ])
 ])
-def myfiles='/tmp/file1,      /tmp/file2'
-def mypath='./ansible/'
-
-def mynames=myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
-echo "mynames=$mynames"
-def mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
-echo "mypaths=$mypaths"
-
 
 pipeline {
     agent any
