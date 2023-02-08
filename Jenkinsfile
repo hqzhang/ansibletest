@@ -33,7 +33,7 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                    println utils.getenv()
+                    
                     sayHello()
                     sayHello.xxx('Hongqi')
                     //echo "mynames=$mynames"
