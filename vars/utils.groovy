@@ -21,7 +21,7 @@ def getFileNames(String myfiles){
 
 def getNewFiles(String myfiles, String mypath){
     echo "enter getFiles with000: $mypath"
-    def ret=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
+    def ret=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }.join(' ')
     return "\"$ret\""
 }
 def getGlobals(){
