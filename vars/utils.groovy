@@ -11,7 +11,7 @@ def getMyFiles(String myfiles){
     str.split(',').each {
       tmp.add(it.trim() )
     }
-    return myfiles.split(',').collect{ it.trim() }
+    return str.split(',').collect{ it.trim() }
     //eturn myfiles
 }
 
@@ -22,7 +22,7 @@ def getFileNames(String myfiles){
     str.split(',').each {
       tmp.add(it.trim() )
     }
-    return myfiles.split(',').collect{ it.trim().split('/').last() }
+    return str.split(',').collect{ it.trim().split('/').last() }
     //return myfiles
 }
 
@@ -34,7 +34,7 @@ def getNewFiles(String myfiles, String mypath){
     str.split(',').each {
       tmp.add(it.trim() )
     }
-    def var=myfiles.collect{ mypath + it.split('/').last() }.join(' ')
+    def var=tmp.collect{ mypath + it.split('/').last() }.join(' ')
     return "\"${var}\""
     //return myfiles
 }
