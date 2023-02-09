@@ -7,26 +7,30 @@ def call(String name = 'human') {
 
 def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"
-    String tmp=String.valueOf(myfiles)
-    return tmp.split(',').collect{ it.trim() }
-    //return "getMyFiles"
+    List tmp=[]
+    myfiles.split(',').each {
+      tmp.add(it.trim() )
+   }
+   return tmp
 }
 
 def getFileNames(String myfiles){
     echo  "enter getFileNames with222: $myfiles"
-    String tmp=String.valueOf(myfiles)
-    return tmp.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
-    //return "getFileNames"
+    List tmp=[]
+    getMyFiles(myfiles).each {
+      tmp.add(it.split('/').last()  )
+    }
+    return tmp
 }
 
 
 def getNewFiles(String myfiles, String mypath){
     echo "enter getNewFiles with333: $mypath"
-    String tmp=String.valueOf(myfiles)
-    def ret=tmp.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }.join(' ')
-    return "\"$ret\""
-    //return "getNewFiles"
-
+    List tmp=[]
+    getMyFiles(myfiles).each {
+      tmp.add( mypath + it.split('/').last() )
+    }
+    return """+tmp.join(' ')+"""
 }
 def getGlobals(){
     echo "Enter getGlobal variables:"
