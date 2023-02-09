@@ -21,7 +21,9 @@ def getFileNames(String myfiles){
     def str='/tmp/file1, /tmp/file2'
     List tmp=[]
     getMyFiles(str).each {
-      tmp.add(it.split('/').last()  )
+        println it
+        println it.split('/')
+      //tmp.add(it.split('/').last()  )
     }
     //return tmp
     return myfiles
