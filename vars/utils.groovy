@@ -5,10 +5,16 @@ def call(String name = 'human') {
     echo "Hello, ${name}."
 }
 
-def getMyFiles(String myfiles){
+/*def getMyFiles(String myfiles){
     echo  "enter getFiles with: $myfiles"
     return myfiles
+}*/
+def getMyFiles(String myfiles){
+    echo  "enter getFilenames with: $myfiles"
+   
+    return myfiles.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
 }
+
 
 def getFileNames(String myfiles){
     echo  "enter getFilenames with: $myfiles"
