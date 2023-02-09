@@ -34,9 +34,9 @@ def getNewFiles(String myfiles, String mypath){
     str.split(',').each {
       tmp.add(it.trim() )
     }
-    def var=tmp.collect{ mypath + it.split('/').last() }.join(' ')
-    return "\"${var}\""
-    //return myfiles
+  
+    def var=str.split(',').collect{ mypath + it.trim().split('/').last() }.join(' ')
+    return "\"$var\""
 }
 /*def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"
