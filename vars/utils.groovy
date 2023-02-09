@@ -15,8 +15,8 @@ def getMyFiles(String myfiles){
 def getFileNames(String myfiles){
     echo  "enter getFileNames with222: $myfiles"
    
-    //return myfiles.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
-    return "getFileNames"
+    return myfiles.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
+    //return "getFileNames"
 }
 
 
