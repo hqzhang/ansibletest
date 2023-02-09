@@ -12,16 +12,14 @@ def call(String name = 'human') {
 def getMyFiles(String myfiles){
     echo  "enter getFilenames with: $myfiles"
    
-    return myfiles.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
+    return myfiles.split(',').collect{ it.trim() }
 }
-
 
 def getFileNames(String myfiles){
     echo  "enter getFilenames with: $myfiles"
    
     return myfiles.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
 }
-
 
 def getNewFiles(String myfiles, String mypath){
     echo "enter getFiles with000: $mypath"
