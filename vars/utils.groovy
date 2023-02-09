@@ -18,7 +18,7 @@ def getFiles(String myfiles, String mypath){
 }
 
 def getGlobals(){
-    echo "MY_VAR_PAR=$(params.MY_VAR}"
+    echo "MY_VAR_PAR=${params.MY_VAR}"
     echo "MY_VAR_ENV=${env.MY_VAR}"
     echo "MY_VAR=${MY_VAR}"
     echo "myFilenames4=${env.myFilenames}"
