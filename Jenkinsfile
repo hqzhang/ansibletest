@@ -26,7 +26,7 @@ pipeline {
         //myPath='./ansible/'
         myFiles=utils.getMyFiles(env.myFiles)
         myFilenames=utils.getFileNames(env.myFiles)
-        //myFilesfull=utils.getFileNames(env.myFiles)
+        myFilesfull=utils.getFileNames(env.myFiles)
        
     }
 
@@ -38,7 +38,7 @@ pipeline {
                     echo "Input Parameters: ${params}"
                     echo "myFiles=$myFiles"
                     echo "myFilenames=$myFilenames"
-                    //echo "myFilesfull=$myFilesfull"
+                    echo "myFilesfull=$myFilesfull"
                     echo "Global Environmet:"
   
                     sh ' printenv'
