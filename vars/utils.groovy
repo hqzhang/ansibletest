@@ -24,8 +24,8 @@ def getFileNames(String myfiles){
       tmp.add(it.trim() )
     }
     tmp.collect{ it.split('/').last() }
-    //return tmp
-    return myfiles
+    return tmp
+    //return myfiles
 }
 
 
