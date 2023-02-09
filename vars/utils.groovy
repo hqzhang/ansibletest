@@ -8,8 +8,8 @@ def call(String name = 'human') {
 def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"
    
-    //return myfiles.split(',').collect{ it.trim() }
-    return "getMyFiles"
+    return myfiles.split(',').collect{ it.trim() }
+    //return "getMyFiles"
 }
 
 def getFileNames(String myfiles){
