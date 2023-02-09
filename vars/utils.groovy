@@ -7,34 +7,19 @@ def call(String name = 'human') {
 def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"
     def str=new String(myfiles)
-    List tmp=[]
-    str.split(',').each {
-      tmp.add(it.trim() )
-    }
     return str.split(',').collect{ it.trim() }
-    //eturn myfiles
 }
 
 def getFileNames(String myfiles){
     echo  "enter getFileNames with222: $myfiles"
-   def str=new String(myfiles)
-    List tmp=[]
-    str.split(',').each {
-      tmp.add(it.trim() )
-    }
+    def str=new String(myfiles)
     return str.split(',').collect{ it.trim().split('/').last() }
-    //return myfiles
 }
 
 
 def getNewFiles(String myfiles, String mypath){
     echo "enter getNewFiles with333: $mypath"
     def str=new String(myfiles)
-    List tmp=[]
-    str.split(',').each {
-      tmp.add(it.trim() )
-    }
-  
     def var=str.split(',').collect{ mypath + it.trim().split('/').last() }.join(' ')
     return "\"$var\""
 }
