@@ -24,7 +24,7 @@ pipeline {
         private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
         //myFiles='/tmp/file1,     /tmp/file2'
         //myPath='./ansible/'
-        myFiles=utils.getMyFiles(env.myFiles)
+        myFiles=utils.getMyFiles1(env.myFiles)
         myFilenames=utils.getFileNames(env.myFiles)
         myFilesfull=utils.getNewFiles(env.myFiles, env.myPath)
        
