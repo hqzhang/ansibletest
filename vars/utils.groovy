@@ -7,7 +7,7 @@ def call(String name = 'human') {
 
 def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"
-    def str='/tmp/file1, /tmp/file2'
+    def str=new String(myfiles)
     List tmp=[]
     str.split(',').each {
       tmp.add(it.trim() )
@@ -18,7 +18,7 @@ def getMyFiles(String myfiles){
 
 def getFileNames(String myfiles){
     echo  "enter getFileNames with222: $myfiles"
-    def str='/tmp/file1, /tmp/file2'
+   def str=new String(myfiles)
     List tmp=[]
     str.split(',').each {
       tmp.add(it.trim() )
@@ -31,7 +31,7 @@ def getFileNames(String myfiles){
 
 def getNewFiles(String myfiles, String mypath){
     echo "enter getNewFiles with333: $mypath"
-    def str='/tmp/file1, /tmp/file2'
+    def str=new String(myfiles)
     List tmp=[]
     str.split(',').each {
       tmp.add(it.trim() )
