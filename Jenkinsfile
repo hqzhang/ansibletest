@@ -2,7 +2,7 @@
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
-              string(name: 'MY_VAR1', defaultValue: 'my_var_params', description: 'input ansble config '),
+              string(name: 'MY_VAR', defaultValue: 'my_var_params', description: 'input ansble config '),
               string(name: 'myFiles', defaultValue: '/tmp/file1,     /tmp/file2', description: 'input ansble config '),
               string(name: 'myPath', defaultValue: './ansible/', description: 'input ansble config '),
               string(name: 'Config', defaultValue: 'ansible.cfg', description: 'input ansble config '),
