@@ -39,12 +39,15 @@ pipeline {
                     echo "myFiles=$myFiles1"
                     echo "myFilenames=$myFilenames"
                     echo "myFilesfull=$myFilesfull"
-                    echo "Global Environmet:"
+                    echo "myFiles=$myFiles1"
+                    echo "myFilenames=$myFilenames"
+                    echo "myFilesfull=$myFilesfull"
+                    //echo "Global Environmet:"
   
-                    sh ' printenv'
+                    //sh ' printenv'
 
-                    utils.getGlobals()
-                    sh ' ./test.sh '
+                    //utils.getGlobals()
+                    //sh ' ./test.sh '
 
                     //sh ' python3 test.py'
                     
