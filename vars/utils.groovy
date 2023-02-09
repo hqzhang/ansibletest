@@ -5,24 +5,20 @@ def call(String name = 'human') {
     echo "Hello, ${name}."
 }
 
-/*def getMyFiles(String myfiles){
-    echo  "enter getFiles with: $myfiles"
-    return myfiles
-}*/
 def getMyFiles(String myfiles){
-    echo  "enter getMyFiles with: $myfiles"
+    echo  "enter getMyFiles with111: $myfiles"
    
     return myfiles.split(',').collect{ it.trim() }
 }
 
 def getFileNames(String myfiles){
-    echo  "enter getFileNames with: $myfiles"
+    echo  "enter getFileNames with222: $myfiles"
    
     return myfiles.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
 }
 
 def getNewFiles(String myfiles, String mypath){
-    echo "enter getNewFiles with: $mypath"
+    echo "enter getNewFiles with333: $mypath"
     def ret=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }.join(' ')
     return "\"$ret\""
 }
