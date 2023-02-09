@@ -37,7 +37,7 @@ def getNewFiles(String myfiles, String mypath){
       tmp.add(it.trim() )
     }
     tmp.collect{ mypath + it.split('/').last() }
-    return """+tmp.join(' ')+"""
+    return "\"${tmp.join(' ')}\""
     //return myfiles
 }
 def getGlobals(){
