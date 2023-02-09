@@ -11,7 +11,8 @@ def getMyFiles(String myfiles){
     myfiles.split(',').each {
       tmp.add(it.trim() )
    }
-   return tmp
+   //return tmp
+   return myfiles
 }
 
 def getFileNames(String myfiles){
@@ -20,7 +21,8 @@ def getFileNames(String myfiles){
     getMyFiles(myfiles).each {
       tmp.add(it.split('/').last()  )
     }
-    return tmp
+    //return tmp
+    return myfiles
 }
 
 
@@ -30,7 +32,8 @@ def getNewFiles(String myfiles, String mypath){
     getMyFiles(myfiles).each {
       tmp.add( mypath + it.split('/').last() )
     }
-    return """+tmp.join(' ')+"""
+    //return """+tmp.join(' ')+"""
+    return myfiles
 }
 def getGlobals(){
     echo "Enter getGlobal variables:"
