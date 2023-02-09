@@ -7,8 +7,6 @@ def call(String name = 'human') {
 
 def getFiles(String myfiles){
     echo  "enter getFiles with: $myfiles"
-    
-   
     return myfiles.split(',').collect{ it.trim() }
 }
 

@@ -24,7 +24,7 @@ pipeline {
         private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
         //myFiles='/tmp/file1,     /tmp/file2'
         //myPath='./ansible/'
-        //myFiles=utls.getFiles(env.myFiles)
+        myFiles=utls.getFiles(myFiles)
         myFilenames=utils.getFileNames(env.myFiles)
         myFilesfull=utils.getNewFiles(env.myFiles, env.myPath)
        
@@ -36,7 +36,7 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                    //echo "myFiles=$myFiles"
+                    echo "myFiles=$myFiles"
                     echo "myFilenames=$myFilenames"
                     echo "myFilesfull=$myFilesfull"
                     echo "Global Environmet:"
