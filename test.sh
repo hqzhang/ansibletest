@@ -1,6 +1,6 @@
 #!/bin/bash  
     echo "params1=$params"
-    echo "Inventory2=${Inventory}"
+    echo "Inventory2=${Tool_install}"
     echo "myFilesfull3=${myFilesfull}"
     echo "myFilenames4=${myFilenames}"
     echo "myFilenames5=$myFilenames"
