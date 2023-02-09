@@ -7,22 +7,23 @@ def call(String name = 'human') {
 
 def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"
-   
-    return myfiles.split(',').collect{ it.trim() }
+    String tmp=myfiles.clone()
+    return tmp.split(',').collect{ it.trim() }
     //return "getMyFiles"
 }
 
 def getFileNames(String myfiles){
     echo  "enter getFileNames with222: $myfiles"
-   
-    return myfiles.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
+    String tmp=myfiles.clone()
+    return tmp.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
     //return "getFileNames"
 }
 
 
 def getNewFiles(String myfiles, String mypath){
     echo "enter getNewFiles with333: $mypath"
-    def ret=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }.join(' ')
+    String tmp=myfiles.clone()
+    def ret=tmp.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }.join(' ')
     return "\"$ret\""
     //return "getNewFiles"
 
