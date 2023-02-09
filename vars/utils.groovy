@@ -18,7 +18,7 @@ def getFileNames(String myfiles){
     //return myfiles.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
     return "getFileNames"
 }
-}
+
 
 def getNewFiles(String myfiles, String mypath){
     echo "enter getNewFiles with333: $mypath"
