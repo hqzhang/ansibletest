@@ -6,24 +6,24 @@ def call(String name = 'human') {
 }
 
 def getFiles(String myfiles){
-    echo  "enter getFilenames with: $myfiles"
+    echo  "enter getFiles with: $myfiles"
+    
    
-    return myfiles.split(',').collect{ it.trim()}
+    return myfiles.split(',').collect{ it.trim() }
 }
 
 def getFileNames(String myfiles){
     echo  "enter getFilenames with: $myfiles"
    
-    return myfiles.split(',').collect{ it.trim()}.collect{ it.split('/').last() }
+    return myfiles.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
 }
 
 
 def getNewFiles(String myfiles, String mypath){
     echo "enter getFiles with000: $mypath"
-    
-    return myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
+    def ret=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
+    return "\"$ret\""
 }
-
 def getGlobals(){
     echo "Enter getGlobal variables:"
     echo "params1=$params"
