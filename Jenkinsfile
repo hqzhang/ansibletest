@@ -2,7 +2,8 @@
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
-             string(name: 'myFiles', defaultValue: '/tmp/file1,     /tmp/file2', description: 'input ansble config '),
+              string(name: 'MY_VAR', defaultValue: 'my_var_params', description: 'input ansble config '),
+              string(name: 'myFiles', defaultValue: '/tmp/file1,     /tmp/file2', description: 'input ansble config '),
               string(name: 'myPath', defaultValue: './ansible/', description: 'input ansble config '),
               string(name: 'Config', defaultValue: 'ansible.cfg', description: 'input ansble config '),
               string(name: 'Inventory', defaultValue: 'hosts', description: 'input inventory file'),
@@ -17,7 +18,7 @@ pipeline {
     options { timestamps () }
     environment { 
         //Define Gobal Variables can be used name, env.name or params.name
-
+        MY_VAR='my-var-env'
         PATH="/usr/local/bin:$PATH"
         myenv='Helloworld emily!'
         private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
@@ -35,8 +36,11 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
+                    echo "MY_VAR=$MY_VAR"
+                    MY_VAR="my_var_stage"
                     
                     echo "Global Environmet:"
+  
                     sh ' printenv'
 
                     utils.getGlobals()
