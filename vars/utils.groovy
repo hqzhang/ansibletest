@@ -7,14 +7,14 @@ def call(String name = 'human') {
 
 def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"
-    String tmp=myfiles.clone()
+    String tmp=String.valueOf(myfiles)
     return tmp.split(',').collect{ it.trim() }
     //return "getMyFiles"
 }
 
 def getFileNames(String myfiles){
     echo  "enter getFileNames with222: $myfiles"
-    String tmp=myfiles.clone()
+    String tmp=String.valueOf(myfiles)
     return tmp.split(',').collect{ it.trim() }.collect{ it.split('/').last() }
     //return "getFileNames"
 }
@@ -22,7 +22,7 @@ def getFileNames(String myfiles){
 
 def getNewFiles(String myfiles, String mypath){
     echo "enter getNewFiles with333: $mypath"
-    String tmp=myfiles.clone()
+    String tmp=String.valueOf(myfiles)
     def ret=tmp.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }.join(' ')
     return "\"$ret\""
     //return "getNewFiles"
