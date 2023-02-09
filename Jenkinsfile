@@ -26,7 +26,7 @@ pipeline {
         //myPath='./ansible/'
         myFiles=utils.getMyFiles(env.myFiles)
         myFilenames=utils.getFileNames(env.myFiles)
-        myFilesfull=utils.getFileNames(env.myFiles)
+        myFilesfull=utils.getNewFiles(env.myFiles, env.myPath)
        
     }
 
