@@ -25,7 +25,7 @@ pipeline {
         //myFiles='/tmp/file1,     /tmp/file2'
         //myPath='./ansible/'
         myFiles=utils.getMyFiles(env.myFiles)
-        //myFilenames=utils.getFileNames(env.myFiles)
+        myFilenames=utils.getFileNames(env.myFiles)
         //myFilesfull=utils.getFileNames(env.myFiles)
        
     }
@@ -37,7 +37,7 @@ pipeline {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
                     echo "myFiles=$myFiles"
-                    //echo "myFilenames=$myFilenames"
+                    echo "myFilenames=$myFilenames"
                     //echo "myFilesfull=$myFilesfull"
                     echo "Global Environmet:"
   
