@@ -46,7 +46,7 @@ pipeline {
                     utils.getGlobals()
                     sh ' ./test.sh '
 
-                    sh ' python3 test.py'
+                    //sh ' python3 test.py'
                     
                     echo  "myFilenames =$myFilenames"
                     echo  "myFilesfull =$myFilesfull"
