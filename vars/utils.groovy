@@ -23,8 +23,8 @@ def getFileNames(String myfiles){
 def getNewFiles(String myfiles, String mypath){
     echo "enter getNewFiles with333: $mypath"
     def ret=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }.join(' ')
-    //return "\"$ret\""
-    return "getNewFiles"
+    return "\"$ret\""
+    //return "getNewFiles"
 
 }
 def getGlobals(){
