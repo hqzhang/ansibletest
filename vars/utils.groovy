@@ -18,6 +18,7 @@ def getFiles(String myfiles, String mypath){
 }
 
 def getGlobals(){
+    echo "Enter getGlobal variables:"
     echo "params1=$params"
     echo "Inventory2=${Tool_install}"
     echo "MY_VAR_ENV=${env.MY_VAR}"
