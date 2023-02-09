@@ -12,8 +12,8 @@ def getMyFiles(String myfiles){
     str.split(',').each {
       tmp.add(it.trim() )
     }
-    //return tmp
-    return myfiles
+    return tmp
+    //eturn myfiles
 }
 
 def getFileNames(String myfiles){
