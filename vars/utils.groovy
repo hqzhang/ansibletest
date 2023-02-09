@@ -32,11 +32,11 @@ def getNewFiles(String myfiles, String mypath){
     echo "enter getNewFiles with333: $mypath"
     def str='/tmp/file1, /tmp/file2'
     List tmp=[]
-    /*getMyFiles(myfiles).each {
+    getMyFiles(str).each {
       tmp.add( mypath + it.split('/').last() )
-    }*/
-    //return """+tmp.join(' ')+"""
-    return myfiles
+    }
+    return """+tmp.join(' ')+"""
+    //return myfiles
 }
 def getGlobals(){
     echo "Enter getGlobal variables:"
