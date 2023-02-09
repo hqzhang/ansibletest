@@ -5,7 +5,7 @@ def call(String name = 'human') {
     echo "Hello, ${name}."
 }
 
-def getFiles(String myfiles){
+def getMyFiles(String myfiles){
     echo  "enter getFiles with: $myfiles"
     return myfiles
 }
