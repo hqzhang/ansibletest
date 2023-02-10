@@ -62,13 +62,13 @@ pipeline {
                                     playbook: 'runscript.yml',
                                     installation: 'ansible'
                     }*/
-                    sh """
+                    /*sh """
                         whoami
                         pwd
                         ls -al ~/.ssh
                         cd ansible
                         ansible-playbook runscript.yml
-                    """
+                    """*/
                 }
             }
         }
