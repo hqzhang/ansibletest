@@ -2,7 +2,7 @@
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
-              string(name: 'MY_VAR', defaultValue: 'my_var_params', description: 'input ansble config '),
+              string(name: 'MY_VAR_P', defaultValue: 'my_var_params', description: 'input ansble config '),
               string(name: 'myFiles', defaultValue: '/tmp/file1,     /tmp/file2', description: 'input ansble config '),
               string(name: 'myPath', defaultValue: './ansible/', description: 'input ansble config '),
               string(name: 'Config', defaultValue: 'ansible.cfg', description: 'input ansble config '),
@@ -18,7 +18,7 @@ pipeline {
     options { timestamps () }
     environment { 
         //Define Gobal Variables can be used name, env.name or params.name
-        MY_VAR='my-var-env'
+        MY_VAR_E='my-var-env'
         PATH="/usr/local/bin:$PATH"
         myenv='Helloworld emily!'
         private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'

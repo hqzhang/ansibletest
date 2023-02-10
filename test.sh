@@ -1,6 +1,6 @@
 #!/bin/bash  
-    echo "params1=$params"
-    echo "Inventory2=${Tool_install}"
+    echo "MY_VAR_P=$MY_VAR_P"
+    echo "MY_VAR_E=${MY_VAR_E}"
     echo "myFilesfull3=${myFilesfull}"
     echo "myFilenames4=${myFilenames}"
     echo "myFilenames5=$myFilenames"
