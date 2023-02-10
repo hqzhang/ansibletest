@@ -42,7 +42,7 @@ pipeline {
                     mylist.each { println it }
                     mylist=['cc','dd']
                     mylist.each { println it }
-                    //echo "Global Environmet:"
+                    echo "Global Environmet:"
   
                     //sh ' printenv'
 
