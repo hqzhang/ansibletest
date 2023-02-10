@@ -1,6 +1,6 @@
 #!/bin/bash  
     echo "UpDirs=$UpDirs"
-    echo "upDirs=${upDirs}"
+    echo "myupDirs=${myupDirs}"
     echo "myFilesfull3=${myFilesfull}"
     echo "myFilenames4=${myFilenames}"
     echo "myFilenames5=$myFilenames"
