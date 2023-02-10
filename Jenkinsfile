@@ -46,8 +46,8 @@ pipeline {
   
                     //sh ' printenv'
 
-                    //utils.getGlobals()
-                    //sh ' ./test.sh '
+                    utils.getGlobals()
+                    sh ' ./test.sh '
 
                     //sh ' python3 test.py'
                     

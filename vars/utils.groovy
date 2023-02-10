@@ -62,7 +62,7 @@ def getGlobals(){
     mylist.each { println it}
          
     echo "Enter getGlobal variables:"
-    echo "params1=$params"
+    echo "UpDirs=$UpDirs"
     echo "params_env=${env.Tool_install}"
     echo "params_direct=${Tool_install}"
     echo "params_with=${params.MY_VAR}"
