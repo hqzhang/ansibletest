@@ -1,6 +1,6 @@
 #!/bin/bash  
-    echo "MY_VAR_P=$MY_VAR_P"
-    echo "my_VAR_E=${my_VAR_E}"
+    echo "UpDirs=$UpDirs"
+    echo "upDirs=${upDirs}"
     echo "myFilesfull3=${myFilesfull}"
     echo "myFilenames4=${myFilenames}"
     echo "myFilenames5=$myFilenames"
