@@ -7,5 +7,5 @@
     echo "Tool_install6=$Tool_install"
     echo "MY_VAR_PAR=${MY_VAR}"
     echo "MY_VAR_ENV=${MY_VAR}"
-    echo "MY_VAR=${MY_VAR}"
+  
    

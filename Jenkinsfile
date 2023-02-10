@@ -3,7 +3,7 @@ properties([
    pipelineTriggers([githubPush()]),
    parameters([
               string(name: 'UpDirs', defaultValue: 'my_var_params', description: 'input ansble config '),
-              string(name: 'myFiles', defaultValue: '/tmp/file1,     /tmp/file2', description: 'input ansble config '),
+              string(name: 'MY_VAR_P', defaultValue: '/tmp/file1,     /tmp/file2', description: 'input ansble config '),
               string(name: 'myPath', defaultValue: './ansible/', description: 'input ansble config '),
               string(name: 'Config', defaultValue: 'ansible.cfg', description: 'input ansble config '),
               string(name: 'Inventory', defaultValue: 'hosts', description: 'input inventory file'),
@@ -19,6 +19,7 @@ pipeline {
     environment { 
         //Define Gobal Variables can be used name, env.name or params.name
         UpDirs="/usr/local/bin:"
+        MY_VAR_ENV="uiuiu"
         PATH="/usr/local/bin:$PATH"
         myenv='Helloworld emily!'
         private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'

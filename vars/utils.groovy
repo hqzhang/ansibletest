@@ -64,9 +64,9 @@ def getGlobals(){
     echo "UpDirs=$UpDirs"
     echo "params_env=${env.Tool_install}"
     echo "params_direct=${Tool_install}"
-    echo "params_with=${params.MY_VAR}"
-    echo "MY_VAR_ENV=${env.MY_VAR}"
-    echo "MY_VAR=${MY_VAR}"
+   
+    echo "MY_VAR_ENV=${MY_VAR_ENV}"
+    echo "MY_VAR_P=${MY_VAR_P}"
     echo "myFilenames4=${env.myFilenames}"
     echo "myFilenames5=$myFilenames"
     echo "Tool_install6=$Tool_install"
