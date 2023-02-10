@@ -25,9 +25,7 @@ pipeline {
         private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
         //myFiles='/tmp/file1,     /tmp/file2'
         //myPath='./ansible/'
-        myFile=utils.getMyFiles(env.myFiles)
-        myFilenames=utils.getFileNames(env.myFiles)
-        myFilesfull=utils.getNewFiles(env.myFiles, env.myPath)
+       
        
     }
 
@@ -37,9 +35,7 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                    echo "myFiles=$myFile"
-                    echo "myFilenames=$myFilenames"
-                    echo "myFilesfull=$myFilesfull"
+                    
                     mylist.each { println it }
                     def mylist=['cc','dd']
                     mylist.each { println it }
