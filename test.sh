@@ -1,6 +1,6 @@
 #!/bin/bash  
     echo "MY_VAR_P=$MY_VAR_P"
-    echo "my_VAR_P=${my_VAR_P}"
+    echo "my_VAR_E=${my_VAR_E}"
     echo "myFilesfull3=${myFilesfull}"
     echo "myFilenames4=${myFilenames}"
     echo "myFilenames5=$myFilenames"
