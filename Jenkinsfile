@@ -72,7 +72,7 @@ pipeline {
                 }
             }
         }
-         stage('Stage: Run Ansible Playbook'){
+         stage('Stage: anoter test'){
             steps { 
                 script {
                     mylist.each { println it}
