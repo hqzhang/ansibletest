@@ -40,14 +40,14 @@ pipeline {
                     echo "myFilenames=$myFilenames"
                     echo "myFilesfull=$myFilesfull"
                     mylist.each { println it }
-                    mylist=['cc','dd']
+                    def mylist=['cc','dd']
                     mylist.each { println it }
                     echo "Global Environmet:"
   
                     //sh ' printenv'
 
-                    utils.getGlobals()
-                    sh ' ./test.sh '
+                    //utils.getGlobals()
+                    //sh ' ./test.sh '
 
                     //sh ' python3 test.py'
                     
