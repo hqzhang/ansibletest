@@ -59,7 +59,6 @@ def getNewFiles(String myfiles, String mypath){
     //return myfiles
 }*/
 def getGlobals(){
-    mylist.each { println it}
          
     echo "Enter getGlobal variables:"
     echo "UpDirs=$UpDirs"
