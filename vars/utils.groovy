@@ -59,6 +59,8 @@ def getNewFiles(String myfiles, String mypath){
     //return myfiles
 }*/
 def getGlobals(){
+    mylist.each { println it}
+         
     echo "Enter getGlobal variables:"
     echo "params1=$params"
     echo "params_env=${env.Tool_install}"

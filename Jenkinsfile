@@ -11,7 +11,7 @@ properties([
               string(name: 'Tool_install', defaultValue: 'ansible', description: 'input tools ansible'),
     ])
 ])
-
+mylist=[ 'aa','bb']
 pipeline {
     agent any
     
@@ -39,12 +39,14 @@ pipeline {
                     echo "myFiles=$myFile"
                     echo "myFilenames=$myFilenames"
                     echo "myFilesfull=$myFilesfull"
-                  
+                    mylist.each { println it }
+                    mylist=['cc','dd']
+                    mylist.each { println it }
                     //echo "Global Environmet:"
   
                     //sh ' printenv'
 
-                    //utils.getGlobals()
+                    utils.getGlobals()
                     sh ' ./test.sh '
 
                     //sh ' python3 test.py'
@@ -70,6 +72,13 @@ pipeline {
                 }
             }
         }
+         stage('Stage: Run Ansible Playbook'){
+            steps { 
+                script {
+                    mylist.each { println it}
+                }
+            }
+         }
 
     }
 }
