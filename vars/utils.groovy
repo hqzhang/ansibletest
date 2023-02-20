@@ -9,6 +9,7 @@ def pwdCmd(){
     def proc = command.execute()
     proc.waitFor()
     println proc.text
+    return proc.text
 }
 def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"

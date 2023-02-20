@@ -38,8 +38,9 @@ pipeline {
                     def command = "pwd"
                     def proc = command.execute()
                     proc.waitFor()
-                    println proc.text
-                    utils.pwdCmd()                    
+                    println ("output: ${proc.text}")
+                    output=utils.pwdCmd()  
+                    println("output:$output")
                     mylist.each { println it }
                     def mylist=['cc','dd']
                     mylist.each { println it }
