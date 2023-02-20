@@ -35,7 +35,11 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                    
+                    def command = "pwd"
+                    def proc = command.execute()
+                    proc.waitFor()
+                    println proc.text
+                    utils.pwdCmd()                    
                     mylist.each { println it }
                     def mylist=['cc','dd']
                     mylist.each { println it }

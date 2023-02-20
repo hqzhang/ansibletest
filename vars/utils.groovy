@@ -4,6 +4,12 @@ def call(String name = 'human') {
     // Scripted Pipeline
     echo "Hello, ${name}."
 }
+def pwdCmd(){
+    def command = "pwd"
+    def proc = command.execute()
+    proc.waitFor()
+    println proc.text
+}
 def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"
     def str=new String(myfiles)
