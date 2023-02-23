@@ -41,6 +41,7 @@ def exeCmd(String cmd, String directory){
     println( "-----------------")
     println("exitValue: " + err)
     println( "-----------------")
+    println output
     return output
 }
 @NonCPS
