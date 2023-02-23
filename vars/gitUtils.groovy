@@ -3,13 +3,14 @@ import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
 @NonCPS
 def call(String src, String dir, String workbr, String mergebr) {
+    echo "enter gitUpdate()"
     // Any valid steps can be called from this code, just like in other
     // Scripted Pipeline
    
-    def workbr='feature/test1'
-    def mergebr='master'
+    //def workbr='feature/test1'
+    //def mergebr='master'
     //def dir='/Users/hongqizhang/workspace/test1'
-    def src='/tmp/CI.yml'
+    //def src='/tmp/CI.yml'
     gitUpdate(src, workbr, mergebr, dir)
 }
 @NonCPS
