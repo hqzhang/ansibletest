@@ -55,6 +55,55 @@ def gitStatus(String directory){
     def output=gitCmd(processBuilder,directory)
     return output
 }
+@NonCPS
+def gitAddall(String directory){
+    println directory
+    def processBuilder = new ProcessBuilder("git", "add", "-u", ".")
+    def output=gitCmd(processBuilder,directory)
+    return output
+}
+@NonCPS
+def gitCheckout(String directory){
+    println directory
+    def processBuilder = new ProcessBuilder("git", "checkout")
+    def output=gitCmd(processBuilder,directory)
+    return output
+}
+@NonCPS
+def gitBranch(String directory){
+    println directory
+    def processBuilder = new ProcessBuilder("git", "branch")
+    def output=gitCmd(processBuilder,directory)
+    return output
+}
+@NonCPS
+def gitPull(String directory){
+    println directory
+    def processBuilder = new ProcessBuilder("git", "pull")
+    def output=gitCmd(processBuilder,directory)
+    return output
+}
+def gitSync(String directory){
+    println directory
+    def processBuilder = new ProcessBuilder("git", "sync")
+    def output=gitCmd(processBuilder,directory)
+    return output
+}
+
+@NonCPS
+def gitCommit(String directory, String msg='update'){
+    println directory
+    def processBuilder = new ProcessBuilder("git", "commit", "-m", msg)
+    def output=gitCmd(processBuilder,directory)
+    return output
+}
+@NonCPS
+def gitPushf(String directory){
+    println directory
+    def processBuilder = new ProcessBuilder("git", "push", "-f")
+    def output=gitCmd(processBuilder,directory)
+    return output
+}
 def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"
     def str=new String(myfiles)
