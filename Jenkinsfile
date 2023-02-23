@@ -35,14 +35,14 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                    dir('uplaod_test'){
-                        def command = "pwd"
-                        def proc = command.execute()
-                        proc.waitFor()
-                        println ("output: ${proc.text}")
-                        output=utils.pwdCmd()  
-                        println("output:$output")
-                    }
+                    sh "git clone https://github.com/hqzhang/test1.git"
+                    sh "ls -al test1"
+                    def ws=env.WORKSPACE
+                    def repo="$ws/test1"
+                    
+                    output=utils.gitStatus(repo)  
+                    println("output:$output")
+                    
                     mylist.each { println it }
                     def mylist=['cc','dd']
                     mylist.each { println it }
