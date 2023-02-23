@@ -37,7 +37,7 @@ pipeline {
                     echo "Input Parameters: ${params}"
 
                     sh "rm -rf test1; git clone https://github.com/hqzhang/test1.git"
-                    sh "ls -al test1"
+                    //sh "ls -al test1"
                     def ws=env.WORKSPACE
                     def repo="$ws/test1"
                     
