@@ -5,10 +5,7 @@ properties([
               string(name: 'UpDirs', defaultValue: 'my_var_params', description: 'input ansble config '),
               string(name: 'MY_VAR_P', defaultValue: '/tmp/file1,     /tmp/file2', description: 'input ansble config '),
               string(name: 'myPath', defaultValue: './ansible/', description: 'input ansble config '),
-              string(name: 'Config', defaultValue: 'ansible.cfg', description: 'input ansble config '),
-              string(name: 'Inventory', defaultValue: 'hosts', description: 'input inventory file'),
-              string(name: 'Playbook', defaultValue: 'runscript.yml', description: 'input ansible playbook'),
-              string(name: 'Tool_install', defaultValue: 'ansible', description: 'input tools ansible'),
+              
     ])
 ])
 mylist=[ 'aa','bb']
