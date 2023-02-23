@@ -31,17 +31,10 @@ def shellCommand(String cmd){
     println obj.values1
     return [out,err]
 }
-@NonCPS
-def pwdCmd(){
-    def command = "pwd"
-    def proc = command.execute()
-    proc.waitFor()
-    println proc.text
-    return proc.text
-}
+
 @NonCPS
 def gitStatus(String repo){
-    def cmd2="cd ${repo}; git status"
+    def cmd2="cd ${repo}; ls -al"
     def out=executeCmd(cmd2)
     println out
     return out
