@@ -53,8 +53,6 @@ def gitStatus(String directory){
     println directory
     def processBuilder = new ProcessBuilder("git", "status")
     def output=gitCmd(processBuilder,directory)
-    println "fffffffffffffffffffinal"
-    println output
     return output
 }
 def getMyFiles(String myfiles){
