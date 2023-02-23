@@ -18,31 +18,7 @@ def copyFile(String srcFile, String destFile){
     def destinationPath = Paths.get(destFile)
     Files.copy(sourcePath, destinationPath,StandardCopyOption.REPLACE_EXISTING)
 }
-@NonCPS
-def execusteCmdErr(){
-    ProcessBuilder pb = new ProcessBuilder("git status");
-    pb.directory(new File('/Users/hongqizhang/workspace/test1'))
-    pb.redirectErrorStream(true);
-    Process process = pb.start();
-    InputStream stdout = process.getInputStream();
-    InputStream stderr = process.getErrorStream();
 
-    // Read and print the output of the process
-    try (BufferedReader reader = new BufferedReader(new InputStreamReader(stdout))) {
-        String line;
-        while ((line = reader.readLine()) != null) {
-            System.out.println(line);
-        }
-    }
-
-    // Read and print the error output of the process
-    try (BufferedReader reader = new BufferedReader(new InputStreamReader(stderr))) {
-        String line;
-        while ((line = reader.readLine()) != null) {
-            System.err.println(line);
-        }
-    }
-}
 @NonCPS
 def exeCmd(String cmd, String directory){
     def command = cmd.split()
