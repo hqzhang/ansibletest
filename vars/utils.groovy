@@ -26,7 +26,7 @@ def gitCmd(ProcessBuilder processBuilder,String directory){
 
     def reader = new BufferedReader(new InputStreamReader(process.getInputStream()))
     def line = null
-    def output=null
+    def output=''
     while ((line = reader.readLine()) != null) {
         output = output +line+ "\n"
     }
