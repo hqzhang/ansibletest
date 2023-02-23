@@ -18,22 +18,22 @@ def executeCmd(String cmd){
     return out
 }
 @NonCPS
-def gitCmd(ProcessBuilder processBuilder, String directory){
-    //def directory = "/Users/hongqizhang/workspace/ansibletest"
+def gitCmd(ProcessBuilder processBuilder,String directory){
     //def processBuilder = new ProcessBuilder("git", "status")
     processBuilder.directory(new File(directory))
     def process = processBuilder.start()
     process.waitFor()
 
     def reader = new BufferedReader(new InputStreamReader(process.getInputStream()))
+    def line = null
     def output=null
-
     while ((line = reader.readLine()) != null) {
-        output += line+ "\n"
-       
+        output = output +line+ "\n"
     }
     return output
 }
+
+
 @NonCPS
 def shellCommand(String cmd){
     println "define command to nexus/github/bitbucket"
@@ -48,11 +48,12 @@ def shellCommand(String cmd){
     println obj.values1
     return [out,err]
 }
-
 @NonCPS
 def gitStatus(String directory){
+    println directory
     def processBuilder = new ProcessBuilder("git", "status")
     def output=gitCmd(processBuilder,directory)
+    println "fffffffffffffffffffinal"
     println output
     return output
 }
