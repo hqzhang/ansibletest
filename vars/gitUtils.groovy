@@ -1,6 +1,7 @@
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
+@NonCPS
 def call(String src, String dir, String workbr, String mergebr) {
     // Any valid steps can be called from this code, just like in other
     // Scripted Pipeline
@@ -11,12 +12,13 @@ def call(String src, String dir, String workbr, String mergebr) {
     def src='/tmp/CI.yml'
     gitUpdate(src, workbr, mergebr, dir)
 }
+@NonCPS
 def copyFile(String srcFile, String destFile){
     def sourcePath = Paths.get(srcFile)
     def destinationPath = Paths.get(destFile)
     Files.copy(sourcePath, destinationPath,StandardCopyOption.REPLACE_EXISTING)
 }
-dir='/Users/hongqizhang/workspace/test1'
+@NonCPS
 def execusteCmdErr(){
     ProcessBuilder pb = new ProcessBuilder("git status");
     pb.directory(new File('/Users/hongqizhang/workspace/test1'))
@@ -41,6 +43,7 @@ def execusteCmdErr(){
         }
     }
 }
+@NonCPS
 def exeCmd(String cmd, String directory){
     def command = cmd.split()
     def procBuilder = new ProcessBuilder(command)
@@ -63,45 +66,45 @@ def exeCmd(String cmd, String directory){
     println( "-----------------")
     return output
 }
-
+@NonCPS
 def gitCmd(String cmd, String directory){
     println directory
     def out=exeCmd(cmd,directory)
     println out
     return out
 }
-//@NonCPS
+@NonCPS
 def gitStatus(String directory){
     def cmd="git status";
     def output=exeCmd(cmd,directory)
     return output
 }
-//@NonCPS
+@NonCPS
 def gitAddall(String directory){
     def cmd="git add -u .";
     def output=exeCmd(cmd,directory)
     return output
 }
-//@NonCPS
+@NonCPS
 def gitCheckout(String branch,String directory){
     println directory
     def cmd="git checkout $branch"
     def output=exeCmd(cmd,directory)
     return output
-}å
-//@NonCPS
+}
+@NonCPS
 def gitBranch(String directory){
     def cmd="git branch"
     def output=exeCmd(cmd,directory)
     return output
 }
-//@NonCPS
+@NonCPS
 def gitBranchrem(String directory){
     def cmd="git branch -r"
     def output=exeCmd(cmd,directory)
     return output
 }
-//@NonCPS
+@NonCPS
 def gitPullbr(String branch, String directory){
     println directory
     def cmd="git pull origin $branch"
@@ -110,21 +113,21 @@ def gitPullbr(String branch, String directory){
 }
 
 
-//@NonCPS
+@NonCPS
 def gitCommit(String directory, String msg='update'){
     println directory
     def cmd = "git commit -m $msg"
     def output=exeCmd(cmd,directory)
     return output
 }
-//@NonCPS
+@NonCPS
 def gitPushf(String directory){
     println directory
     def cmd="git push -f"
     def output=exeCmd(cmd,directory)
     return output
 }
-
+@NonCPS
 def gitUpdate(String src, String workbr, String mergebr, String dir){
     def dest="$dir/CI.yml"
 
