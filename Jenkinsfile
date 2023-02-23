@@ -35,15 +35,16 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-
-                    sh "rm -rf test1; git clone https://github.com/hqzhang/test1.git"
+                    def repo='myrepo'
+                    sh "rm -rf $repo; git clone git@bitbucket.org:hqzhang/${repo}.git"
                     //sh "ls -al test1"
                     def ws=env.WORKSPACE
-                    def dir="$ws/test1"
+                    def dir="$ws/$repo"
                     def workbr='feature/test1'
                     def mergebr='master'
-                    //def dir='/Users/hongqizhang/workspace/test1'
+                 
                     def src="$ws/CI.yml"
+                    sh """ echo  a | tr -d '\n' >> $src  """
                     
                     gitUtils(src, workbr, mergebr, dir) 
 
