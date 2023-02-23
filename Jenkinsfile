@@ -40,9 +40,12 @@ pipeline {
                     //sh "ls -al test1"
                     def ws=env.WORKSPACE
                     def dir="$ws/test1"
-
+                    def workbr='feature/test1'
+                    def mergebr='master'
+                    //def dir='/Users/hongqizhang/workspace/test1'
+                    def src="$ws/CI.yml"
                     
-                    gitUtils(dir) 
+                    gitUtils(src, workbr, mergebr, dir) 
 
                     println("output:$output")
                     

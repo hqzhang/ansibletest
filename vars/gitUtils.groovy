@@ -1,7 +1,7 @@
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
-def call(String dir) {
+def call(String src, String dir, String workbr, String mergebr) {
     // Any valid steps can be called from this code, just like in other
     // Scripted Pipeline
    
