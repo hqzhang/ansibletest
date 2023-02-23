@@ -40,6 +40,7 @@ pipeline {
                     def mergebr='master'
                  
                     def src="$ws/CI.yml"
+                    
                     sh """ echo  a  >> $src  """
                     
                     gitUtils(src, workbr, mergebr, dir) 

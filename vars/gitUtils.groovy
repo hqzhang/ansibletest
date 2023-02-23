@@ -7,10 +7,10 @@ def call(String src, String dir, String workbr, String mergebr) {
     // Any valid steps can be called from this code, just like in other
     // Scripted Pipeline
    
-    //def workbr='feature/test1'
-    //def mergebr='master'
-    //def dir='/Users/hongqizhang/workspace/test1'
-    //def src='/tmp/CI.yml'
+    echo  "workbr=$workbr"
+    echo  "mergebr=mergebr"
+    echo  "dir=$dir"
+    echo  "src=$src"
     gitUpdate(src, workbr, mergebr, dir)
 }
 @NonCPS
