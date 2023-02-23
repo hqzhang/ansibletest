@@ -7,11 +7,13 @@ def call(String name = 'human') {
 }
 @NonCPS
 def executeCmd(String cmd){
+    println cmd
     def proc=cmd.execute()
     proc.waitFor()
+
     def out=proc.text
-    def err=proc.exitValue()
     print out
+    def err=proc.exitValue()
     print err
     return out
 }
