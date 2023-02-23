@@ -6,20 +6,10 @@ def call(String name = 'human') {
     echo "Hello, ${name}."
 }
 @NonCPS
-def executeCmd(String cmd){
-    println cmd
-    def proc=cmd.execute()
-    proc.waitFor()
-
-    def out=proc.text
-    print out
-    def err=proc.exitValue()
-    print err
-    return out
-}
-@NonCPS
-def gitCmd(ProcessBuilder processBuilder,String directory){
-    //def processBuilder = new ProcessBuilder("git", "status")
+def exeCmd(String cmd, String directory){
+    def command = cmd.split()
+    def processBuilder = new ProcessBuilder(command)
+   
     processBuilder.directory(new File(directory))
     def process = processBuilder.start()
     process.waitFor()
@@ -32,8 +22,12 @@ def gitCmd(ProcessBuilder processBuilder,String directory){
     }
     return output
 }
-
-
+@NonCPS
+def gitCmd(String cmd, String directory){
+    println directory
+    def output=exeCmd(cmd,directory)
+    return output
+}
 @NonCPS
 def shellCommand(String cmd){
     println "define command to nexus/github/bitbucket"
@@ -50,58 +44,55 @@ def shellCommand(String cmd){
 }
 @NonCPS
 def gitStatus(String directory){
-    println directory
-    def processBuilder = new ProcessBuilder("git", "status")
-    def output=gitCmd(processBuilder,directory)
+    def cmd="git status";
+    def output=exeCmd(cmd,directory)
     return output
 }
 @NonCPS
 def gitAddall(String directory){
-    println directory
-    def processBuilder = new ProcessBuilder("git", "add", "-u", ".")
-    def output=gitCmd(processBuilder,directory)
+    def cmd="git add -u .";
+    def output=exeCmd(cmd,directory)
     return output
 }
 @NonCPS
 def gitCheckout(String directory){
     println directory
-    def processBuilder = new ProcessBuilder("git", "checkout")
-    def output=gitCmd(processBuilder,directory)
+    def cmd="git checkout"
+    def output=exeCmd(cmd,directory)
     return output
 }
 @NonCPS
 def gitBranch(String directory){
-    println directory
-    def processBuilder = new ProcessBuilder("git", "branch")
-    def output=gitCmd(processBuilder,directory)
+    def cmd="git branch"
+    def output=exeCmd(cmd,directory)
     return output
 }
-@NonCPS
+@NonC
 def gitPull(String directory){
     println directory
-    def processBuilder = new ProcessBuilder("git", "pull")
-    def output=gitCmd(processBuilder,directory)
+    def cmd="git pull"
+    def output=exeCmd(cmd,directory)
     return output
 }
 def gitSync(String directory){
     println directory
-    def processBuilder = new ProcessBuilder("git", "sync")
-    def output=gitCmd(processBuilder,directory)
+    def cmd="git sync"
+    def output=exeCmd(cmd,directory)
     return output
 }
 
 @NonCPS
 def gitCommit(String directory, String msg='update'){
     println directory
-    def processBuilder = new ProcessBuilder("git", "commit", "-m", msg)
-    def output=gitCmd(processBuilder,directory)
+    def cmd = "git commit -m $msg"
+    def output=exeCmd(cmd,directory)
     return output
 }
 @NonCPS
 def gitPushf(String directory){
     println directory
-    def processBuilder = new ProcessBuilder("git", "push", "-f")
-    def output=gitCmd(processBuilder,directory)
+    def cmd="git push -f"
+    def output=exeCmd(cmd,directory)
     return output
 }
 def getMyFiles(String myfiles){
