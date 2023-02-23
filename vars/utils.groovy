@@ -21,11 +21,9 @@ def shellCommand(String cmd){
 
     println "execute and parse"
     def out=executeCmd(cmd)
-    def out=proc.text
     def json=new JsonSlurper()
     def obj=json.parseText(out)
     println obj.values
-    
     return [out,err]
 }
 @NonCPS
