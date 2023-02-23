@@ -34,7 +34,7 @@ def shellCommand(String cmd){
 
 @NonCPS
 def gitStatus(String repo){
-    def cmd2="ls -al"
+    def cmd2="pwd; ls -al"
     def out=executeCmd(cmd2)
     println out
     return out
