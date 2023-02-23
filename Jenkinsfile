@@ -39,41 +39,15 @@ pipeline {
                     sh "rm -rf test1; git clone https://github.com/hqzhang/test1.git"
                     //sh "ls -al test1"
                     def ws=env.WORKSPACE
-                    def repo="$ws/test1"
+                    def dir="$ws/test1"
+
                     
-                    output=utils.gitStatus(repo)  
+                    gitUtils(dir) 
+
                     println("output:$output")
                     
-                    mylist.each { println it }
-                    def mylist=['cc','dd']
-                    mylist.each { println it }
-                    echo "Global Environmet:"
-  
-                    //sh ' printenv'
 
-                    utils.getGlobals()
-                    sh ' ./test.sh '
-
-                    //sh ' python3 test.py'
-                    
-                    //echo  "myFilenames =$myFilenames"
-                    //echo  "myFilesfull =$myFilesfull"
-                    //echo "mynames=$mynames"
-                        //mypaths=myfiles.split(',').collect{ it.trim()}.collect{ mypath+it.split('/').last() }
-                    //echo "mypaths=$mypaths"
-                   /* dir('ansible'){
-                        ansiblePlaybook credentialsId: 'private_key', 
-                                    inventory: 'hosts', 
-                                    playbook: 'runscript.yml',
-                                    installation: 'ansible'
-                    }*/
-                    /*sh """
-                        whoami
-                        pwd
-                        ls -al ~/.ssh
-                        cd ansible
-                        ansible-playbook runscript.yml
-                    """*/
+                  
                 }
             }
         }
