@@ -33,7 +33,7 @@ pipeline {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
                     def repo='myrepo'
-                    sh "rm -rf $repo; git clone git@bitbucket.org:hqzhang/${repo}.git"
+                    sh "rm -rf $repo; git clone https://hqzhang@bitbucket.org/hqzhang/myrepo.git"
                     //sh "ls -al test1"
                     def ws=env.WORKSPACE
                     def dir="$ws/$repo"
