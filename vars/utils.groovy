@@ -11,7 +11,9 @@ def executeCmd(String cmd){
     proc.waitFor()
     def out=proc.text
     def err=proc.exitValue()
-    return [out,err]
+    print out
+    print err
+    return out
 }
 @NonCPS
 def shellCommand(String cmd){
