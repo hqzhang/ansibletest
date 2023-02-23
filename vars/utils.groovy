@@ -17,13 +17,13 @@ def shellCommand(String cmd){
     println "define command to nexus/github/bitbucket"
     def data=[ version: "$version"]
     def boday=JsonOutput.toJson(JsonOutput.toJson(data))
-    def cmd="""curl http://google.com --data $body"""
+    def cmd1="""curl http://google.com --data $body"""
 
     println "execute and parse"
-    def out=executeCmd(cmd)
+    def out=executeCmd(cmd1)
     def json=new JsonSlurper()
     def obj=json.parseText(out)
-    println obj.values
+    println obj.values1
     return [out,err]
 }
 @NonCPS
@@ -36,8 +36,8 @@ def pwdCmd(){
 }
 @NonCPS
 def gitStatus(String repo){
-    def cmd="cd ${repo}; git status"
-    def out=executeCmd(cmd)
+    def cmd2="cd ${repo}; git status"
+    def out=executeCmd(cmd2)
     println out
     return out
 }
