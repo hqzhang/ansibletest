@@ -4,12 +4,44 @@ def call(String name = 'human') {
     // Scripted Pipeline
     echo "Hello, ${name}."
 }
+@NonCPS
+def executeCmd(String cmd){
+    def proc=cmd.execute()
+    proc.waitFor()
+    def out=proc.text
+    def err=proc.exitValue()
+    return [out,err]
+}
+@NonCPS
+def shellCommand(String cmd){
+    println "define command to nexus/github/bitbucket"
+    def data=[ version: "$version"]
+    def boday=JsonOutput.toJson(JsonOutput.toJson(data))
+    def cmd="""curl http://google.com --data $body"""
+
+    println "execute and parse"
+    def out=executeCmd(cmd)
+    def out=proc.text
+    def json=new JsonSlurper()
+    def obj=json.parseText(out)
+    println obj.values
+    
+    return [out,err]
+}
+@NonCPS
 def pwdCmd(){
     def command = "pwd"
     def proc = command.execute()
     proc.waitFor()
     println proc.text
     return proc.text
+}
+@NonCPS
+def gitStatus(String repo){
+    def cmd="cd ${repo}; git status"
+    def out=executeCmd(cmd)
+    println out
+    return out
 }
 def getMyFiles(String myfiles){
     echo  "enter getMyFiles with111: $myfiles"
