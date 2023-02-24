@@ -42,7 +42,7 @@ pipeline {
                     def src="$ws/CI.yml"
                     
                     sh """ echo  a  >> $src  """
-                    withCredentials([usernamePassword(credentialsId: 'bitbuckettokenid', \
+                    withCredentials([usernamePassword(credentialsId: 'myrepotoken', \
                             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                             sh """rm -rf $repo; git clone https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git
                                   git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git 
