@@ -145,7 +145,7 @@ def gitUpdate(String src, String workbr, String mergebr, String dir){
 repo="ansibletest"
 workbr="new-branch"
 mergebr="master"*/
-def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
+//def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
 
 @NonCPS
 getPrid(){
