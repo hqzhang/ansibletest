@@ -141,9 +141,9 @@ def gitUpdate(String src, String workbr, String mergebr, String dir){
 repo="ansibletest"
 workbr="new-branch"
 mergebr="master"*/
-repoPR=https://localhost:8081/rest/api/1.0/project/$project/repos/$repo/pull-requests
-jq== "python -c 'import json,sys: print(json.load(sys.stdin)["vvalue"][0]["id"]'"
+def repoPR="https://localhost:8081/rest/api/1.0/project/$project/repos/$repo/pull-requests"
 
+@NonCPS
 getPrid(){
     def cmd="curl -u $user:$pass -X GET ${repoPR}?state=OPEN "
     def output=exeCmd(cmd,directory)
@@ -151,21 +151,21 @@ getPrid(){
     def obj=json.parseText(output)
     println obj.values[0].id
 }
-
+@NonCPS
 getVersion(){
     def cmd="curl -u $user:$pass -X GET ${repoPR}?state=OPEN "| jq -r 'values[0].version' 
     def output=exeCmd(cmd,directory)
     def json=new JsonSlurper()
     def obj=json.parseText(output)
-    println obj.values[0].version
+    return obj.values[0].version
 }
-
+@NonCPS
 getMergestatus(){
     def cmd="curl -u $user:$pass -X GET ${repoPR}/$prid/merge"
     def output=exeCmd(cmd,directory)
     def json=new JsonSlurper()
     def obj=json.parseText(output)
-    println obj.canMerge
+    return obj.canMerge
 }
 
 
@@ -194,7 +194,7 @@ createPR(){
         def output=exeCmd(cmd,directory)
         def json=new JsonSlurper()
         def obj=json.parseText(output)
-        println obj.id
+        return obj.id
 }
 
 
@@ -202,6 +202,5 @@ mergePR(){
     def cmd="curl -u $user:$pass -X POST -H "Content-Type: applicatin/json" $repoPR/$prid/merge?version=$version
     def cmd = "git commit -m $msg"
     def output=exeCmd(cmd,directory)
-    return output
-}
+    println output
 }
