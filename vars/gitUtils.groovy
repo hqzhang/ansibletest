@@ -106,7 +106,7 @@ def gitCommit(String directory, String msg='update'){
 @NonCPS
 def gitPushf(String directory){
     println directory
-    def cmd="git push -f"
+    def cmd="git push http://$USERNAME:$PASSWORD@bitbucket.org/hqzhang/myrepo.git""
     def output=exeCmd(cmd,directory)
     return output
 }
