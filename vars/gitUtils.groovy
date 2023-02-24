@@ -1,6 +1,10 @@
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
+
+
+@groovy.transform.field
+def repoPR="https://bitbucket.org/rest/api/1.0/project/myproject/repos/myrepo/pull-requests"
 @NonCPS
 def call(String src,  String workbr, String mergebr, String dir) {
     echo "enter gitUpdate()"
@@ -141,11 +145,11 @@ def gitUpdate(String src, String workbr, String mergebr, String dir){
 repo="ansibletest"
 workbr="new-branch"
 mergebr="master"*/
-def repoPR="https://localhost:8081/rest/api/1.0/project/$project/repos/$repo/pull-requests"
+def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
 
 @NonCPS
 getPrid(){
-    def cmd="curl -u $user:$pass -X GET ${repoPR}?state=OPEN "
+    def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}?state=OPEN "
     def output=exeCmd(cmd,directory)
     def json=new JsonSlurper()
     def obj=json.parseText(output)
@@ -153,7 +157,7 @@ getPrid(){
 }
 @NonCPS
 getVersion(){
-    def cmd="curl -u $user:$pass -X GET ${repoPR}?state=OPEN "
+    def cmd="curl -u $USERNAME:$PASSWOR -X GET ${repoPR}?state=OPEN "
     def output=exeCmd(cmd,directory)
     def json=new JsonSlurper()
     def obj=json.parseText(output)
@@ -161,7 +165,7 @@ getVersion(){
 }
 @NonCPS
 getMergestatus(){
-    def cmd="curl -u $user:$pass -X GET ${repoPR}/$prid/merge"
+    def cmd="curl -u $USERNAME:$PASSWOR -X GET ${repoPR}/$prid/merge"
     def output=exeCmd(cmd,directory)
     def json=new JsonSlurper()
     def obj=json.parseText(output)
@@ -190,7 +194,7 @@ createPR(){
         locked: false,
         reviewers: [] ]
         def body=JsonOutput.toJson(JsonOutput.toJson(data))
-        def cmd="""curl -u $user:$pass -X POST -H "Content-Type: applicatin/json" $repoPR --data $body"""
+        def cmd="""curl -u $USERNAME:$PASSWOR -X POST -H "Content-Type: applicatin/json" $repoPR --data $body"""
         def output=exeCmd(cmd,directory)
         def json=new JsonSlurper()
         def obj=json.parseText(output)
@@ -199,8 +203,12 @@ createPR(){
 
 
 mergePR(){
-    def cmd="curl -u $user:$pass -X POST -H "Content-Type: applicatin/json" $repoPR/$prid/merge?version=$version
-    def cmd = "git commit -m $msg"
+    def prid=getPrid()
+    println prid
+    def version=getVersion()
+    println version
+    def cmd="""curl -u $USERNAME:$PASSWOR -X POST -H "Content-Type: applicatin/json" $repoPR/$prid/merge?version=$version"""
+   
     def output=exeCmd(cmd,directory)
     println output
 }

@@ -36,7 +36,7 @@ pipeline {
                     //sh "ls -al test1"
                     def ws=env.WORKSPACE
                     def dir="$ws/$repo"
-                    def workbr='feature/test1'
+                    def workbr='test-pr'
                     def mergebr='master'
                  
                     def src="$ws/CI.yml"
