@@ -153,7 +153,7 @@ getPrid(){
 }
 @NonCPS
 getVersion(){
-    def cmd="curl -u $user:$pass -X GET ${repoPR}?state=OPEN "| jq -r 'values[0].version' 
+    def cmd="curl -u $user:$pass -X GET ${repoPR}?state=OPEN "
     def output=exeCmd(cmd,directory)
     def json=new JsonSlurper()
     def obj=json.parseText(output)
