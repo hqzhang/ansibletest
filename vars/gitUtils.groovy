@@ -180,13 +180,13 @@ createPR(){
                   repository: [ slug: "$repo", name: null,
                                   project: [ key: "$project" ]
                                 ]
-                ]
+                ],
         toRef: [ id: "refs/heads/$mergebr",
                  repository: [ slug: "$repo",
                                name: null,
                                project: [key: "$project"]
                    ]
-                ]
+                ],
         locked: false,
         reviewers: [] ]
         def body=JsonOutput.toJson(JsonOutput.toJson(data))
