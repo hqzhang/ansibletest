@@ -44,13 +44,13 @@ pipeline {
                     sh """ echo  a  >> $src  """
                     withCredentials([usernamePassword(credentialsId: 'bitbucketid', \
                             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git
+                            git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git
 
-                    gitUtils(src, workbr, mergebr, dir) 
+                            gitUtils(src, workbr, mergebr, dir) 
 
-                    println("output:$output")
-                    
-
+                            //println("output:$output")
+                            
+                            }
                   
                 }
             }
