@@ -45,7 +45,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'bitbuckettokenid', \
                             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                             sh """git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git """
-
+                            echo """git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git """
                             gitUtils(src, workbr, mergebr, dir) 
 
                             //println("output:$output")
