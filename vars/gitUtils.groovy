@@ -26,6 +26,7 @@ def copyFile(String srcFile, String destFile){
 
 @NonCPS
 def exeCmd(String cmd, String directory){
+    println cmd
     def command = cmd.split()
     def procBuilder = new ProcessBuilder(command)
     procBuilder.directory(new File(directory))
