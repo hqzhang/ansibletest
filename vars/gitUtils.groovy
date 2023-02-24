@@ -1,7 +1,7 @@
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
-import groovy.json.jsonSlurper
+import groovy.json.JsonSlurper
 import groovy.transform.Field
 @groovy.transform.Field
 def repoPR="https://bitbucket.org/rest/api/1.0/project/myproject/repos/myrepo/pull-requests"
