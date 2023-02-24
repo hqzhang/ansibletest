@@ -32,7 +32,7 @@ pipeline {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
                     def repo='myrepo'
-                    sh "rm -rf $repo; git clone https://hqzhang@bitbucket.org/hqzhang/myrepo.git"
+                    //sh "rm -rf $repo; git clone https://hqzhang@bitbucket.org/hqzhang/myrepo.git"
                     //sh "ls -al test1"
                     def ws=env.WORKSPACE
                     def dir="$ws/$repo"
@@ -44,7 +44,8 @@ pipeline {
                     sh """ echo  a  >> $src  """
                     withCredentials([usernamePassword(credentialsId: 'myrepotoken', \
                             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                            sh """rm -rf $repo; git clone https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git
+                            sh """rm -rf $repo; git clone https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git -b $workbr
+                                               
                                   git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git 
                             """
                             echo """git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git """
