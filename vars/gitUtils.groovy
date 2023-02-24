@@ -137,9 +137,71 @@ def gitUpdate(String src, String workbr, String mergebr, String dir){
     gitPushf(dir)
 
 }
-    def workbr='feature/test1'
-    def mergebr='master'
-    def dir='/Users/hongqizhang/workspace/test1'
-    def src='/tmp/CI.yml'
-gitUpdate(src, workbr, mergebr, dir)
-//execusteCmdErr()
+/*project="hqzhang"
+repo="ansibletest"
+workbr="new-branch"
+mergebr="master"*/
+repoPR=https://localhost:8081/rest/api/1.0/project/$project/repos/$repo/pull-requests
+jq== "python -c 'import json,sys: print(json.load(sys.stdin)["vvalue"][0]["id"]'"
+
+getPrid(){
+    def cmd="curl -u $user:$pass -X GET ${repoPR}?state=OPEN "
+    def output=exeCmd(cmd,directory)
+    def json=new JsonSlurper()
+    def obj=json.parseText(output)
+    println obj.values[0].id
+}
+
+getVersion(){
+    def cmd="curl -u $user:$pass -X GET ${repoPR}?state=OPEN "| jq -r 'values[0].version' 
+    def output=exeCmd(cmd,directory)
+    def json=new JsonSlurper()
+    def obj=json.parseText(output)
+    println obj.values[0].version
+}
+
+getMergestatus(){
+    def cmd="curl -u $user:$pass -X GET ${repoPR}/$prid/merge"
+    def output=exeCmd(cmd,directory)
+    def json=new JsonSlurper()
+    def obj=json.parseText(output)
+    println obj.canMerge
+}
+
+
+createPR(){
+    
+    def data=[ 
+       title: 'PR-testing',
+       description: null,
+       state:  'OPEN', open: true,
+       closed: false,
+       fromRef: [ id:  "refs/heads/$workbr",
+                  repository: [ slug: "$repo", name: null,
+                                  project: [ key: "$project" ]
+                                ]
+                ]
+        toRef: [ id: "refs/heads/$mergebr",
+                 repository: [ slug: "$repo",
+                               name: null,
+                               project: [key: "$project"]
+                   ]
+                ]
+        locked: false,
+        reviewers: [] ]
+        def body=JsonOutput.toJson(JsonOutput.toJson(data))
+        def cmd="""curl -u $user:$pass -X POST -H "Content-Type: applicatin/json" $repoPR --data $body"""
+        def output=exeCmd(cmd,directory)
+        def json=new JsonSlurper()
+        def obj=json.parseText(output)
+        println obj.id
+}
+
+
+mergePR(){
+    def cmd="curl -u $user:$pass -X POST -H "Content-Type: applicatin/json" $repoPR/$prid/merge?version=$version
+    def cmd = "git commit -m $msg"
+    def output=exeCmd(cmd,directory)
+    return output
+}
+}
