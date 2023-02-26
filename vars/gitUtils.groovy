@@ -15,7 +15,14 @@ def call(String src,  String workbr, String mergebr, String dir) {
     echo  "mergebr=$mergebr"
     echo  "dir=$dir"
     echo  "src=$src"
-    gitUpdate(src, workbr, mergebr, dir)
+    def credid='19935bd0-e469-48b6-b5f3-5865a12607d2'
+
+    withCredentials([usernamePassword(credentialsId: credid, \                             
+       usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+       println USERNAME
+       println PASSWORD
+        //gitUpdate(src, workbr, mergebr, dir)
+    }
 }
 @NonCPS
 def copyFile(String srcFile, String destFile){
