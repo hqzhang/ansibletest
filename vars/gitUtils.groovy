@@ -17,11 +17,10 @@ def call(String src,  String workbr, String mergebr, String dir) {
     echo  "src=$src"
     def credid='19935bd0-e469-48b6-b5f3-5865a12607d2'
 
-    withCredentials([usernamePassword(credentialsId: credid, \                             
-       usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+    withCredentials([usernamePassword(credentialsId: credid,usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
        println USERNAME
        println PASSWORD
-        //gitUpdate(src, workbr, mergebr, dir)
+      //gitUpdate(src, workbr, mergebr, dir)
     }
 }
 @NonCPS
