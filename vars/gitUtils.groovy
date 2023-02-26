@@ -21,7 +21,7 @@ def call(String src,  String workbr, String mergebr, String dir) {
         echo "enter gitUpdate()33333"
        println USERNAME
        println PASSWORD
-      //gitUpdate(src, workbr, mergebr, dir)
+       gitUpdate(src, workbr, mergebr, dir)
     }
     echo "End gitUpdate()"
 }
