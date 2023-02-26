@@ -42,10 +42,10 @@ pipeline {
                     def src="$ws/CI.yml"
                     def credid='19935bd0-e469-48b6-b5f3-5865a12607d2'
                     
-                    gitUtils(src, workbr, mergebr, dir) 
+                    //gitUtils(src, workbr, mergebr, dir) 
                     sh """ echo  a  >> $src  """
-                    /*withCredentials([usernamePassword(credentialsId: credid, \
-                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: credid, \
+                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                             sh """rm -rf $repo; git clone https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git -b $workbr
                                                
                                   git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git 
@@ -55,7 +55,7 @@ pipeline {
 
                             //println("output:$output")
                             
-                            }*/
+                         }
                   
                 }
             }
