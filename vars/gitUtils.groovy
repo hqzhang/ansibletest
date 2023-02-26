@@ -7,7 +7,7 @@ import groovy.transform.Field
 def repoPR="https://bitbucket.org/rest/api/1.0/project/myproject/repos/myrepo/pull-requests"
 @NonCPS
 def call(String src,  String workbr, String mergebr, String dir) {
-    echo "enter gitUpdate()"
+    echo "enter gitUpdate()1111111"
     // Any valid steps can be called from this code, just like in other
     // Scripted Pipeline
    
@@ -16,12 +16,14 @@ def call(String src,  String workbr, String mergebr, String dir) {
     echo  "dir=$dir"
     echo  "src=$src"
     def credid='19935bd0-e469-48b6-b5f3-5865a12607d2'
-
+     echo "enter gitUpdate()2222222"
     withCredentials([usernamePassword(credentialsId: credid,usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        echo "enter gitUpdate()33333"
        println USERNAME
        println PASSWORD
       //gitUpdate(src, workbr, mergebr, dir)
     }
+    echo "End gitUpdate()"
 }
 @NonCPS
 def copyFile(String srcFile, String destFile){
