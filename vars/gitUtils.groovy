@@ -5,7 +5,7 @@ import groovy.json.JsonSlurper
 import groovy.transform.Field
 @groovy.transform.Field
 def repoPR="https://bitbucket.org/rest/api/1.0/project/myproject/repos/myrepo/pull-requests"
-@NonCPS
+//@NonCPS
 def call(String src,  String workbr, String mergebr, String dir) {
     echo "enter gitUpdate()1111111"
     // Any valid steps can be called from this code, just like in other
