@@ -44,7 +44,7 @@ pipeline {
                     
                     gitUtils(src, workbr, mergebr, dir) 
                     sh """ echo  a  >> $src  """
-                    withCredentials([usernamePassword(credentialsId: credid, \
+                    /*withCredentials([usernamePassword(credentialsId: credid, \
                             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                             sh """rm -rf $repo; git clone https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git -b $workbr
                                                
@@ -55,7 +55,7 @@ pipeline {
 
                             //println("output:$output")
                             
-                            }
+                            }*/
                   
                 }
             }
