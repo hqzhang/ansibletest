@@ -69,7 +69,7 @@ def uploadFile(String fileName,String workbr){
     println output
 }
 @NonCPS
-def gitClone(String workspace, String workbr, String directory){
+def gitClone(String workspace,String repo String workbr, String directory){
     println "enter gitClone()"
     //def dest="$directory/CI.yml"
     def cmd="""rm -rf upload-test; git clone https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git -b ${workbr} ."""
@@ -77,7 +77,7 @@ def gitClone(String workspace, String workbr, String directory){
     def out = executeCmd(cmd, directory)
 }
 @NonCPS
-def getConfig(String workspace, String workbr, String directory){
+def getConfig(String workspace, String repo, String workbr, String directory){
     println "enter getConfig()"
     def cmd="""git remote set-url origin https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git """
     println cmd
@@ -89,10 +89,10 @@ def updateAll(String src, String workspace, String workbr, String mergebr, Strin
     def dest="$directory/CI.yml"
     
     println("git clone..")
-    gitClone(workspace,workbr, directory)
+    gitClone(workspace,repo,workbr, directory)
 
     println("git config..")
-    gitConfig(workspace, workbr, directory)
+    gitConfig(workspace, repo,workbr, directory)
 
     println "git push ..."
     uploadFile(src, workbr)
@@ -173,4 +173,4 @@ def mergePR(String repoPR){
     def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     def fileName='CI.yml'
 
-println updateAll(src, workspace, workbr, mergebr, directory)
+println updateAll(src, repo, workspace, workbr, mergebr, directory)
