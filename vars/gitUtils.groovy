@@ -84,25 +84,16 @@ def getConfig(String workspace, String workbr, String directory){
     def out = executeCmd(cmd, directory)
 }
 @NonCPS
-def gitAll(String src, String workbr, String mergebr, String directory){
+def gitAll(String src, String workspace, String workbr, String mergebr, String directory){
     println "enter gitFinal()"
     def dest="$directory/CI.yml"
     
     println("git clone..")
-    gitClone(String workspace, String workbr, String directory)
+    gitClone(workspace,workbr, directory)
 
     println("git config..")
-    gitConfig(String workspace, String workbr, String directory){ 
+    gitConfig(workspace, workbr, directory)
 
-    /* println "git preparation"
-    //cmd = "git branch -r ;git checkout $workbr; git pull origin $mergebr"
-    //out = executeCmd(cmd, directory)
-    //println "git copy update.."
-    //copyFile(src, dest)
-
-    //println "git push ..."
-    //cmd = "git status; git add . ; git commit -m up; git push"
-    //out = executeCmd(cmd, directory)*/
     println "git push ..."
     uploadFile(src, workbr)
     return out
@@ -182,4 +173,4 @@ def mergePR(String repoPR){
     def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     def fileName='CI.yml'
 
-println gitAll(src, workbr, mergebr, directory)
+println gitAll(src, workspace, workbr, mergebr, directory)
