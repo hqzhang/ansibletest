@@ -87,17 +87,26 @@ def getConfig(String workspace, String repo, String workbr, String directory){
 def updateAll(String src, String workspace, String repo, String workbr, String mergebr, String directory){
     println "enter gitFinal()"
     def dest="$directory/CI.yml"
+    def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     
-    println("git clone..")
+    println("1.  git clone..")
     def out=gitClone(workspace, repo, workbr, directory)
     println out
 
-    println("git config..")
+    println("2.   git config..")
     out=getConfig(workspace, repo, workbr, directory)
     println out
 
-    println "git push ..."
+    println "3.   git push ..."
     out=uploadFile(src, workbr)
+    println out
+
+    println "4.   git push ..."
+    out=createPR(workbr, mergebr, workspace, repo)
+    println out//createPR(String workbr, String mergebr,String workspace, String repo){
+
+     println "5.   git push ..."
+    out=mergePR(repoPR)
     println out
 
     return out
@@ -128,8 +137,9 @@ def getMergestatus(String repoPR, int prid){
     return obj.canMerge
 }
 @NonCPS
-def createPR(String workbr, String mergebr,String project, String repo){
-    def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
+def createPR(String workbr, String mergebr,String workspace, String repo){
+    def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
+    //def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
     def data=[ 
        title: 'PR-testing',
        description: null,
