@@ -84,7 +84,7 @@ def getConfig(String workspace, String workbr, String directory){
     def out = executeCmd(cmd, directory)
 }
 @NonCPS
-def gitAll(String src, String workbr, String mergebr, String directory)
+def gitAll(String src, String workbr, String mergebr, String directory){
     println "enter gitFinal()"
     def dest="$directory/CI.yml"
     
