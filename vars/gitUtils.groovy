@@ -113,7 +113,7 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
 }
 @NonCPS
 def getPrid(String repoPR){
-    def = """curl curl -u $USERNAME:$PASSWORD --request GET \
+    def cmd= """curl curl -u $USERNAME:$PASSWORD --request GET \
            --url $repoPR?state=OPEN' \
            --header 'Accept: application/json' """
    
