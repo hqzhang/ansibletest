@@ -113,22 +113,24 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
 }
 @NonCPS
 def getPrid(String repoPR){
-    def cmd= """curl curl -u $USERNAME:$PASSWORD --request GET \
-           --url $repoPR?state=OPEN' \
-           --header 'Accept: application/json' """
-   
+    
+    //      --header 'Accept: application/json'
+    def cmd = "curl -u ${USERNAME}:${PASSWORD} \
+              -X GET https://api.bitbucket.org/2.0/repositories/wave-cloud/upload-test/pull-requests?state=OPEN "
+              
     def output=exeCmd(cmd)
     println output
     //def json=new JsonSlurper()
     //def obj=json.parseText(output)
-    println output
+    return output
 }
 @NonCPS
 def getVersion(String repoPR){
     def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}?state=OPEN "
     def output=exeCmd(cmd)
-    def json=new JsonSlurper()
-    def obj=json.parseText(output)
+    //def json=new JsonSlurper()
+    println output
+    ///def obj=json.parseText(output)
     return output
 }
 @NonCPS
@@ -173,8 +175,8 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
 def mergePR(String repoPR){
     def prid=getPrid(repoPR)
     println("prid=$prid")
-    def version=getVersion(repoPR)
-    println ("version=$version")
+    //def version=getVersion(repoPR)
+    //println ("version=$version")
     System.exit(1)
     def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR/$prid/merge?version=$version"""
    
