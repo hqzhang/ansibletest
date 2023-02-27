@@ -69,10 +69,10 @@ def uploadFile(String fileName,String workbr){
     println output
 }
 @NonCPS
-def gitClone(String workspace,String repo, String workbr, String directory){
+def gitClone(String workspace, String repo, String workbr, String directory){
     println "enter gitClone()"
     //def dest="$directory/CI.yml"
-    def cmd="""rm -rf upload-test; git clone https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git -b ${workbr} ."""
+    def cmd="""rm -rf upload-test/*; git clone https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git -b ${workbr} ."""
     println cmd
     def out = executeCmd(cmd, directory)
 }
@@ -89,10 +89,10 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
     def dest="$directory/CI.yml"
     
     println("git clone..")
-    gitClone(workspace,repo,workbr, directory)
+    gitClone(workspace, repo, workbr, directory)
 
     println("git config..")
-    gitConfig(workspace, repo,workbr, directory)
+    getConfig(workspace, repo, workbr, directory){
 
     println "git push ..."
     uploadFile(src, workbr)
