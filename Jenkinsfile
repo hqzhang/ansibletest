@@ -35,10 +35,10 @@ pipeline {
                     //sh "rm -rf $repo; git clone https://hqzhang@bitbucket.org/hqzhang/myrepo.git"
                     //sh "ls -al test1"
                     def ws=env.WORKSPACE
-                    def dir="$ws/$repo"
+                    def directory="$ws/$repo"
                     def workbr='test-pr'
                     def mergebr='master'
-                 
+                    def workspace='wave-cloud'
                     def src="$ws/CI.yml"
                     def bbapppass='9f2d1708-aeee-449d-b133-7f094a262336'
                     
@@ -46,7 +46,7 @@ pipeline {
                     sh """ echo  a  >> $src  """
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                            gitUtils.updateAll() 
+                            gitUtils.updateAll(src, workspace, workbr, mergebr, directory) 
                             //println("output:$output")
                             
                          }
