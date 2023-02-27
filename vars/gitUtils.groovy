@@ -102,7 +102,7 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
     println out
 
     println "4.   git push ..."
-    out=createPR(workbr, mergebr, workspace, repo)
+    //out=createPR(workbr, mergebr, workspace, repo)
     println out//createPR(String workbr, String mergebr,String workspace, String repo){
 
      println "5.   git push ..."
@@ -113,7 +113,10 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
 }
 @NonCPS
 def getPrid(String repoPR){
-    def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}?state=OPEN "
+    def = """curl curl -u $USERNAME:$PASSWORD --request GET \
+           --url $repoPR?state=OPEN' \
+           --header 'Accept: application/json' """
+   
     def output=exeCmd(cmd)
     println output
     //def json=new JsonSlurper()
@@ -172,6 +175,7 @@ def mergePR(String repoPR){
     println("prid=$prid")
     def version=getVersion(repoPR)
     println ("version=$version")
+    System.exit(1)
     def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR/$prid/merge?version=$version"""
    
     def output=exeCmd(cmd)
