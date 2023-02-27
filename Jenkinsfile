@@ -40,24 +40,16 @@ pipeline {
                     def mergebr='master'
                  
                     def src="$ws/CI.yml"
-                    def credid='9f2d1708-aeee-449d-b133-7f094a262336'
+                    def bbapppass='9f2d1708-aeee-449d-b133-7f094a262336'
                     
                     //gitUtils(src, workbr, mergebr, dir) 
                     sh """ echo  a  >> $src  """
-                    withCredentials([usernamePassword(credentialsId: credid, \
+                    withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                            
-                            sh """rm -rf $repo; git clone https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git -b $workbr
-                                               
-                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git 
-                            """
-                            echo """git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/hqzhang/myrepo.git """
-                            gitUtils(src, workbr, mergebr, dir) 
-
+                            gitUtils.updateAll() 
                             //println("output:$output")
                             
                          }
-                  
                 }
             }
         }

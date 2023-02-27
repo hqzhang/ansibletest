@@ -1,42 +1,19 @@
+
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
+import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import groovy.transform.Field
-@groovy.transform.Field
-def repoPR="https://bitbucket.org/rest/api/1.0/project/myproject/repos/myrepo/pull-requests"
-//@NonCPS
-def call(String src,  String workbr, String mergebr, String dir) {
-    echo "enter gitUpdate()1111111"
-    // Any valid steps can be called from this code, just like in other
-    // Scripted Pipeline
-   
-    echo  "workbr=$workbr"
-    echo  "mergebr=$mergebr"
-    echo  "dir=$dir"
-    echo  "src=$src"
-    def credid='19935bd0-e469-48b6-b5f3-5865a12607d2'
-     echo "enter gitUpdate()2222222"
-    withCredentials([usernamePassword(credentialsId: credid,usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        echo "enter gitUpdate()33333"
-       println USERNAME
-       println PASSWORD
-       gitUpdate(src, workbr, mergebr, dir)
-    }
-    echo "End gitUpdate()"
-}
 @NonCPS
 def copyFile(String srcFile, String destFile){
     def sourcePath = Paths.get(srcFile)
     def destinationPath = Paths.get(destFile)
     Files.copy(sourcePath, destinationPath,StandardCopyOption.REPLACE_EXISTING)
 }
-
 @NonCPS
-def exeCmd(String cmd, String directory){
-    println cmd
-    def command = cmd.split()
-    def procBuilder = new ProcessBuilder(command)
+def executeCmd(String cmd, String directory){
+    ProcessBuilder procBuilder = new ProcessBuilder("bash", "-c", cmd);
     procBuilder.directory(new File(directory))
     procBuilder.redirectErrorStream(true);
     def proc = procBuilder.start()
@@ -58,132 +35,107 @@ def exeCmd(String cmd, String directory){
     return output
 }
 @NonCPS
-def gitCmd(String cmd, String directory){
-    println directory
-    def out=exeCmd(cmd,directory)
-    println out
+def exeCmd(String cmd){
+    
+    def proc=cmd.execute()
+    //def b = new StringBuffer()
+    //proc.consumeProcessErrorStream(b)
+    proc.waitFor()
+    def out=proc.in.text
+    def err=proc.err.text
+    def code=proc.exitValue()
+    println ("out:$out")
+    println("err:$err")
+    println ("code=$code")
+    return code
+}
+@NonCPS
+def gitPrep(String workbr, String mergebr, String directory){
+    
+    def command = "git branch -r ;git checkout $workbr; git branch; git pull origin $mergebr"
+    def output = executeCmd(command, directory)
+    
+    return output
+}
+@NonCPS
+def uploadFile(String fileName,String workbr){
+    println "enter getPrid1()"
+    def cmd = "curl -u ${USERNAME}:${PASSWORD} \
+              -X POST https://api.bitbucket.org/2.0/repositories/wave-cloud/upload-test/src\
+              -F ${fileName}=@${fileName}  \
+              -F message=updatecurl -F branch=${workbr}"
+    println cmd
+    def output=exeCmd(cmd)
+    println output
+}
+@NonCPS
+def gitClone(String workspace, String workbr, String directory){
+    println "enter gitClone()"
+    //def dest="$directory/CI.yml"
+    def cmd="""rm -rf upload-test; git clone https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git -b ${workbr} ."""
+    println cmd
+    def out = executeCmd(cmd, directory)
+}
+@NonCPS
+def getConfig(String workspace, String workbr, String directory){
+    println "enter getConfig()"
+    def cmd="""git remote set-url origin https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git """
+    println cmd
+    def out = executeCmd(cmd, directory)
+}
+@NonCPS
+def gitAll(String src, String workbr, String mergebr, String directory)
+    println "enter gitFinal()"
+    def dest="$directory/CI.yml"
+    
+    println("git clone..")
+    gitClone(String workspace, String workbr, String directory)
+
+    println("git config..")
+    gitConfig(String workspace, String workbr, String directory){ 
+
+    /* println "git preparation"
+    //cmd = "git branch -r ;git checkout $workbr; git pull origin $mergebr"
+    //out = executeCmd(cmd, directory)
+    //println "git copy update.."
+    //copyFile(src, dest)
+
+    //println "git push ..."
+    //cmd = "git status; git add . ; git commit -m up; git push"
+    //out = executeCmd(cmd, directory)*/
+    println "git push ..."
+    uploadFile(src, workbr)
     return out
 }
 @NonCPS
-def gitStatus(String directory){
-    def cmd="git status";
-    def output=exeCmd(cmd,directory)
-    return output
-}
-@NonCPS
-def gitAddall(String directory){
-    def cmd="git add -u .";
-    def output=exeCmd(cmd,directory)
-    return output
-}
-@NonCPS
-def gitCheckout(String branch,String directory){
-    println directory
-    def cmd="git checkout $branch"
-    def output=exeCmd(cmd,directory)
-    return output
-}
-@NonCPS
-def gitBranch(String directory){
-    def cmd="git branch"
-    def output=exeCmd(cmd,directory)
-    return output
-}
-@NonCPS
-def gitBranchrem(String directory){
-    def cmd="git branch -r"
-    def output=exeCmd(cmd,directory)
-    return output
-}
-@NonCPS
-def gitPullbr(String branch, String directory){
-    println directory
-    def cmd="git pull origin $branch"
-    def output=exeCmd(cmd,directory)
-    return output
-}
-
-
-@NonCPS
-def gitCommit(String directory, String msg='update'){
-    println directory
-    def cmd = "git commit -m $msg"
-    def output=exeCmd(cmd,directory)
-    return output
-}
-@NonCPS
-def gitPushf(String directory){
-    println directory
-    def cmd="git push http://$USERNAME:$PASSWORD@bitbucket.org/hqzhang/myrepo.git"
-    def output=exeCmd(cmd,directory)
-    return output
-}
-@NonCPS
-def gitUpdate(String src, String workbr, String mergebr, String dir){
-    def dest="$dir/CI.yml"
-
-    println "git status"
-    gitStatus(dir)
-    
-    println "git branch -r"
-    gitBranchrem( dir)
-
-    println "git checkout $workbr"
-    gitCheckout(workbr,dir )
-   
-    println"git branch"
-    gitBranch(dir)
-  
-    println "git pull.."
-    gitPullbr(mergebr,dir)
-
-    println "git copy update.."
-    copyFile(src, dest)
-
-    println "git add .."
-    gitAddall(dir)
-    
-    println "git commit.."
-    gitCommit(dir)
-
-    println "git push"
-    gitPushf(dir)
-
-}
-/*project="hqzhang"
-repo="ansibletest"
-workbr="new-branch"
-mergebr="master"*/
-//def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
-
-@NonCPS
-getPrid(){
+def getPrid(String repoPR){
     def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}?state=OPEN "
-    def output=exeCmd(cmd,directory)
-    def json=new JsonSlurper()
-    def obj=json.parseText(output)
-    println obj.values[0].id
+    def output=exeCmd(cmd)
+    println output
+    //def json=new JsonSlurper()
+    //def obj=json.parseText(output)
+    println output
 }
 @NonCPS
-getVersion(){
-    def cmd="curl -u $USERNAME:$PASSWOR -X GET ${repoPR}?state=OPEN "
-    def output=exeCmd(cmd,directory)
+def getVersion(String repoPR){
+    def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}?state=OPEN "
+    def output=exeCmd(cmd)
     def json=new JsonSlurper()
     def obj=json.parseText(output)
-    return obj.values[0].version
+    return output
 }
 @NonCPS
-getMergestatus(){
-    def cmd="curl -u $USERNAME:$PASSWOR -X GET ${repoPR}/$prid/merge"
-    def output=exeCmd(cmd,directory)
+def getMergestatus(String repoPR, int prid){
+    def cmd="curl -u $USERNAME:$PASSWORD 
+    å-X GET ${repoPR}/$prid/merge"
+    def output=exeCmd(cmd)
     def json=new JsonSlurper()
     def obj=json.parseText(output)
     return obj.canMerge
 }
-
-
-createPR(){
-    
+@NonCPS
+def createPR(String workbr, String mergebr,String project, String repo){
+    def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
     def data=[ 
        title: 'PR-testing',
        description: null,
@@ -203,21 +155,38 @@ createPR(){
         locked: false,
         reviewers: [] ]
         def body=JsonOutput.toJson(JsonOutput.toJson(data))
-        def cmd="""curl -u $USERNAME:$PASSWOR -X POST -H "Content-Type: applicatin/json" $repoPR --data $body"""
-        def output=exeCmd(cmd,directory)
+        def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR --data $body"""
+        def output=exeCmd(cmd)
         def json=new JsonSlurper()
         def obj=json.parseText(output)
         return obj.id
 }
 
-
-mergePR(){
-    def prid=getPrid()
-    println prid
-    def version=getVersion()
-    println version
-    def cmd="""curl -u $USERNAME:$PASSWOR -X POST -H "Content-Type: applicatin/json" $repoPR/$prid/merge?version=$version"""
+@NonCPS
+def mergePR(String repoPR){
+    def prid=getPrid(repoPR)
+    println("prid=$prid")
+    def version=getVersion(repoPR)
+    println ("version=$version")
+    def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR/$prid/merge?version=$version"""
    
-    def output=exeCmd(cmd,directory)
+    def output=exeCmd(cmd)
     println output
 }
+    def workbr='workbr'
+    def mergebr='master'
+    def dir='/tmp/upload-test'
+    def src='/tmp/CI.yml'
+    def project="GRP"
+    def workspace='wave-cloud'
+    def repo="upload-test"
+    def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
+    def fileName='CI.yml'
+
+println def gitAll(src, workbr, mergebr, directory)
+
+/*def proc = "ls -al".execute()
+proc.waitFor()
+println proc.in.text
+println  proc.err.text 
+println proc.exitValue()*/
