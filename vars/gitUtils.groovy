@@ -69,7 +69,7 @@ def uploadFile(String fileName,String workbr){
     println output
 }
 @NonCPS
-def gitClone(String workspace,String repo String workbr, String directory){
+def gitClone(String workspace,String repo, String workbr, String directory){
     println "enter gitClone()"
     //def dest="$directory/CI.yml"
     def cmd="""rm -rf upload-test; git clone https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git -b ${workbr} ."""
