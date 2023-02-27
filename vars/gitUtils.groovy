@@ -183,9 +183,3 @@ def mergePR(String repoPR){
     def fileName='CI.yml'
 
 println gitAll(src, workbr, mergebr, directory)
-
-/*def proc = "ls -al".execute()
-proc.waitFor()
-println proc.in.text
-println  proc.err.text 
-println proc.exitValue()*/
