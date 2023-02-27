@@ -182,7 +182,7 @@ def mergePR(String repoPR){
     def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     def fileName='CI.yml'
 
-println def gitAll(src, workbr, mergebr, directory)
+println gitAll(src, workbr, mergebr, directory)
 
 /*def proc = "ls -al".execute()
 proc.waitFor()
