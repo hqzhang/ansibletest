@@ -126,8 +126,7 @@ def getVersion(String repoPR){
 }
 @NonCPS
 def getMergestatus(String repoPR, int prid){
-    def cmd="curl -u $USERNAME:$PASSWORD 
-    å-X GET ${repoPR}/$prid/merge"
+    def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}/$prid/merge"
     def output=exeCmd(cmd)
     def json=new JsonSlurper()
     def obj=json.parseText(output)
