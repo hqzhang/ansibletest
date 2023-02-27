@@ -46,7 +46,7 @@ pipeline {
                     sh """ echo  a  >> $src  """
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                            gitUtils.updateAll(src, workspace,repo, workbr, mergebr, directory) 
+                            gitUtils.updateAll(src, workspace, repo, workbr, mergebr, directory) 
                             //println("output:$output")
                             
                          }

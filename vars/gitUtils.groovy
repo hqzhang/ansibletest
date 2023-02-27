@@ -84,7 +84,7 @@ def getConfig(String workspace, String repo, String workbr, String directory){
     def out = executeCmd(cmd, directory)
 }
 @NonCPS
-def updateAll(String src, String workspace, String workbr, String mergebr, String directory){
+def updateAll(String src, String workspace, String repo, String workbr, String mergebr, String directory){
     println "enter gitFinal()"
     def dest="$directory/CI.yml"
     
@@ -173,4 +173,4 @@ def mergePR(String repoPR){
     def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     def fileName='CI.yml'
 
-println updateAll(src, repo, workspace, workbr, mergebr, directory)
+println updateAll(src, workspace, repo, workbr, mergebr, directory)
