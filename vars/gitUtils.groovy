@@ -101,11 +101,11 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
     out=uploadFile(src, workbr)
     println out
 
-    println "4.   git push ..."
+    println "4.   git createPR ..."
     //out=createPR(workbr, mergebr, workspace, repo)
     println out//createPR(String workbr, String mergebr,String workspace, String repo){
 
-     println "5.   git push ..."
+     println "5.   git mergePR ..."
     out=mergePR(repoPR)
     println out
 
