@@ -66,7 +66,7 @@ def uploadFile(String fileName,String workbr){
               -F message=updatecurl -F branch=${workbr}"
     println cmd
     def output=exeCmd(cmd)
-    println output
+    return output
 }
 @NonCPS
 def gitClone(String workspace, String repo, String workbr, String directory){
@@ -74,14 +74,14 @@ def gitClone(String workspace, String repo, String workbr, String directory){
     //def dest="$directory/CI.yml"
     def cmd="""rm -rf upload-test/*; git clone https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git -b ${workbr} ."""
     println cmd
-    def out = executeCmd(cmd, directory)
+    return  executeCmd(cmd, directory)
 }
 @NonCPS
 def getConfig(String workspace, String repo, String workbr, String directory){
     println "enter getConfig()"
     def cmd="""git remote set-url origin https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git """
     println cmd
-    def out = executeCmd(cmd, directory)
+    return  executeCmd(cmd, directory)
 }
 @NonCPS
 def updateAll(String src, String workspace, String repo, String workbr, String mergebr, String directory){
@@ -89,13 +89,17 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
     def dest="$directory/CI.yml"
     
     println("git clone..")
-    gitClone(workspace, repo, workbr, directory)
+    def out=gitClone(workspace, repo, workbr, directory)
+    println out
 
     println("git config..")
-    getConfig(workspace, repo, workbr, directory)
+    out=getConfig(workspace, repo, workbr, directory)
+    println out
 
     println "git push ..."
-    uploadFile(src, workbr)
+    out=uploadFile(src, workbr)
+    println out
+
     return out
 }
 @NonCPS
