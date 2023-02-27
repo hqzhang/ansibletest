@@ -83,8 +83,8 @@ def getConfig(String workspace, String repo, String workbr, String directory){
     println cmd
     def out = executeCmd(cmd, directory)
 }
-
-def updateAll(String src, String workspace, String repo, String workbr, String mergebr, String directory)
+@NonCPS
+def updateAll(String src, String workspace, String repo, String workbr, String mergebr, String directory){
     println "enter gitFinal()"
     def dest="$directory/CI.yml"
     
@@ -92,7 +92,7 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
     gitClone(workspace, repo, workbr, directory)
 
     println("git config..")
-    getConfig(workspace, repo, workbr, directory){
+    getConfig(workspace, repo, workbr, directory)
 
     println "git push ..."
     uploadFile(src, workbr)
