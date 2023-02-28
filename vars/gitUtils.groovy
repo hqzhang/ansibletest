@@ -204,8 +204,9 @@ def mycheck() {
     def mylist="aa bb"
     def flag="ttt"
    
-     println("enter mycheck*****222*************")
-    for(  i in 1..5 ){
+    println("enter mycheck*****222*************")
+    def list=[1,2,3,4,5]
+    for(  i in list ){
       
       println("wait time:"+i.toString())
       sleep(time: 6000, unit: "MILLISECONDS")
