@@ -200,6 +200,7 @@ def mergePR(String repoPR){
     def fileName='CI.yml'
 
 def mycheck() {
+    println("enter mycheck******************")
     def mylist="aa bb"
     def flag="ttt"
     def timeout=25*1000
