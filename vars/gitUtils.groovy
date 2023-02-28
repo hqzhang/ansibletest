@@ -206,8 +206,8 @@ def mycheck() {
    
      println("enter mycheck*****222*************")
     for( int i; i<5; i++ ){
-      int ii=i*5
-      println("wait time:"+ii.toString())
+      
+      println("wait time:"+i.toString())
       sleep(time: 6000, unit: "MILLISECONDS")
       int pass=1
       for( var in mylist.split()) {
