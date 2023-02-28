@@ -120,9 +120,9 @@ def getPrid(String repoPR){
     def cmd = "curl -u ${USERNAME}:${PASSWORD} -X GET ${repoPR}?state=OPEN "
               
     def output=exeCmd(cmd)
-    println output
+    def outstr="'"+output+"'"
     def json=new JsonSlurper()
-    def obj=json.parseText(output)
+    def obj=json.parseText(outstr)
     return obj.valuses[0].id
 }
 @NonCPS
