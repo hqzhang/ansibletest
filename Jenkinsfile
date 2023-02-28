@@ -45,6 +45,15 @@ pipeline {
                     
                     //gitUtils(src, workbr, mergebr, dir) 
                     sh """ echo  a  >> $src  """
+                    println("1.  git clone..")
+                    checkout([
+                        $class: 'GitSCM', 
+                        branches: [[name: '*/master']], 
+                        doGenerateSubmoduleConfigurations: false, 
+                        extensions: [[$class: 'CleanCheckout']], 
+                        submoduleCfg: [], 
+                        userRemoteConfigs: [[credentialsId: bbapppass, url: https://bitbucket.org/wave-cloud/upload-test']]
+                   ])
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                             gitUtils.updateAll(src, workspace, repo, workbr, mergebr, directory) 
@@ -53,10 +62,10 @@ pipeline {
                             //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
                             
                             println("1.  git clone..")
-                            def out=gitClone(workspace, repo, workbr, directory)
+                            //def out=gitClone(workspace, repo, workbr, directory)
                             println out
 
-                            println("2.   git config..")
+                            /*println("2.   git config..")
                             out=getConfig(workspace, repo, workbr, directory)
                             println out
 
@@ -71,7 +80,7 @@ pipeline {
                             println "5.   git mergePR ..."
                             out=mergePR(repoPR)
                             println out
-
+                    */
                             
                          }
                 }
