@@ -52,7 +52,7 @@ pipeline {
                         doGenerateSubmoduleConfigurations: false, 
                         extensions: [[$class: 'CleanCheckout']], 
                         submoduleCfg: [], 
-                        userRemoteConfigs: [[credentialsId: bbapppass, url: https://bitbucket.org/wave-cloud/upload-test']]
+                        userRemoteConfigs: [[credentialsId: bbapppass, url: 'https://fredzhang123@bitbucket.org/wave-cloud/upload-test.git']]
                    ])
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
