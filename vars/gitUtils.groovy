@@ -129,6 +129,7 @@ def getPrid(String repoPR){
 }
 @NonCPS
 def getVersion(String repoPR){
+     println("enter getPrid()")
     def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}?state=OPEN "
     def output=exeCmd(cmd)
     def json=new JsonSlurper()
@@ -198,4 +199,33 @@ def mergePR(String repoPR){
     def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     def fileName='CI.yml'
 
+def mycheck() {
+    def mylist="aa bb"
+    def flag="ttt"
+    def timeout=25*1000
+    def len=timeout/5000
+    
+    for( int i; i<len; i++ ){
+      int ii=i*5
+      println("wait time:"+ii.toString())
+      sleep(time: 6000, unit: "MILLISECONDS")
+      int pass=1
+      for( var in mylist.split()) {
+            println "var =$var"
+            if ( flag == 'tt' ){
+                println "check $var success"
+                pass *=1
+                continue;
+            }else {
+                println "wait to check $var again" 
+                pass *=0
+            }
+       }
+       if ( pass == 1){
+           println "Check  SUCCESS"
+           return
+       }
+    }
+    println "Check FAILURE"
+}
 println updateAll(src, workspace, repo, workbr, mergebr, directory)
