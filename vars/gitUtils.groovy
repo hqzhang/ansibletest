@@ -205,7 +205,7 @@ def mycheck() {
     def flag="ttt"
    
      println("enter mycheck*****222*************")
-    for( int i; i<5; i++ ){
+    for(  i in [1..5] ){
       
       println("wait time:"+i.toString())
       sleep(time: 6000, unit: "MILLISECONDS")
