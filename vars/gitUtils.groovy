@@ -121,9 +121,9 @@ def getPrid(String repoPR){
               
     def output=exeCmd(cmd)
     println output.getClass()
-    def outstr="'"+output+"'"
+    
     def json=new JsonSlurper()
-    def obj=json.parseText(outstr)
+    def obj=json.parseText(output)
     return obj.valuses[0].id
 }
 @NonCPS
