@@ -203,10 +203,9 @@ def mycheck() {
     println("enter mycheck******************")
     def mylist="aa bb"
     def flag="ttt"
-    def timeout=25*1000
-    def len=timeout/5000
-    
-    for( int i; i<len; i++ ){
+   
+     println("enter mycheck*****222*************")
+    for( int i; i<5; i++ ){
       int ii=i*5
       println("wait time:"+ii.toString())
       sleep(time: 6000, unit: "MILLISECONDS")
