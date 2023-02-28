@@ -114,6 +114,8 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
 @NonCPS
 def getPrid(String repoPR){
     println("enter getPrid()")
+    def repo='upload-test'           
+    def workspace='wave-cloud'
     repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     def cmd = "curl -u ${USERNAME}:${PASSWORD} -X GET ${repoPR}?state=OPEN "
               
