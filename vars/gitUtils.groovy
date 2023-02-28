@@ -198,7 +198,7 @@ def mergePR(String repoPR){
     def repo="upload-test"
     def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     def fileName='CI.yml'
-
+@NonCPS
 def mycheck() {
     println("enter mycheck******************")
     def mylist="aa bb"
