@@ -32,7 +32,7 @@ pipeline {
                 script {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
-                    def repo='myrepo'
+                    def repo='upload-test'
                     //sh "rm -rf $repo; git clone https://hqzhang@bitbucket.org/hqzhang/myrepo.git"
                     //sh "ls -al test1"
                     def ws=env.WORKSPACE
@@ -57,19 +57,21 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                             //gitUtils.updateAll(src, workspace, repo, workbr, mergebr, directory) 
-                            println "enter gitFinal()"
+                            //println "enter gitFinal()"
                             def dest="$directory/CI.yml"
                             //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
                             
-                            println("1.  git clone..")
+                            //println("1.  git clone..")
                             //def out=gitClone(workspace, repo, workbr, directory)
-                            println out
+                            //println out
 
-                            /*println("2.   git config..")
-                            out=getConfig(workspace, repo, workbr, directory)
-                            println out
+                            println("2.   git config..")
+                            //out=getConfig(workspace, repo, workbr, directory)
+                            //println out
+                            sh """git remote set-url origin https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git """
+"""
 
-                            println "3.   git push ..."
+                           /* println "3.   git push ..."
                             out=uploadFile(src, workbr)
                             println out
 
