@@ -59,7 +59,7 @@ def gitPrep(String workbr, String mergebr, String directory){
 }
 @NonCPS
 def uploadFile(String fileName,String workbr, String workspace, String repo){
-    println "enter getPrid1()"
+    println "enter uploadFile()"
     def cmd = "curl -u ${USERNAME}:${PASSWORD} \
               -X POST https://api.bitbucket.org/2.0/repositories/${workspace}/${repo}/src\
               -F ${fileName}=@${fileName}  \
@@ -113,6 +113,7 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
 }
 @NonCPS
 def getPrid(String repoPR){
+    println("enter getPrid()")
     def cmd = "curl -u ${USERNAME}:${PASSWORD} -X GET ${repoPR}?state=OPEN "
               
     def output=exeCmd(cmd)
@@ -170,6 +171,7 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
 
 @NonCPS
 def mergePR(String repoPR){
+    println ("enter mergePR()")
     def prid=getPrid(repoPR)
     println("prid=$prid")
     def version=getVersion(repoPR)
