@@ -48,7 +48,30 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                             gitUtils.updateAll(src, workspace, repo, workbr, mergebr, directory) 
-                            //println("output:$output")
+                            println "enter gitFinal()"
+                            def dest="$directory/CI.yml"
+                            //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
+                            
+                            println("1.  git clone..")
+                            def out=gitClone(workspace, repo, workbr, directory)
+                            println out
+
+                            println("2.   git config..")
+                            out=getConfig(workspace, repo, workbr, directory)
+                            println out
+
+                            println "3.   git push ..."
+                            out=uploadFile(src, workbr)
+                            println out
+
+                            println "4.   git createPR ..."
+                            //out=createPR(workbr, mergebr, workspace, repo)
+                            println out//createPR(String workbr, String mergebr,String workspace, String repo){
+
+                            println "5.   git mergePR ..."
+                            out=mergePR(repoPR)
+                            println out
+
                             
                          }
                 }
