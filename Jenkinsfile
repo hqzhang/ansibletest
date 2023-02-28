@@ -58,6 +58,7 @@ pipeline {
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                            
                             def dest="$directory/CI.yml"
+                            def project='GRP'
                             def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
                             //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
                             println("2.   git config..")
