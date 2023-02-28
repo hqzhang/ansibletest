@@ -43,7 +43,7 @@ pipeline {
                     def bbapppass='9f2d1708-aeee-449d-b133-7f094a262336'
                     def bbapitoken='7881845f-cb99-407a-8a31-ead60535fcaa'
 
-                    gitutils.mycheck()
+                    gitUtils.mycheck()
                     //gitUtils(src, workbr, mergebr, dir) 
                     sh """ echo  a  >> $src  """
                     println("1.  git clone..")
