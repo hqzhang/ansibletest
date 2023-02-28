@@ -58,25 +58,23 @@ pipeline {
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                            
                             def dest="$directory/CI.yml"
+                            def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
                             //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
-                           
                             println("2.   git config..")
                             sh """
                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
                             """
-
                             println "3.   git push ..."
                             def out=gitUtils.uploadFile(src, workbr,workspace,repo)
                             println out
 
-                            /*println "4.   git createPR ..."
+                            //println "4.   git createPR ..."
                             //out=createPR(workbr, mergebr, workspace, repo)
-                            println out//createPR(String workbr, String mergebr,String workspace, String repo){
+                            //println out//createPR(String workbr, String mergebr,String workspace, String repo){
 
                             println "5.   git mergePR ..."
-                            out=mergePR(repoPR)
+                            out=gitUtils.mergePR(repoPR)
                             println out
-                            */
                             
                          }
                 }

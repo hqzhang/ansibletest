@@ -113,25 +113,22 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
 }
 @NonCPS
 def getPrid(String repoPR){
-    
-    //      --header 'Accept: application/json'
-    def cmd = "curl -u ${USERNAME}:${PASSWORD} \
-              -X GET https://api.bitbucket.org/2.0/repositories/wave-cloud/upload-test/pull-requests?state=OPEN "
+    def cmd = "curl -u ${USERNAME}:${PASSWORD} -X GET ${repoPR}?state=OPEN "
               
     def output=exeCmd(cmd)
     println output
-    //def json=new JsonSlurper()
-    //def obj=json.parseText(output)
-    return output
+    def json=new JsonSlurper()
+    def obj=json.parseText(output)
+    return obj.valuses[0].id
 }
 @NonCPS
 def getVersion(String repoPR){
     def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}?state=OPEN "
     def output=exeCmd(cmd)
-    //def json=new JsonSlurper()
+    def json=new JsonSlurper()
     println output
-    ///def obj=json.parseText(output)
-    return output
+    def obj=json.parseText(output)
+    return obj.valuses[0].version
 }
 @NonCPS
 def getMergestatus(String repoPR, int prid){
@@ -143,8 +140,8 @@ def getMergestatus(String repoPR, int prid){
 }
 @NonCPS
 def createPR(String workbr, String mergebr,String workspace, String repo){
-    def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
-    //def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
+    //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
+    def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
     def data=[ 
        title: 'PR-testing',
        description: null,
@@ -175,13 +172,14 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
 def mergePR(String repoPR){
     def prid=getPrid(repoPR)
     println("prid=$prid")
-    //def version=getVersion(repoPR)
-    //println ("version=$version")
-    System.exit(1)
+    def version=getVersion(repoPR)
+    println ("version=$version")
     def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR/$prid/merge?version=$version"""
-   
     def output=exeCmd(cmd)
     println output
+    def json=new JsonSlurper()
+    //def obj=json.parseText(output)
+    //return obj.id
 }
     def workbr='workbr'
     def mergebr='master'
