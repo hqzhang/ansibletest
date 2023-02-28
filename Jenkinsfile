@@ -68,8 +68,10 @@ pipeline {
                             println("2.   git config..")
                             //out=getConfig(workspace, repo, workbr, directory)
                             //println out
-                            sh """git remote set-url origin https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git """
-"""
+                            sh """
+                                 git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
+                            """
+
 
                            /* println "3.   git push ..."
                             out=uploadFile(src, workbr)
@@ -82,7 +84,7 @@ pipeline {
                             println "5.   git mergePR ..."
                             out=mergePR(repoPR)
                             println out
-                    */
+                            */
                             
                          }
                 }
