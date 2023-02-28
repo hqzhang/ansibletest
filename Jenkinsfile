@@ -1,5 +1,5 @@
-def amiLibraryVersion = 'main'
-library("my-shared-library@$amiLibraryVersion") _
+def version = 'main'
+library("my-shared-lib@$version") _
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
