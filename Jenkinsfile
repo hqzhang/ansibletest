@@ -48,7 +48,7 @@ pipeline {
                     println("1.  git clone..")
                     checkout([
                         $class: 'GitSCM', 
-                        branches: [[name: '*/master']], 
+                        branches: [[name: '*/main']], 
                         doGenerateSubmoduleConfigurations: false, 
                         extensions: [[$class: 'CleanCheckout']], 
                         submoduleCfg: [], 
