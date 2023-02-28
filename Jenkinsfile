@@ -56,7 +56,7 @@ pipeline {
                    ])
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                            gitUtils.updateAll(src, workspace, repo, workbr, mergebr, directory) 
+                            //gitUtils.updateAll(src, workspace, repo, workbr, mergebr, directory) 
                             println "enter gitFinal()"
                             def dest="$directory/CI.yml"
                             //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
