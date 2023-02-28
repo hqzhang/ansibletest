@@ -58,10 +58,10 @@ def gitPrep(String workbr, String mergebr, String directory){
     return output
 }
 @NonCPS
-def uploadFile(String fileName,String workbr){
+def uploadFile(String fileName,String workbr, String workspace, String repo){
     println "enter getPrid1()"
     def cmd = "curl -u ${USERNAME}:${PASSWORD} \
-              -X POST https://api.bitbucket.org/2.0/repositories/wave-cloud/upload-test/src\
+              -X POST https://api.bitbucket.org/2.0/repositories/${workspace}/${repo}/src\
               -F ${fileName}=@${fileName}  \
               -F message=updatecurl -F branch=${workbr}"
     println cmd
