@@ -205,7 +205,7 @@ def mycheck() {
     def flag="ttt"
    
     println("enter mycheck*****222*************")
-    def list=[1,2,3,4,5]
+    def list=(1..5).collect()
     for(  i in list ){
       
       println("wait time:"+i.toString())
