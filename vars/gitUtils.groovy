@@ -47,7 +47,7 @@ def exeCmd(String cmd){
     println ("out:$out")
     println("err:$err")
     println ("code=$code")
-    return code
+    return out
 }
 @NonCPS
 def gitPrep(String workbr, String mergebr, String directory){
