@@ -57,7 +57,18 @@ def gitPrep(String workbr, String mergebr, String directory){
     
     return output
 }
-@NonCPS
+def uploadFile1(String fileName,String workbr, String workspace, String repo){
+    println "enter uploadFile()"
+    def cmd="""curl -X PUT -u  ${USERNAME}:${PASSWORD}  \
+                     -F content=@README.md  \
+                     -F 'message=Updated using file-edit REST API' \
+                     -F branch=master -F  sourceCommitId=5636641a50b \
+                     http://bitbucket.org/rest/api/1.0/projects/GRP/repos/repo_1/browse/README.md"""
+    def output = sh ( script: cmd, returnStdout: true ).trim()
+    println cmd
+    def output=exeCmd(cmd)
+    return output
+}
 def uploadFile(String fileName,String workbr, String workspace, String repo){
     println "enter uploadFile()"
     def cmd = "curl -u ${USERNAME}:${PASSWORD} \

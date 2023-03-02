@@ -67,7 +67,8 @@ pipeline {
                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
                             """
                             println "3.   git push ..."
-                            def out=gitUtils.uploadFile(src, workbr,workspace,repo)
+                            def out=gitUtils.uploadFile1(src, workbr,workspace,repo)
+                        
                             println out
 
                             //println "4.   git createPR ..."
