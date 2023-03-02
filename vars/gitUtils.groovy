@@ -163,32 +163,26 @@ def uploadFile(String fileName,String workbr, String workspace, String repo){
 def createPR(String workbr, String mergebr,String workspace, String repo){
     def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     //def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
-    /*def data=[ 
-       title: 'PR-testing',
-       description: null,
-       state:  'OPEN', open: true,
-       closed: false,
-       fromRef: [ id:  "refs/heads/$workbr",
-                  repository: [ slug: "$repo", name: null,
-                                  project: [ key: "$project" ]
-                                ]
+       def data=[ 
+        title: 'PR-testing',
+        description: null,
+        state:  'OPEN', open: true,
+        closed: false,
+        source: [ branch:  [ name: "test-pr"   ]
                 ],
-        toRef: [ id: "refs/heads/$mergebr",
-                 repository: [ slug: "$repo",
-                               name: null,
-                               project: [key: "$project"]
-                   ]
+        destination: [ branch:  [ name: "main"   ]
                 ],
         locked: false,
         reviewers: [] ]
-        def body=JsonOutput.toJson(JsonOutput.toJson(data))*/
-        def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR \
-        --data '{                \
+
+        def body=JsonOutput.toJson(JsonOutput.toJson(data))
+        def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR --data $body\
+       /* --data '{                \
         "title": "My Title",     \
         "source": {   "branch": {  "name": "test-pr" }  },        \
         "destination": { "branch": {  "name": "main" } }   \
     }'
-    """
+    """*/
         println cmd
         def output=exeCmd(cmd)
         println output
