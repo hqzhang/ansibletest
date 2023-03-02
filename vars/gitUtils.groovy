@@ -72,16 +72,7 @@ def uploadFile1(String fileName,String workbr, String workspace, String repo){
    
     return output
 }
-def uploadFile(String fileName,String workbr, String workspace, String repo){
-    println "enter uploadFile()"
-    def cmd = "curl -u ${USERNAME}:${PASSWORD} \
-              -X POST https://api.bitbucket.org/2.0/repositories/${workspace}/${repo}/src\
-              -F ${fileName}=@${fileName}  \
-              -F message=updatecurl -F branch=${workbr}"
-    println cmd
-    def output=exeCmd(cmd)
-    return output
-}
+
 @NonCPS
 def gitClone(String workspace, String repo, String workbr, String directory){
     println "enter gitClone()"
