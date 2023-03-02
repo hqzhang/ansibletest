@@ -176,7 +176,7 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
         reviewers: [] ]
 
         def body=JsonOutput.toJson(JsonOutput.toJson(data))
-        def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR --data $body\
+        def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR --data $body """
        /* --data '{                \
         "title": "My Title",     \
         "source": {   "branch": {  "name": "test-pr" }  },        \
