@@ -189,7 +189,9 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
         "destination": { "branch": {  "name": "main" } }   \
     }'
     """
+        println cmd
         def output=exeCmd(cmd)
+        println output
         def json=new JsonSlurper()
         def obj=json.parseText(output)
         return obj.id
