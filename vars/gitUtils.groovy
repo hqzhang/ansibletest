@@ -163,7 +163,7 @@ def uploadFile(String fileName,String workbr, String workspace, String repo){
 def createPR(String workbr, String mergebr,String workspace, String repo){
     def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     //def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
-    def data=[ 
+    /*def data=[ 
        title: 'PR-testing',
        description: null,
        state:  'OPEN', open: true,
@@ -181,7 +181,7 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
                 ],
         locked: false,
         reviewers: [] ]
-        def body=JsonOutput.toJson(JsonOutput.toJson(data))
+        def body=JsonOutput.toJson(JsonOutput.toJson(data))*/
         def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR \
         --data '{                \
         "title": "My Title",     \
