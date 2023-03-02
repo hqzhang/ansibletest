@@ -65,6 +65,7 @@ def uploadFile1(String fileName,String workbr, String workspace, String repo){
                      -F branch=test-pr -F  sourceCommitId=5636641a50b \
                      http://bitbucket.org/rest/api/1.0/projects/GRP/repos/repo_1/browse/README.md"""
     //def output=exeCmd(cmd)
+    println cmd
     def output = sh ( script: cmd, returnStdout: true ).trim()
 
     println output
