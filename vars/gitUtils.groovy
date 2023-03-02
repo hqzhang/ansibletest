@@ -159,7 +159,7 @@ def getMergestatus(String repoPR, int prid){
     def obj=json.parseText(output)
     return obj.canMerge
 }
-@NonCPS
+
 def createPR(String workbr, String mergebr,String workspace, String repo){
     //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
