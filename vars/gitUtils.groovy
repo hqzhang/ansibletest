@@ -182,7 +182,13 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
         locked: false,
         reviewers: [] ]
         def body=JsonOutput.toJson(JsonOutput.toJson(data))
-        def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR --data $body"""
+        def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR \
+        --data '{                \
+        "title": "My Title",     \
+        "source": {   "branch": {  "name": "test-pr" }  },        \
+        "destination": { "branch": {  "name": "main" } }   \
+    }'
+    """
         def output=exeCmd(cmd)
         def json=new JsonSlurper()
         def obj=json.parseText(output)
