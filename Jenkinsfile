@@ -43,10 +43,7 @@ pipeline {
                     def bbapppass='9f2d1708-aeee-449d-b133-7f094a262336'
                     def bbapitoken='7881845f-cb99-407a-8a31-ead60535fcaa'
                     def fileName='README.md'
-                    withCredentials([usernamePassword(credentialsId: bbapitoken, \
-                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    gitUtils.uploadFile1(fileName,workbr, workspace, repo) }
-                    //gitUtils(src, workbr, mergebr, dir) 
+                    
                     sh """ echo  a  >> $src  """
                     println("1.  git clone..")
                     checkout([
@@ -69,12 +66,12 @@ pipeline {
                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
                             """
                             println "3.   git push ..."
-                            def out=gitUtils.uploadFile1(src, workbr,workspace,repo)
+                            def out=gitUtils.uploadFile(src, workbr,workspace,repo)
                         
                             println out
 
-                            //println "4.   git createPR ..."
-                            //out=createPR(workbr, mergebr, workspace, repo)
+                            println "4.   git createPR ..."
+                            out=createPR(workbr, mergebr, workspace, repo)
                             //println out//createPR(String workbr, String mergebr,String workspace, String repo){
 
                             //println "5.   git mergePR ..."
@@ -85,13 +82,6 @@ pipeline {
                 }
             }
         }
-         stage('Stage: anoter test'){
-            steps { 
-                script {
-                    mylist.each { println it}
-                }
-            }
-         }
-
+        
     }
 }

@@ -58,7 +58,7 @@ def gitPrep(String workbr, String mergebr, String directory){
     return output
 }
 def uploadFile1(String fileName,String workbr, String workspace, String repo){
-    println "enter uploadFile()"
+    println "enter uploadFile1()............"
     def cmd="""curl -X PUT -u  ${USERNAME}:${PASSWORD}  \
                      -F content=@README.md  \
                      -F 'message=Updated using file-edit REST API' \
