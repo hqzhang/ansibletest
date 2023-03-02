@@ -159,10 +159,19 @@ def getMergestatus(String repoPR, int prid){
     def obj=json.parseText(output)
     return obj.canMerge
 }
-
+def uploadFile(String fileName,String workbr, String workspace, String repo){
+    println "enter uploadFile()"
+    def cmd = "curl -u ${USERNAME}:${PASSWORD} \
+              -X POST https://api.bitbucket.org/2.0/repositories/${workspace}/${repo}/src\
+              -F ${fileName}=@${fileName}  \
+              -F message=updatecurl -F branch=${workbr}"
+    println cmd
+    def output=exeCmd(cmd)
+    return output
+}
 def createPR(String workbr, String mergebr,String workspace, String repo){
-    //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
-    def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
+    def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
+    //def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
     def data=[ 
        title: 'PR-testing',
        description: null,
