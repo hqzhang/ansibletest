@@ -64,9 +64,10 @@ def uploadFile1(String fileName,String workbr, String workspace, String repo){
                      -F 'message=Updated using file-edit REST API' \
                      -F branch=master -F  sourceCommitId=5636641a50b \
                      http://bitbucket.org/rest/api/1.0/projects/GRP/repos/repo_1/browse/README.md"""
+    //def output=exeCmd(cmd)
     def output = sh ( script: cmd, returnStdout: true ).trim()
     println cmd
-    def output=exeCmd(cmd)
+   
     return output
 }
 def uploadFile(String fileName,String workbr, String workspace, String repo){
