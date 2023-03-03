@@ -80,14 +80,14 @@ pipeline {
                                 pwd
                                 ls -al vars/
                                 chmod a+x vars/createMerge.sh
-                                ./vars/createMerge.sh
+                                #./vars/createMerge.sh
                             """
-                            //out=gitUtils.createPR(workbr, mergebr, workspace, repo)
-                            //println out//createPR(String workbr, String mergebr,String workspace, String repo){
+                            out=gitUtils.createPR(workbr, mergebr, workspace, repo)
+                            println out//createPR(String workbr, String mergebr,String workspace, String repo){
 
-                            //println "5.   git mergePR ..."
-                            //out=gitUtils.mergePR(repoPR)
-                            //println out
+                            println "5.   git mergePR ..."
+                            out=gitUtils.mergePR(repoPR)
+                            println out
                             
                          }
                 }
