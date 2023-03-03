@@ -46,6 +46,7 @@ pipeline {
                     
                     sh """ echo  a  >> $src  """
                     println("1.  git clone..")
+                    sh 'pwd; ls -al'
                     checkout([
                         $class: 'GitSCM', 
                         branches: [[name: '*/main']], 
@@ -54,6 +55,7 @@ pipeline {
                         submoduleCfg: [], 
                         userRemoteConfigs: [[credentialsId: bbapppass, url: 'https://fredzhang123@bitbucket.org/wave-cloud/upload-test.git']]
                    ])
+                    sh 'pwd; ls -al'
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                            
@@ -61,7 +63,6 @@ pipeline {
                             def project='GRP'
                             def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
 
-                             gitUtils.gitClone(workspace, repo, workbr, directory)
                             //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
                             println("2.   git config..")
                             sh """
