@@ -73,6 +73,7 @@ pipeline {
                             println "4.   createPR ..."
 
                             sh """
+                                pwd
                                 ls -al vars/
                                 chmod a+x vars/createMerge.sh
                                 ./vars/createMerge.sh
