@@ -121,16 +121,18 @@ def getPrid(String repoPR){
     def cmd = "curl -u $USERNAME:$PASSWORD -X GET -H 'Content-Type: application/json'  ${repoPR}  "
               
     def output=exeCmd(cmd)
-    def json=new JsonSlurper()
-    def obj=json.parseText(output)
+    def obj = readJSON text: output
+    //def json=new JsonSlurper()
+    //def obj=json.parseText(output)
     return obj.values[0].id
 }
 
 def getMergestatus(String repoPR, int prid){
     def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}/$prid/merge"
     def output=exeCmd(cmd)
-    def json=new JsonSlurper()
-    def obj=json.parseText(output)
+    //def json=new JsonSlurper()
+    //def obj=json.parseText(output)
+    def obj = readJSON text: output
     return obj.canMerge
 }
 
@@ -168,9 +170,9 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
        
     def output=exeCmd(cmd)
     println output
-    def json=new JsonSlurper()
-    def obj=json.parseText(output)
-
+    //def json=new JsonSlurper()
+    //def obj=json.parseText(output)
+    def obj = readJSON text: output
     return obj.id
 }
 
@@ -188,8 +190,9 @@ def mergePR(String repoPR){
         ${repoPR}/$prid/merge --data $body""" 
    
     def output=exeCmd(cmd)
-    def json=new JsonSlurper()
-    def obj=json.parseText(output)
+     def obj = readJSON text: output
+    //def json=new JsonSlurper()
+    //def obj=json.parseText(output)
 
     return obj.id
 }
