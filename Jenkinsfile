@@ -71,7 +71,12 @@ pipeline {
                             println out
 
                             println "4.   createPR ..."
-                            out=gitUtils.createPR(workbr, mergebr, workspace, repo)
+
+                            sh """
+                                chmod a+x createMerge.sh
+                                ./createMerge.sh
+                            """
+                            //out=gitUtils.createPR(workbr, mergebr, workspace, repo)
                             //println out//createPR(String workbr, String mergebr,String workspace, String repo){
 
                             //println "5.   git mergePR ..."
