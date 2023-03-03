@@ -51,10 +51,11 @@ pipeline {
                         $class: 'GitSCM', 
                         branches: [[name: '*/main']], 
                         doGenerateSubmoduleConfigurations: false, 
-                        extensions: [[$class: 'CleanCheckout']], 
+                        extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: repo ]], 
                         submoduleCfg: [], 
                         userRemoteConfigs: [[credentialsId: bbapppass, url: 'https://fredzhang123@bitbucket.org/wave-cloud/upload-test.git']]
-                   ])
+                    ])
+                   
                     sh 'pwd; ls -al'
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
