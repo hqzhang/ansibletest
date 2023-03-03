@@ -159,7 +159,7 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
         description: "Automated Dependency Updates for  $date",
         source: [ branch:  [ name: "$workbr"  ],
                   repository: [ full_name: "$workspace/$repo" ] ],
-        destination: [ branch:  [ name: "$merger"  ] ],
+        destination: [ branch:  [ name: "$mergebr"  ] ],
         close_source_branch: true ]
     
     def body=JsonOutput.toJson(JsonOutput.toJson(data))
