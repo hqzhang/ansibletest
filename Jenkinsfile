@@ -73,8 +73,8 @@ pipeline {
                             println "4.   createPR ..."
 
                             sh """
-                                chmod a+x createMerge.sh
-                                ./createMerge.sh
+                                chmod a+x vars/createMerge.sh
+                                ./vars/createMerge.sh
                             """
                             //out=gitUtils.createPR(workbr, mergebr, workspace, repo)
                             //println out//createPR(String workbr, String mergebr,String workspace, String repo){
