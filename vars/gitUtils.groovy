@@ -11,7 +11,7 @@ def copyFile(String srcFile, String destFile){
     def destinationPath = Paths.get(destFile)
     Files.copy(sourcePath, destinationPath,StandardCopyOption.REPLACE_EXISTING)
 }
-@NonCPS
+
 def executeCmd(String cmd, String directory){
     ProcessBuilder procBuilder = new ProcessBuilder("bash", "-c", cmd);
     procBuilder.directory(new File(directory))
@@ -34,7 +34,7 @@ def executeCmd(String cmd, String directory){
     println output
     return output
 }
-@NonCPS
+
 def exeCmd(String cmd){
     
     def proc=cmd.execute()
@@ -49,21 +49,20 @@ def exeCmd(String cmd){
     println ("code=$code")
     return out
 }
-@NonCPS
-def gitPrep(String workbr, String mergebr, String directory){
-    
-    def command = "git branch -r ;git checkout $workbr; git branch; git pull origin $mergebr"
-    def output = executeCmd(command, directory)
-    
-    return output
+
+def runScript(command) {
+    script {
+        def out=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+        echo "out==$out"
+    }
 }
-def uploadFile1(String fileName,String workbr, String workspace, String repo){
+/*
+def uploadFile(String fileName,String workbr, String workspace, String repo){
+    def repoUrl
     println "enter uploadFile1()............"
-    def cmd="""curl -X PUT -u  ${USERNAME}:${PASSWORD}  \
-                     -F content=@README.md  \
-                     -F 'message=Updated using file-edit REST API' \
-                     -F branch=test-pr -F  sourceCommitId=5636641a50b \
-                     http://bitbucket.org/rest/api/1.0/projects/GRP/repos/repo_1/browse/README.md"""
+    def cmd="""  curl -u $USERNAME:$PASSWORD -X POST ${repoUrl}/src    \
+        -F uploadFile=@uploadFile         \
+        -F message=updatecurl -F branch=test-pr `"""
     //def output=exeCmd(cmd)
     println cmd
     def output = sh ( script: cmd, returnStdout: true ).trim()
@@ -71,7 +70,7 @@ def uploadFile1(String fileName,String workbr, String workspace, String repo){
     println output
    
     return output
-}
+}*/
 
 @NonCPS
 def gitClone(String workspace, String repo, String workbr, String directory){
@@ -119,30 +118,14 @@ def updateAll(String src, String workspace, String repo, String workbr, String m
 @NonCPS
 def getPrid(String repoPR){
     println("enter getPrid()")
-    def repo='upload-test'           
-    def workspace='wave-cloud'
-    repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
-    def cmd = "curl -u ${USERNAME}:${PASSWORD} -X GET ${repoPR}?state=OPEN "
+    def cmd = "curl -u $USERNAME:$PASSWORD -X GET -H 'Content-Type: application/json'  ${repoPR}  "
               
     def output=exeCmd(cmd)
-    println output
-    println output.getClass()
-    
     def json=new JsonSlurper()
     def obj=json.parseText(output)
     return obj.values[0].id
 }
-@NonCPS
-def getVersion(String repoPR){
-     println("enter getPrid()")
-    def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}?state=OPEN "
-    def output=exeCmd(cmd)
-    def json=new JsonSlurper()
-    println output
-    def obj=json.parseText(output)
-    return obj.valuses[0].version
-}
-@NonCPS
+
 def getMergestatus(String repoPR, int prid){
     def cmd="curl -u $USERNAME:$PASSWORD -X GET ${repoPR}/$prid/merge"
     def output=exeCmd(cmd)
@@ -150,60 +133,65 @@ def getMergestatus(String repoPR, int prid){
     def obj=json.parseText(output)
     return obj.canMerge
 }
+
 def uploadFile(String fileName,String workbr, String workspace, String repo){
     println "enter uploadFile()"
-    def cmd = "curl -u ${USERNAME}:${PASSWORD} \
-              -X POST https://api.bitbucket.org/2.0/repositories/${workspace}/${repo}/src\
+    def repoUrl="https://api.bitbucket.org/2.0/repositories/${workspace}/${repo}/src"
+    def cmd = "curl -u ${USERNAME}:${PASSWORD} -X POST ${repoUrl}   \
               -F ${fileName}=@${fileName}  \
               -F message=updatecurl -F branch=${workbr}"
     println cmd
     def output=exeCmd(cmd)
     return output
 }
-def createPR(String workbr, String mergebr,String workspace, String repo){
-    def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
-    //def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
-       def data=[ 
-        title: 'PR-testing',
-        description: null,
-        state:  'OPEN', open: true,
-        closed: false,
-        source: [ branch:  [ name: "test-pr"   ]
-                ],
-        destination: [ branch:  [ name: "main"   ]
-                ],
-        locked: false,
-        reviewers: [] ]
 
-        def body=JsonOutput.toJson(JsonOutput.toJson(data))
-        def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR --data $body """
-       /* --data '{                \
-        "title": "My Title",     \
-        "source": {   "branch": {  "name": "test-pr" }  },        \
-        "destination": { "branch": {  "name": "main" } }   \
-    }'
-    """*/
-        println cmd
-        def output=exeCmd(cmd)
-        println output
-        def json=new JsonSlurper()
-        def obj=json.parseText(output)
-        return obj.id
+import java.text.SimpleDateFormat
+def getDate(){
+    def sdf = new SimpleDateFormat("yyyy-mm-dd")
+    return sdf.format(new Date())
 }
 
-@NonCPS
-def mergePR(String repoPR){
-    println ("enter mergePR()")
-    def prid=getPrid(repoPR)
-    println("prid=$prid")
-    def version=getVersion(repoPR)
-    println ("version=$version")
-    def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" $repoPR/$prid/merge?version=$version"""
+def createPR(String workbr, String mergebr,String workspace, String repo){
+    def repoUrl="https://bitbucket.org/api/2.0/repositories/$workspace/$repo/pullrequests"
+    def date=getDate()
+    def data=[ 
+        title: "Dependency Updates $date",
+        description: "Automated Dependency Updates for  $date",
+        source: [ branch:  [ name: "$workbr"  ],
+                  repository: [ full_name: "$workspace/$repo" ] ],
+        destination: [ branch:  [ name: "$merger"  ] ],
+        close_source_branch: true ]
+    
+    def body=JsonOutput.toJson(JsonOutput.toJson(data))
+    def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" \
+              ${repoUrl}  --data $body """
+       
     def output=exeCmd(cmd)
     println output
     def json=new JsonSlurper()
-    //def obj=json.parseText(output)
-    //return obj.id
+    def obj=json.parseText(output)
+
+    return obj.id
+}
+
+def mergePR(String repoPR){
+   
+    println ("enter mergePR()")
+    def prid=getPrid(repoPR)
+    println("prid=$prid")
+    def data=[ type: 'anytype',
+                message: 'good work',
+                close_source_branch: true, 
+                merge_strategy: 'merge_commit' ]
+    def body=JsonOutput.toJson(JsonOutput.toJson(data)) 
+    def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H 'Content-Type: application/json' \
+        ${repoPR}/$prid/merge --data $body""" 
+   
+    def output=exeCmd(cmd)
+    def json=new JsonSlurper()
+    def obj=json.parseText(output)
+
+    return obj.id
 }
     def workbr='workbr'
     def mergebr='master'
@@ -214,43 +202,8 @@ def mergePR(String repoPR){
     def repo="upload-test"
     def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     def fileName='CI.yml'
-@NonCPS
-def mycheck() {
-    println("enter mycheck******************")
-    def mylist="aa bb"
-    def flag="ttt"
-   
-    println("enter mycheck*****222*************")
-    def list=(1..5).collect()
-    for(  i in list ){
-      
-      println("wait time:"+i.toString())
-      sleep(time: 6000, unit: "MILLISECONDS")
-      int pass=1
-      for( var in mylist.split()) {
-            println "var =$var"
-            if ( flag == 'tt' ){
-                println "check $var success"
-                pass *=1
-                continue;
-            }else {
-                println "wait to check $var again" 
-                pass *=0
-            }
-       }
-       if ( pass == 1){
-           println "Check  SUCCESS"
-           return
-       }
-    }
-    println "Check FAILURE"
-}
 
-def runScript(command) {
-    script {
-        def out=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
-        echo "out==$out"
-    }
-}
+          
+
 
 println updateAll(src, workspace, repo, workbr, mergebr, directory)
