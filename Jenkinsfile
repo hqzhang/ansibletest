@@ -69,12 +69,12 @@ pipeline {
                             sh """
                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
                             """
-                            println "3.   git push ..."
+                            println "3.   uploadFile().."
                             def out=gitUtils.uploadFile(src, workbr,workspace,repo)
                         
                             println out
 
-                            println "4.   createPR ..."
+                            println "4.   createPR createPR()..."
 
                             sh """
                                 pwd
@@ -85,7 +85,7 @@ pipeline {
                             out=gitUtils.createPR(workbr, mergebr, workspace, repo)
                             println out//createPR(String workbr, String mergebr,String workspace, String repo){
 
-                            println "5.   git mergePR ..."
+                            println "5.   mergePR ()..."
                             out=gitUtils.mergePR(repoPR)
                             println out
                             
