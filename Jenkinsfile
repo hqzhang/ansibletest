@@ -36,7 +36,7 @@ pipeline {
                   
                     def ws=env.WORKSPACE
                     def directory="$ws/$repo"
-                    def workbr='test-pr'
+                    def workbr='feature-test'
                     def mergebr='main'
                     def workspace='wave-cloud'
                     def src="$ws/CI.yml"

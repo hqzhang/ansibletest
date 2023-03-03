@@ -134,7 +134,7 @@ def getMergestatus(String repoPR, int prid){
     return obj.canMerge
 }
 
-def uploadFile(String fileName,String workbr, String workspace, String repo){
+def uploadFile1(String fileName,String workbr, String workspace, String repo){
     println "enter uploadFile()"
     def repoUrl="https://api.bitbucket.org/2.0/repositories/${workspace}/${repo}/src"
     def cmd = "curl -u ${USERNAME}:${PASSWORD} -X POST ${repoUrl}   \
@@ -204,6 +204,15 @@ def mergePR(String repoPR){
     def fileName='CI.yml'
 
           
-
+def uploadFile(String fileName,String workbr, String workspace, String repo){
+    println "enter uploadFile()"
+    def repoUrl="https://api.bitbucket.org/2.0/repositories/${workspace}/${repo}/src"
+    def cmd = "curl -u ${USERNAME}:${PASSWORD} -X POST ${repoUrl}   \
+              -F ${fileName}=@${fileName}  \
+              -F message=updatecurl -F branch=${workbr}"
+    println cmd
+    def output=exeCmd(cmd)
+    return output
+}
 
 println updateAll(src, workspace, repo, workbr, mergebr, directory)
