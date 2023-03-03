@@ -245,4 +245,12 @@ def mycheck() {
     }
     println "Check FAILURE"
 }
+
+def runScript(command) {
+    script {
+        def out=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+        echo "out==$out"
+    }
+}
+
 println updateAll(src, workspace, repo, workbr, mergebr, directory)
