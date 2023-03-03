@@ -43,7 +43,7 @@ pipeline {
                     def bbapppass='9f2d1708-aeee-449d-b133-7f094a262336'
                     def bbapitoken='7881845f-cb99-407a-8a31-ead60535fcaa'
                     def fileName='README.md'
-                    cleanWs()
+                    
                     sh """ echo  a  >> $src  """
                     println("1.  git clone..")
                     checkout([
@@ -61,7 +61,7 @@ pipeline {
                             def project='GRP'
                             def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
 
-                             gitUtils.gitClone(workspace, repo, workbr, directory){
+                             gitUtils.gitClone(workspace, repo, workbr, directory)
                             //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
                             println("2.   git config..")
                             sh """
