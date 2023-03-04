@@ -76,12 +76,15 @@ def getConfig(String workspace, String repo, String workbr, String directory){
 def getPrid(String repoPR){
     println("enter getPrid()")
     def cmd = "curl -u $USERNAME:$PASSWORD -X GET -H 'Content-Type: application/json'  ${repoPR}  "
-              
+    ret=null         
     def output=exeCmd(cmd)
     def obj = readJSON text: output
     //def json=new JsonSlurper()
     //def obj=json.parseText(output)
-    return obj.values[0].id
+    if (obj.size!=0){
+        return obj.values[0].id
+    }
+    return ret
 }
 
 def getMergestatus(String repoPR, int prid){
@@ -136,7 +139,7 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
 
 def mergePR(String repoPR){
     println ("enter mergePR()")
-    
+
     def prid=getPrid(repoPR)
     println("prid=$prid")
     def data=[ type: 'anytype',
