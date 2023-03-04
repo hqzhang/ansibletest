@@ -52,18 +52,18 @@ def exeCmd(String cmd){
 def exeCmd(String cmd){
     println cmd
     script {
-        def out=sh (script: cmd, returnStdout: true).trim()
+        def out=sh(script: cmd, returnStdout: true).trim()
         echo "out==$out"
     }
     return out
 }
-
+/*
 def runScript(command) {
     script {
         def out=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
         echo "out==$out"
     }
-}
+}*/
 
 
 def gitClone(String workspace, String repo, String workbr, String directory){
