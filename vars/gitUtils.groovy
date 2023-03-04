@@ -49,7 +49,7 @@ def exeCmd(String cmd){
     println ("code=$code")
     return out
 }*/
-def exeCmd(String cmd){
+def exeCmd(String command){
     println cmd
     def output=''
     script {
