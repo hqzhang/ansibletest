@@ -53,11 +53,10 @@ def exeCmd(String cmd){
     println cmd
     def output=''
     script {
-        //output = sh(script: cmd, returnStdout: true).trim()
-        output=sh (script: "$cmd && echo \"\nstatus:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+        output = sh(script: cmd, returnStdout: true).trim()
         echo "out==$output"
     }
-    return output.replaceLast("status:.*",'')
+    return output
 }
 /*
 def runScript(command) {
