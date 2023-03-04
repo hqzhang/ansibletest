@@ -82,8 +82,8 @@ pipeline {
                                 #./vars/createMerge.sh
                             """
                             println gitUtils.getPrid(repoPR)
-                            //out=gitUtils.createPR(workbr, mergebr, workspace, repo)
-                            println out//createPR(String workbr, String mergebr,String workspace, String repo){
+                            out=gitUtils.createPR(workbr, mergebr, workspace, repo)
+                            println out
 
                             println "5.   mergePR ()..."
                             println gitUtils.mergePR(repoPR)

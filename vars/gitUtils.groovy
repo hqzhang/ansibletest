@@ -151,10 +151,10 @@ def mergePR(String repoPR){
         ${repoPR}/$prid/merge --data $body""" 
    
     def output=exeCmd(cmd)
-     def obj = readJSON text: output
+    def obj = readJSON text: output
     //def json=new JsonSlurper()
     //def obj=json.parseText(output)
-
+    println("prid=${obj.id}")
     return obj.id
 }
     def workbr='workbr'
