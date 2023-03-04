@@ -36,7 +36,7 @@ def executeCmd(String cmd, String directory){
 }
 
 def exeCmd(String cmd){
-    
+    println cmd
     def proc=cmd.execute()
     //def b = new StringBuffer()
     //proc.consumeProcessErrorStream(b)
@@ -56,23 +56,8 @@ def runScript(command) {
         echo "out==$out"
     }
 }
-/*
-def uploadFile(String fileName,String workbr, String workspace, String repo){
-    def repoUrl
-    println "enter uploadFile1()............"
-    def cmd="""  curl -u $USERNAME:$PASSWORD -X POST ${repoUrl}/src    \
-        -F uploadFile=@uploadFile         \
-        -F message=updatecurl -F branch=test-pr `"""
-    //def output=exeCmd(cmd)
-    println cmd
-    def output = sh ( script: cmd, returnStdout: true ).trim()
 
-    println output
-   
-    return output
-}*/
 
-@NonCPS
 def gitClone(String workspace, String repo, String workbr, String directory){
     println "enter gitClone()"
     //def dest="$directory/CI.yml"
@@ -80,42 +65,14 @@ def gitClone(String workspace, String repo, String workbr, String directory){
     println cmd
     return  executeCmd(cmd, directory)
 }
-@NonCPS
+
 def getConfig(String workspace, String repo, String workbr, String directory){
     println "enter getConfig()"
     def cmd="""git remote set-url origin https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git """
     println cmd
     return  executeCmd(cmd, directory)
 }
-@NonCPS
-def updateAll(String src, String workspace, String repo, String workbr, String mergebr, String directory){
-    println "enter gitFinal()"
-    def dest="$directory/CI.yml"
-    def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
-    
-    println("1.  git clone..")
-    def out=gitClone(workspace, repo, workbr, directory)
-    println out
 
-    println("2.   git config..")
-    out=getConfig(workspace, repo, workbr, directory)
-    println out
-
-    println "3.   git push ..."
-    out=uploadFile(src, workbr)
-    println out
-
-    println "4.   git createPR ..."
-    //out=createPR(workbr, mergebr, workspace, repo)
-    println out//createPR(String workbr, String mergebr,String workspace, String repo){
-
-     println "5.   git mergePR ..."
-    out=mergePR(repoPR)
-    println out
-
-    return out
-}
-@NonCPS
 def getPrid(String repoPR){
     println("enter getPrid()")
     def cmd = "curl -u $USERNAME:$PASSWORD -X GET -H 'Content-Type: application/json'  ${repoPR}  "
