@@ -126,7 +126,7 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
         close_source_branch: true ]
     
     def body=JsonOutput.toJson(data)
-    def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" \
+    def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: application/json" \
               ${repoPR}  --data '$body' """
        
     def output=exeCmd(cmd)
