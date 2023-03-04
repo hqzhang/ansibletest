@@ -57,7 +57,7 @@ def exeCmd(String cmd){
         output=sh (script: "$cmd && echo \"\nstatus:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
         echo "out==$output"
     }
-    return output.replaceLast("status:0|[1-9]\d*$",'')
+    return output.replaceLast("status:.*",'')
 }
 /*
 def runScript(command) {
