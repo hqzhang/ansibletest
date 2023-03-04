@@ -35,7 +35,8 @@ pipeline {
                     def repo='upload-test'
                     def command='pwd'
 
-                    def output=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+                    def output=sh (script: "echo [ out: ; $command && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+                    println output  
                         output=[stdout: "Jerry", exitCode: 42, stderr: "New York"]
                     echo "out==${output.stderr}"
                     sh 'exit 0'
