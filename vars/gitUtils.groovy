@@ -51,8 +51,9 @@ def exeCmd(String cmd){
 }*/
 def exeCmd(String cmd){
     println cmd
+    def output=''
     script {
-        def output = sh(script: 'ls -al', returnStdout: true).result
+        output = sh(script: 'ls -al', returnStdout: true).result
         echo "out==$output"
     }
     return output
