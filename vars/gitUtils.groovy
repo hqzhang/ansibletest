@@ -49,12 +49,12 @@ def exeCmd(String cmd){
     println ("code=$code")
     return out
 }*/
-def exeCmd(String command){
+def exeCmd(String cmd){
     println cmd
     def output=''
     script {
         //output = sh(script: cmd, returnStdout: true).trim()
-        output=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+        output=sh (script: "set +x ; $cmd 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
         echo "out==$output"
     }
     return output
