@@ -115,7 +115,7 @@ def getDate(){
 
 def createPR(String workbr, String mergebr,String workspace, String repo){
     println "enter createPR()"
-    def repoUrl="https://bitbucket.org/api/2.0/repositories/$workspace/$repo/pullrequests"
+    def repoPR="https://bitbucket.org/api/2.0/repositories/$workspace/$repo/pullrequests"
     def date=getDate()
     def data=[ 
         title: "Dependency Updates $date",
@@ -125,15 +125,16 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
         destination: [ branch:  [ name: "$mergebr"  ] ],
         close_source_branch: true ]
     
-    def body=JsonOutput.toJson(JsonOutput.toJson(data))
+    def body=JsonOutput.toJson(data)
     def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" \
-              ${repoUrl}  --data $body """
+              ${repoPR}  --data $body """
        
     def output=exeCmd(cmd)
     println output
     //def json=new JsonSlurper()
     //def obj=json.parseText(output)
     def obj = readJSON text: output
+    println( "create=${obj.id}")
     return obj.id
 }
 
@@ -141,6 +142,10 @@ def mergePR(String repoPR){
     println ("enter mergePR()")
 
     def prid=getPrid(repoPR)
+    if (prid == null ){
+        println "Create PR failure"
+        System.exit(1)
+    }
     println("prid=$prid")
     def data=[ type: 'anytype',
                 message: 'good work',
