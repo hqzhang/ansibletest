@@ -54,7 +54,7 @@ def exeCmd(String cmd){
     def output=''
     script {
         //output = sh(script: cmd, returnStdout: true).trim()
-        output=sh (script: "set +x ; $cmd 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+        output=sh (script: "$cmd && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
         echo "out==$output"
     }
     return output
