@@ -86,9 +86,7 @@ pipeline {
                             println out//createPR(String workbr, String mergebr,String workspace, String repo){
 
                             println "5.   mergePR ()..."
-                            //out=gitUtils.mergePR(repoPR)
-                            println out
-                            
+                            println gitUtils.mergePR(repoPR)
                          }
                 }
             }
