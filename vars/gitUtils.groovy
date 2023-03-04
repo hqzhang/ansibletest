@@ -50,6 +50,7 @@ def exeCmd(String cmd){
     return out
 }*/
 def exeCmd(String cmd){
+    println cmd
     script {
         def out=sh (script: cmd, returnStdout: true).trim()
         echo "out==$out"
