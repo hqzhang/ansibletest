@@ -36,7 +36,7 @@ pipeline {
                     def command='pwd'
 
                     def output=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
-                        output=def map = [stdout: "Jerry", exitCode: 42, stderr: "New York"]
+                        output=[stdout: "Jerry", exitCode: 42, stderr: "New York"]
                     echo "out==${output.stderr}"
                     sh 'exit 0'
                     def ws=env.WORKSPACE
