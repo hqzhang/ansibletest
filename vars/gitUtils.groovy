@@ -111,6 +111,7 @@ def getDate(){
 }
 
 def createPR(String workbr, String mergebr,String workspace, String repo){
+    println "enter createPR()"
     def repoUrl="https://bitbucket.org/api/2.0/repositories/$workspace/$repo/pullrequests"
     def date=getDate()
     def data=[ 
@@ -134,8 +135,8 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
 }
 
 def mergePR(String repoPR){
-   
     println ("enter mergePR()")
+    
     def prid=getPrid(repoPR)
     println("prid=$prid")
     def data=[ type: 'anytype',
