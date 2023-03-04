@@ -62,7 +62,7 @@ pipeline {
                            
                             def dest="$directory/CI.yml"
                             def project='GRP'
-                            def repoPR="https://bitbucket.org/rest/api/1.0/project/$project/repos/$repo/pull-requests"
+                            def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
 
                             //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
                             println("2.   git config..")
@@ -71,10 +71,9 @@ pipeline {
                             """
                             println "3.   uploadFile().."
                             def out=gitUtils.uploadFile(src, workbr,workspace,repo)
-                        
                             println out
 
-                            println "4.   createPR createPR()..."
+                            println "4.   getPrid createPR createPR()..."
 
                             sh """
                                 pwd
@@ -82,11 +81,12 @@ pipeline {
                                 chmod a+x vars/createMerge.sh
                                 #./vars/createMerge.sh
                             """
-                            out=gitUtils.createPR(workbr, mergebr, workspace, repo)
+                            println gitUtils.getPrid(repoPR)
+                            //out=gitUtils.createPR(workbr, mergebr, workspace, repo)
                             println out//createPR(String workbr, String mergebr,String workspace, String repo){
 
                             println "5.   mergePR ()..."
-                            out=gitUtils.mergePR(repoPR)
+                            //out=gitUtils.mergePR(repoPR)
                             println out
                             
                          }
