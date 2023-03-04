@@ -34,8 +34,8 @@ pipeline {
                     echo "Input Parameters: ${params}"
                     def repo='upload-test'
                     def command='pwd'
-                    def out=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
-                    echo "out==$out"
+                    def JsonOutput=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+                    echo "out==$output"
                     sh 'exit 0'
                     def ws=env.WORKSPACE
                     def directory="$ws/$repo"
