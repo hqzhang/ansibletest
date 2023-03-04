@@ -127,7 +127,7 @@ def createPR(String workbr, String mergebr,String workspace, String repo){
     
     def body=JsonOutput.toJson(data)
     def cmd="""curl -u $USERNAME:$PASSWORD -X POST -H "Content-Type: applicatin/json" \
-              ${repoPR}  --data $body """
+              ${repoPR}  --data '$body' """
        
     def output=exeCmd(cmd)
     println output
