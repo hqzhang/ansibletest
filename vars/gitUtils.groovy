@@ -52,10 +52,10 @@ def exeCmd(String cmd){
 def exeCmd(String cmd){
     println cmd
     script {
-        def out=sh(script: cmd, returnStdout: true).trim()
-        echo "out==$out"
+        def output = sh(script: 'ls -al', returnStdout: true).result
+        echo "out==$output"
     }
-    return out
+    return output
 }
 /*
 def runScript(command) {
