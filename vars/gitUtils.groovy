@@ -34,7 +34,7 @@ def executeCmd(String cmd, String directory){
     println output
     return output
 }
-
+/*
 def exeCmd(String cmd){
     println cmd
     def proc=cmd.execute()
@@ -48,6 +48,12 @@ def exeCmd(String cmd){
     println("err:$err")
     println ("code=$code")
     return out
+}*/
+def exeCmd(command) {
+    script {
+        def out=sh (script: cmd, returnStdout: true).trim()
+        echo "out==$out"
+    }
 }
 
 def runScript(command) {
