@@ -9,18 +9,7 @@ properties([
               
     ])
 ])
-def runScript(String cmd) {
-    script {
-        println "run cmd=$cmd"
-        def stdout=sh (script: " $cmd 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ", returnStdout: true).trim()
-        stdout = stdout.split('\n')
-        def status=stdout[-1]
-        print "code=$status"
-        stdout = stdout[0..-2].join('\n')
-        println "stdout=$stdout"
-        return stdout
-   }
-}
+
 pipeline {
     agent any
     
@@ -44,13 +33,11 @@ pipeline {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
                     def repo='upload-test'
-                    def cmd='ls -al'
-                    def std=runScript(cmd)
+                    def cmd='pwd'
+                    def std=gitUtils.exeCmd(cmd)
                     //def output=sh (script:  $command && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
                     println "outputstd=$std"
                    
-                   
-                    sh 'exit 1'
                     def ws=env.WORKSPACE
                     def directory="$ws/$repo"
                     def workbr='feature-test'

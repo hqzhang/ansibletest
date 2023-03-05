@@ -5,20 +5,19 @@ import java.nio.file.StandardCopyOption
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import groovy.transform.Field
-@NonCPS
+
 def copyFile(String srcFile, String destFile){
     def sourcePath = Paths.get(srcFile)
     def destinationPath = Paths.get(destFile)
     Files.copy(sourcePath, destinationPath,StandardCopyOption.REPLACE_EXISTING)
 }
-
+/*
 def executeCmd(String cmd, String directory){
     ProcessBuilder procBuilder = new ProcessBuilder("bash", "-c", cmd);
     procBuilder.directory(new File(directory))
     procBuilder.redirectErrorStream(true);
     def proc = procBuilder.start()
     proc.waitFor()
-    
     def err=proc.exitValue()
     def reader = new BufferedReader(new InputStreamReader(proc.getInputStream()))
    
@@ -33,13 +32,11 @@ def executeCmd(String cmd, String directory){
     println( "-----------------")
     println output
     return output
-}
+}*/
 /*
 def exeCmd(String cmd){
     println cmd
     def proc=cmd.execute()
-    //def b = new StringBuffer()
-    //proc.consumeProcessErrorStream(b)
     proc.waitFor()
     def out=proc.in.text
     def err=proc.err.text
@@ -49,37 +46,17 @@ def exeCmd(String cmd){
     println ("code=$code")
     return out
 }*/
-def exeCmd(String cmd){
-    println cmd
-    def output=''
+def exeCmd(String cmd) {
     script {
-        output = sh(script: cmd, returnStdout: true).trim()
-        echo "out==$output"
-    }
-    return output
-}
-/*
-def runScript(command) {
-    script {
-        def out=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
-        echo "out==$out"
-    }
-}*/
+        println "run cmd=$cmd"
+        def stdout=sh (script: " $cmd 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ", returnStdout: true).trim()
+        stdout = stdout.split('\n')
+        def status=stdout[-1]
+        print "code=$status"
+        stdout = stdout[0..-2].join('\n')
 
-
-def gitClone(String workspace, String repo, String workbr, String directory){
-    println "enter gitClone()"
-    //def dest="$directory/CI.yml"
-    def cmd=""" git clone https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git -b ${workbr} ."""
-    println cmd
-    return  executeCmd(cmd, directory)
-}
-
-def getConfig(String workspace, String repo, String workbr, String directory){
-    println "enter getConfig()"
-    def cmd="""git remote set-url origin https://${USERNAME}:$PASSWORD@bitbucket.org/$workspace/${repo}.git """
-    println cmd
-    return  executeCmd(cmd, directory)
+        return stdout
+   }
 }
 
 def getPrid(String repoPR){
@@ -118,7 +95,7 @@ def uploadFile1(String fileName,String workbr, String workspace, String repo){
 
 import java.text.SimpleDateFormat
 def getDate(){
-    def sdf = new SimpleDateFormat("yyyy-mm-dd")
+    def sdf = new SimpleDateFormat("yyyy-MM-dd")
     return sdf.format(new Date())
 }
 
