@@ -9,7 +9,19 @@ properties([
               
     ])
 ])
-
+def runScript(command) {
+    script {
+        def output=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+        echo "out==$output"
+    }
+    def lines = output.split('\n')
+    def status=output.last()
+    print "code=$status"
+    lines = lines[0..-2] 
+    def stdout = lines.join('\n')
+    println "stdout=$stdout"
+    return stdout
+}
 pipeline {
     agent any
     
@@ -34,17 +46,12 @@ pipeline {
                     echo "Input Parameters: ${params}"
                     def repo='upload-test'
                     def command='ls -al '
-
-                    def output=sh (script:  $command && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
-                    println "output=$output"
-                    def lines = output.split('\n')
-                    def status=lines.last()
-                    print "status=$status"
-                    lines = lines[0..-2] 
-                    def stdout = lines.join('\n')
-                    println "stdout=$stdout"
+                    def std=runScript(command)
+                    //def output=sh (script:  $command && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+                    println "outputstd=$std"
                    
-                    sh 'exit 0'
+                   
+                    sh 'exit 1'
                     def ws=env.WORKSPACE
                     def directory="$ws/$repo"
                     def workbr='feature-test'
