@@ -9,9 +9,10 @@ properties([
               
     ])
 ])
-def runScript(command) {
+def runScript(String cmd) {
     script {
-        def stdout=sh (script: " $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+        println "run cmd=$cmd"
+        def stdout=sh (script: " $cmd 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
         stdout = stdout.split('\n')
         def status=stdout[-1]
         print "code=$status"
@@ -43,7 +44,7 @@ pipeline {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
                     def repo='upload-test'
-                    def command='ls -al asd'
+                    def command='pwd'
                     def std=runScript(command)
                     //def output=sh (script:  $command && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
                     println "outputstd=$std"
