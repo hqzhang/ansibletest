@@ -33,7 +33,7 @@ pipeline {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
                     def repo='upload-test'
-                    def command='pwd'
+                    def command='ls -al xyz'
 
                     def output=sh (script: "set +x ; $command && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
                     println output  
