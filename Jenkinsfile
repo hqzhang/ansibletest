@@ -15,7 +15,7 @@ def runScript(command) {
         echo "out==$output"
     
     def lines = output.split('\n')
-    def status=output.last()
+    def status=output[-1]
     print "code=$status"
     lines = lines[0..-2] 
     def stdout = lines.join('\n')
