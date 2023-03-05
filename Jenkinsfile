@@ -12,7 +12,7 @@ properties([
 def runScript(String cmd) {
     script {
         println "run cmd=$cmd"
-        def stdout=sh (script: " $cmd 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+        def stdout=sh (script: " $cmd 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ", returnStdout: true).trim()
         stdout = stdout.split('\n')
         def status=stdout[-1]
         print "code=$status"
