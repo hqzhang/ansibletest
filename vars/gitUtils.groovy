@@ -50,11 +50,12 @@ def exeCmd(String cmd) {
     script {
         println "run cmd=$cmd"
         def stdout=sh (script: " $cmd 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ", returnStdout: true).trim()
+        print "originoutput=$stdout"
         stdout = stdout.split('\n')
         def status=stdout[-1]
-        print "code=$status"
+        println "code=$status"
         stdout = stdout[0..-2].join('\n')
-
+        print "onlyoutput=$stdout"
         return stdout
    }
 }
