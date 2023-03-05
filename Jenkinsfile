@@ -39,11 +39,11 @@ pipeline {
                     println output  
                     def lines = output.split('\n')
                     def status=lines.last()
-                    print status
+                    print "status=$status"
                     lines = lines[0..-2] 
                     def stdout = lines.join('\n')
-                    println stdout
-                    echo "out==${output.stderr}"
+                    println "stdout=$stdout"
+                   
                     sh 'exit 0'
                     def ws=env.WORKSPACE
                     def directory="$ws/$repo"
