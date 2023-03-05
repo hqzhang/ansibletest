@@ -11,7 +11,7 @@ properties([
 ])
 def runScript(command) {
     script {
-        def stdout=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+        def stdout=sh (script: " $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
         stdout = stdout.split('\n')
         def status=stdout[-1]
         print "code=$status"
