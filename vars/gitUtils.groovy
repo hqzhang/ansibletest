@@ -63,13 +63,13 @@ def exeCmd1(String cmd) {
 def exeCmd(String cmd) {
     script {
         println "run cmd=$cmd"
-        def stdout=sh (script: " $cmd && echo \"\n status:\$?\" ", returnStdout: true).trim()
+        def stdout=sh (script: cmd , returnStdout: true).trim()
         print "originoutput=$stdout"
-        stdout = stdout.split('\n')
+        /*stdout = stdout.split('\n')
         def status=stdout[-1]
         println "code=$status"
         stdout = stdout[0..-2].join('\n')
-        print "onlyoutput=$stdout"
+        print "onlyoutput=$stdout"8*/
         return stdout
    }
 }
