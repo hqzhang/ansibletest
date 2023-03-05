@@ -13,7 +13,7 @@ def runScript(command) {
     script {
         def output=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
         echo "out==$output"
-    }
+    
     def lines = output.split('\n')
     def status=output.last()
     print "code=$status"
@@ -21,6 +21,7 @@ def runScript(command) {
     def stdout = lines.join('\n')
     println "stdout=$stdout"
     return stdout
+   }
 }
 pipeline {
     agent any
