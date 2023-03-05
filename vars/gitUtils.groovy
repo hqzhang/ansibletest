@@ -49,7 +49,7 @@ def exeCmd(String cmd){
 def exeCmd(String cmd) {
     script {
         println "run cmd=$cmd"
-        def stdout=sh (script: " $cmd && echo \"status:\$?\" || echo \"status:\$?\" ", returnStdout: true).trim()
+        def stdout=sh (script: " $cmd || echo \"status:\$?\" ", returnStdout: true).trim()
         print "originoutput=$stdout"
         stdout = stdout.split('\n')
         def status=stdout[-1]
