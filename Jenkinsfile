@@ -11,16 +11,16 @@ properties([
 ])
 def runScript(command) {
     script {
-        def output=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+        def out=sh (script: "set +x ; $command 2>&1 && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
         echo "out==$output"
     
-    def lines = output.split('\n')
+    def lines = out.split('\n')
     def status=lines[-1]
     print "code=$status"
     lines = lines[0..-2] 
-    def stdout = lines.join('\n')
-    println "stdout=$stdout"
-    return stdout
+    lines = lines.join('\n')
+    println "stderrout=$lines"
+    return lines
    }
 }
 pipeline {
