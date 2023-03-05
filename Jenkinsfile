@@ -36,7 +36,7 @@ pipeline {
                     def command='ls -al xyz'
 
                     def output=sh (script: "set +x ; $command && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
-                    println output  
+                    println "output=$output"
                     def lines = output.split('\n')
                     def status=lines.last()
                     print "status=$status"
