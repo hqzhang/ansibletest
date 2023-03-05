@@ -33,9 +33,9 @@ pipeline {
                     echo "Stage: Run Ansible Playbook..."
                     echo "Input Parameters: ${params}"
                     def repo='upload-test'
-                    def command='ls -al c'
+                    def command='ls -al '
 
-                    def output=sh (script: "set +x ; $command && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
+                    def output=sh (script:  $command && echo \"status:\$?\" || echo \"status:\$?\" ; exit 0", returnStdout: true).trim()
                     println "output=$output"
                     def lines = output.split('\n')
                     def status=lines.last()
