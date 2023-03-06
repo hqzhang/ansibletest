@@ -173,7 +173,7 @@ def mergePR(String repoPR){
     def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
     def fileName='CI.yml'
 
-          
+/*        
 def uploadFile(String fileName,String workbr, String workspace, String repo){
     println "enter uploadFile()"
     def repoUrl="https://api.bitbucket.org/2.0/repositories/${workspace}/${repo}/src"
@@ -183,6 +183,30 @@ def uploadFile(String fileName,String workbr, String workspace, String repo){
     println cmd
     def output=exeCmd(cmd)
     return output
+}*/
+
+def uploadFile(String fileName,String workbr, String workspace, String repo){
+    println "enter uploadFile()"
+    dir(repo){
+        def cmd="git checkout ${workbr}"
+        println runScript(cmd)""
+
+        cmd="git pull origin ${merge}"
+        println runScript(cmd)
+
+        cmd="cp ../${fileName}  . "
+        println runScript(cmd)
+
+        cmd="git add -u . "
+        println runScript(cmd)
+        
+        cmd="git commit -m update"
+        println runScript(cmd)
+
+        cmd="git push -f"
+        println runScript(cmd)
+    }
+   
 }
 
 println updateAll(src, workspace, repo, workbr, mergebr, directory)
