@@ -63,7 +63,7 @@ pipeline {
                     sh 'pwd; ls -al'
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                           
+                            def fileName='CI.yml'
                             def dest="$directory/CI.yml"
                             def project='GRP'
                             def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
@@ -75,7 +75,7 @@ pipeline {
                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
                             """
                             println "3.   uploadFile().."
-                            def out=gitUtils.uploadFile(src, workbr,mergebr,repo)
+                            def out=gitUtils.uploadFile(fileName, workbr,mergebr,repo)
                             println out
 
                             println "4.   getPrid createPR createPR()..."
