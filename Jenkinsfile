@@ -46,7 +46,7 @@ pipeline {
                     def src="$ws/CI.yml"
                     def bbapppass='9f2d1708-aeee-449d-b133-7f094a262336'
                     def bbapitoken='7881845f-cb99-407a-8a31-ead60535fcaa'
-                    def fileName='README.md'
+                    def fileName='CI.yml'
                     
                     sh """ echo  a  >> $src  """
                     println("1.  git clone..")
@@ -63,7 +63,7 @@ pipeline {
                     sh 'pwd; ls -al'
                     withCredentials([usernamePassword(credentialsId: bbapppass, \
                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                            def fileName='CI.yml'
+                            
                             def dest="$directory/CI.yml"
                             def project='GRP'
                             def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
