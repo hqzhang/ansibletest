@@ -73,6 +73,8 @@ pipeline {
                             sh """
                                  cd $repo;
                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
+                                 git config --global user.name "hongqi"
+                                 git config --global user.email "hongqi@hotmail.com""
                             """
                             println "3.   uploadFile().."
                             def out=gitUtils.uploadFile(fileName, workbr,mergebr,repo)
