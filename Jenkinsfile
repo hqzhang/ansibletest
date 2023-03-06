@@ -74,7 +74,7 @@ pipeline {
                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
                             """
                             println "3.   uploadFile().."
-                            def out=gitUtils.uploadFile(src, workbr,merdebr,repo)
+                            def out=gitUtils.uploadFile(src, workbr,mergebr,repo)
                             println out
 
                             println "4.   getPrid createPR createPR()..."
