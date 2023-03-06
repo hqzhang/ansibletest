@@ -191,7 +191,7 @@ def uploadFile(String fileName,String workbr, String workspace, String repo){
        // def cmd="git checkout ${workbr}"
         //println exeCmd(cmd)""
 
-        cmd="git pull origin ${merge}"
+        cmd="git pull origin ${mergebr}"
         println exeCmd(cmd)
 
         cmd="cp ../${fileName}  . "
