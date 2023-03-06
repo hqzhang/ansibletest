@@ -48,7 +48,7 @@ pipeline {
                     def bbapitoken='7881845f-cb99-407a-8a31-ead60535fcaa'
                     def fileName='CI.yml'
                     
-                    sh """ echo  a  >> $src  """
+                    sh """ echo  a  >> $fileName  """
                     println("1.  git clone..")
                     sh 'pwd; ls -al'
                     checkout([
