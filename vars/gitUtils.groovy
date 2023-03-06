@@ -189,22 +189,22 @@ def uploadFile(String fileName,String workbr, String workspace, String repo){
     println "enter uploadFile()"
     dir(repo){
         def cmd="git checkout ${workbr}"
-        println runScript(cmd)""
+        println exeCmd(cmd)""
 
         cmd="git pull origin ${merge}"
-        println runScript(cmd)
+        println exeCmd(cmd)
 
         cmd="cp ../${fileName}  . "
-        println runScript(cmd)
+        println exeCmd(cmd)
 
         cmd="git add -u . "
-        println runScript(cmd)
+        println exeCmd(cmd)
         
         cmd="git commit -m update"
-        println runScript(cmd)
+        println exeCmd(cmd)
 
         cmd="git push -f"
-        println runScript(cmd)
+        println exeCmd(cmd)
     }
    
 }
