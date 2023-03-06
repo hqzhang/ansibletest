@@ -185,7 +185,7 @@ def uploadFile(String fileName,String workbr, String workspace, String repo){
     return output
 }*/
 
-def uploadFile(String fileName,String workbr, String workspace, String repo){
+def uploadFile(String fileName,String workbr, String mergebr, String repo){
     println "enter uploadFile()"
     dir(repo){
        // def cmd="git checkout ${workbr}"
