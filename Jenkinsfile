@@ -81,7 +81,7 @@ pipeline {
                             println "3.   uploadFile().."
                             def out=gitUtils.uploadFile(fileName, workbr,mergebr,workspace,repo)
                             println out
-wo
+
                             println "4.   getPrid createPR createPR()..."
 
                             sh """

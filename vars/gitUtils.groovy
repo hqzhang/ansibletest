@@ -5,13 +5,14 @@ import java.nio.file.StandardCopyOption
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import groovy.transform.Field
+import java.text.SimpleDateFormat
 
 def copyFile(String srcFile, String destFile){
     def sourcePath = Paths.get(srcFile)
     def destinationPath = Paths.get(destFile)
     Files.copy(sourcePath, destinationPath,StandardCopyOption.REPLACE_EXISTING)
 }
-/*
+/*//This function consumes too much resource, can not be used in groovy library
 def executeCmd(String cmd, String directory){
     ProcessBuilder procBuilder = new ProcessBuilder("bash", "-c", cmd);
     procBuilder.directory(new File(directory))
@@ -26,14 +27,13 @@ def executeCmd(String cmd, String directory){
     while ((line = reader.readLine()) != null) {
         output = output +line+ "\n"
     }
-    
     println( "-----------------")
     println("exitValue: " + err)
     println( "-----------------")
     println output
     return output
 }*/
-/*
+/*This function also cusumes more resources , so sh command is better to use
 def exeCmd(String cmd){
     println cmd
     def proc=cmd.execute()
@@ -98,18 +98,8 @@ def getMergestatus(String repoPR, int prid){
     return obj.canMerge
 }
 
-def uploadFile1(String fileName,String workbr, String workspace, String repo){
-    println "enter uploadFile()"
-    def repoUrl="https://api.bitbucket.org/2.0/repositories/${workspace}/${repo}/src"
-    def cmd = "curl -u ${USERNAME}:${PASSWORD} -X POST ${repoUrl}   \
-              -F ${fileName}=@${fileName}  \
-              -F message=updatecurl -F branch=${workbr}"
-    println cmd
-    def output=exeCmd(cmd)
-    return output
-}
 
-import java.text.SimpleDateFormat
+
 def getDate(){
     def sdf = new SimpleDateFormat("yyyy-MM-dd")
     return sdf.format(new Date())
