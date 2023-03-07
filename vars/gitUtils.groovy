@@ -186,7 +186,7 @@ def uploadFile(String fileName,String workbr, String workspace, String repo){
     return output
 }*/
 
-def uploadFile(String fileName,String workbr, String mergebr,String workspace String repo){
+def uploadFile(String fileName,String workbr, String mergebr,String workspace, String repo){
     println "enter uploadFile()00000000"
     dir(repo){
         println "1. git config"
