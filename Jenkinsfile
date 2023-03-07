@@ -73,7 +73,7 @@ pipeline {
                             sh """
                                  cd $repo;
                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
-                                 git config --global user.name "hongqi"
+                                 git config --global user.name "hongqi zhang"
                                  git config --global user.email "hongqi@hotmail.com""
                             """
                             println "3.   uploadFile().."
