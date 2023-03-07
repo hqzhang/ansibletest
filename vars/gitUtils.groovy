@@ -195,18 +195,23 @@ def uploadFile(String fileName,String workbr, String mergebr, String repo){
         println exeCmd(cmd)
 
         cmd="git pull origin ${mergebr}"
+        println $cmd
         println exeCmd(cmd)
 
         cmd="cp ../${fileName}  . "
+        println $cmd
         println exeCmd(cmd)
 
         cmd="git add -u . "
+        println $cmd
         println exeCmd(cmd)
         
         cmd="git commit -m update"
+        println $cmd
         println exeCmd(cmd)
 
         cmd="git push -f"
+        println $cmd
         println exeCmd(cmd)
     }
    
