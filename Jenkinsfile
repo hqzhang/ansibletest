@@ -70,18 +70,18 @@ pipeline {
 
                             //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
                             println("2.   git config..")
-                            sh """
+                            /*sh """
                                 
                                 whoami
                                  cd $repo;
                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
                                  git config --global user.name "hongqi zhang"
                                  git config --global user.email "hongqi@hotmail.com"
-                            """
+                            """*/
                             println "3.   uploadFile().."
-                            def out=gitUtils.uploadFile(fileName, workbr,mergebr,repo)
+                            def out=gitUtils.uploadFile(fileName, workbr,mergebr,workspace,repo)
                             println out
-
+wo
                             println "4.   getPrid createPR createPR()..."
 
                             sh """

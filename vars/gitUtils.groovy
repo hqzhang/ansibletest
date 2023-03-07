@@ -186,20 +186,24 @@ def uploadFile(String fileName,String workbr, String workspace, String repo){
     return output
 }*/
 
-def uploadFile(String fileName,String workbr, String mergebr, String repo){
+def uploadFile(String fileName,String workbr, String mergebr,String workspace String repo){
     println "enter uploadFile()00000000"
     dir(repo){
-        println "enter uploadFile()111111"
+        println "1. git config"
+        def cmd="git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git "
+        println exeCmd(cmd)
+
+        println "2. git pull"
         def cmd="git checkout ${workbr}; git branch; git pull origin ${mergebr}"
-        
         println cmd
         println exeCmd(cmd)
-        println "debug 444444"
 
+        println "3. copy file"
         cmd="cp ../${fileName}  . "
         println cmd
         println exeCmd(cmd)
 
+        println "git push"
         cmd="git add -u . ;git commit -m update; git push -f"
         println cmd
         println exeCmd(cmd)
