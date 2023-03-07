@@ -200,11 +200,7 @@ def uploadFile(String fileName,String workbr, String mergebr, String repo){
         println $cmd
         println exeCmd(cmd)
 
-        cmd="git add -u . 
-        git commit -m update
-        git push -f"
-        println $cmd
-        
+        cmd="git add -u . ;git commit -m update; git push -f"
         println $cmd
         println exeCmd(cmd)
         
