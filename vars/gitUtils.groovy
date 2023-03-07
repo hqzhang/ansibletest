@@ -190,11 +190,8 @@ def uploadFile(String fileName,String workbr, String mergebr, String repo){
     println "enter uploadFile()00000000"
     dir(repo){
         println "enter uploadFile()111111"
-        def cmd="git checkout ${workbr}
-        git branch
-        git pull origin ${mergebr}"
-        "
-      
+        def cmd="git checkout ${workbr}; git branch; git pull origin ${mergebr}"
+        
         println $cmd
         println exeCmd(cmd)
         println "debug 444444"
