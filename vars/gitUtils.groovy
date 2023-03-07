@@ -190,37 +190,28 @@ def uploadFile(String fileName,String workbr, String mergebr, String repo){
     println "enter uploadFile()00000000"
     dir(repo){
         println "enter uploadFile()111111"
-        def cmd="git checkout ${workbr}"
-        println "enter uploadFile()222222"
-        println exeCmd(cmd)""
-        println "enter uploadFile()3333333"
-        println "debug 11111"
-
-        cmd="git branch"
-        println exeCmd(cmd)
-        println "debug 222222"
-
-        cmd="git pull origin ${mergebr}"
-        println "debug 33333"
+        def cmd="git checkout ${workbr}
+        git branch
+        git pull origin ${mergebr}"
+        "
+      
         println $cmd
         println exeCmd(cmd)
-          println "debug 444444"
+        println "debug 444444"
 
         cmd="cp ../${fileName}  . "
         println $cmd
         println exeCmd(cmd)
 
-        cmd="git add -u . "
+        cmd="git add -u . 
+        git commit -m update
+        git push -f"
+        println $cmd
+        
         println $cmd
         println exeCmd(cmd)
         
-        cmd="git commit -m update"
-        println $cmd
-        println exeCmd(cmd)
-
-        cmd="git push -f"
-        println $cmd
-        println exeCmd(cmd)
+        
     }
    
 }
