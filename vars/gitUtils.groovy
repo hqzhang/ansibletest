@@ -194,7 +194,7 @@ def uploadFile(String fileName,String workbr, String mergebr,String workspace, S
         println exeCmd(cmd)
 
         println "2. git pull"
-        def cmd="git checkout ${workbr}; git branch; git pull origin ${mergebr}"
+        cmd="git checkout ${workbr}; git branch; git pull origin ${mergebr}"
         println cmd
         println exeCmd(cmd)
 
