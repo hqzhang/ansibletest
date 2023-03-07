@@ -71,7 +71,7 @@ pipeline {
                             //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
                             println("2.   git config..")
                             sh """
-                                echo "$HOME"
+                                
                                 whoami
                                  cd $repo;
                                  git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
