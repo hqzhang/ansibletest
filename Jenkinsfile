@@ -34,7 +34,7 @@ pipeline {
                     echo "Input Parameters: ${params}"
                     def repo='upload-test'
                     def cmd='pwd'
-                    sh (script: cmd , returnStdout: true, returnStatus:true).trim()
+                    sh (script: cmd , returnStdout: true, returnStatus:true)
 
                     
                     def std=gitUtils.exeCmd(cmd)
