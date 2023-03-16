@@ -165,6 +165,7 @@ def getGlobals(){
 }
 
 def graceExit(){
+    println( "I want to jump out and exit")
     error( "I want to jump out")
     return
 }

@@ -131,8 +131,8 @@ def mergePR(String repoPR){
 
     def prid=getPrid(repoPR)
     if (prid == null ){
-        println "Create PR failure"
-        System.exit(1)
+        error( "Create PR failure")
+        
     }
     println("prid=$prid")
     def data=[ type: 'anytype',
