@@ -27,6 +27,14 @@ pipeline {
     }
 
     stages {
+        stage('Stage: Testing grace exit'){
+            steps { 
+                script {
+                    echo "Stage: Testing grace exit"
+                    utils.graceExit()
+                }
+            }
+        }
         stage('Stage: Run Ansible Playbook'){
             steps { 
                 script {
@@ -71,16 +79,8 @@ pipeline {
                             def project='GRP'
                             def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
 
-                            //def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
                             println("2.   git config..")
-                            /*sh """
-                                
-                                whoami
-                                 cd $repo;
-                                 git remote set-url origin https://${USERNAME}:${PASSWORD}@bitbucket.org/${workspace}/${repo}.git 
-                                 git config --global user.name "hongqi zhang"
-                                 git config --global user.email "hongqi@hotmail.com"
-                            """*/
+                            
                             println "3.   uploadFile().."
                             def out=gitUtils.uploadFile(fileName, workbr,mergebr,workspace,repo)
                             println out

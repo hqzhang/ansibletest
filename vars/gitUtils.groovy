@@ -65,15 +65,11 @@ def exeCmd(String cmd) {
         println "run cmd111=$cmd"
         def stdout=sh (script: cmd , returnStdout: true).trim()
         print "originoutput2222=$stdout"
-        /*stdout = stdout.split('\n')
-        def status=stdout[-1]
-        println "code=$status"
-        stdout = stdout[0..-2].join('\n')
-        print "onlyoutput=$stdout"8*/
-        print "originoutput33333"
         return stdout
    }
 }
+returnStatus:true
+
 
 def getPrid(String repoPR){
     println("enter getPrid()")

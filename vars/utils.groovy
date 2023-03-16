@@ -164,4 +164,8 @@ def getGlobals(){
     echo "Tool_install6=$Tool_install"
 }
 
+def graceExit(){
+
+    return
+}
 return this
