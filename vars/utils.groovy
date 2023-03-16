@@ -5,7 +5,7 @@ def call(String name = 'human') {
     // Scripted Pipeline
     echo "Hello, ${name}."
 }
-@NonCPS
+
 def exeCmd(String cmd, String directory){
     def command = cmd.split()
     def processBuilder = new ProcessBuilder(command)
@@ -23,13 +23,13 @@ def exeCmd(String cmd, String directory){
     
     return output
 }
-@NonCPS
+
 def gitCmd(String cmd, String directory){
     println directory
     def output=exeCmd(cmd,directory)
     return output
 }
-@NonCPS
+
 def shellCommand(String cmd){
     println "define command to nexus/github/bitbucket"
     def data=[ version: "$version"]
@@ -43,32 +43,32 @@ def shellCommand(String cmd){
     println obj.values1
     return [out,err]
 }
-@NonCPS
+
 def gitStatus(String directory){
     def cmd="git status";
     def output=exeCmd(cmd,directory)
     return output
 }
-@NonCPS
+
 def gitAddall(String directory){
     def cmd="git add -u .";
     def output=exeCmd(cmd,directory)
     return output
 }
-@NonCPS
+
 def gitCheckout(String directory){
     println directory
     def cmd="git checkout"
     def output=exeCmd(cmd,directory)
     return output
 }
-@NonCPS
+
 def gitBranch(String directory){
     def cmd="git branch"
     def output=exeCmd(cmd,directory)
     return output
 }
-@NonC
+
 def gitPull(String directory){
     println directory
     def cmd="git pull"
