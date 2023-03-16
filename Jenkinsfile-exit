@@ -1,0 +1,35 @@
+def version = 'main'
+library("my-shared-lib@$version") _
+//Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any 
+    stages {
+        stage('Build') { 
+            steps {
+                script{
+                    echo "Stage: Testing grace exit"
+                    utils.graceExit()
+                    echo "End: Testing grace exit*********"
+               }
+            }
+        }
+        stage('Test') { 
+            steps {
+                 script{
+                    echo "Stage: Test"
+                    echo "End: Test********"
+               }
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                 script{
+                    echo "Stage: Deploy"
+                    
+                    echo "End: Deploy"
+               }
+                // 
+            }
+        }
+    }
+}
