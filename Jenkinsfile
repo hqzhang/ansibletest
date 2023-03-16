@@ -32,6 +32,7 @@ pipeline {
                 script {
                     echo "Stage: Testing grace exit"
                     utils.graceExit()
+                    echo "End: Testing grace exit*********"
                 }
             }
         }
@@ -102,6 +103,7 @@ pipeline {
                          }
                 }
             }
+            echo "End: Last exit*********"
         }
         
     }
