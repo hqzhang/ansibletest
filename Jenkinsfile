@@ -36,6 +36,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Stage: Run Ansible Playbook'){
             steps { 
                 script {
