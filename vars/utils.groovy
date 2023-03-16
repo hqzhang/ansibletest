@@ -165,7 +165,7 @@ def getGlobals(){
 }
 
 def graceExit(){
-    echo "I want to jump out"
+    error( "I want to jump out")
     return
 }
 return this
