@@ -1,5 +1,6 @@
 def version = 'main'
 library("my-shared-lib@$version") _
+println "wksp=${env.WORKSPACE}"
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
@@ -12,7 +13,7 @@ properties([
     ])
 ])
 println con.getCurrent()
-println env.WORKSPACE
+println "wksp=${env.WORKSPACE}"
 pipeline {
     agent any
     
@@ -34,6 +35,7 @@ pipeline {
             steps { 
                 script {
                     echo "Stage: Testing grace exit"
+                    println "wksp=${env.WORKSPACE}"
                     utils.graceExit()
                     echo "End: Testing grace exit*********"
                 }
