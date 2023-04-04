@@ -12,6 +12,7 @@ properties([
     ])
 ])
 println con.getCurrent()
+println env.WORKSPACE
 pipeline {
     agent any
     
