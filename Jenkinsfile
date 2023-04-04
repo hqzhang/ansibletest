@@ -38,7 +38,7 @@ pipeline {
                    echo "WRITE FILE8888888888"
                    def date = new Date()
                     data = data + date
-                    writeFile file: 'solution_out.yaml', text: env.
+                    writeFile file: 'solution_out.yaml', text: env.CONFIG
                }
            }
        }
