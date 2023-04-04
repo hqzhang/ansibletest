@@ -13,7 +13,7 @@ properties([
               
     ])
 ])
-println con.readConfig('solution.yaml')
+println con.curlConfig('solution.yaml')
 //println writeConfig()
 pipeline {
     agent any
@@ -36,7 +36,9 @@ pipeline {
            steps {
                script {
                    echo "WRITE FILE8888888888"
-                   con.writeConfig()
+                   def date = new Date()
+                    data = data + date
+                    writeFile file: 'solution_out.yaml', text: env.
                }
            }
        }
@@ -44,7 +46,7 @@ pipeline {
            steps {
                script {
                    echo "READ FILE8888888888"
-                   con.readConfig()
+                   con.readConfig('solution.yaml')
                }
            }
        }
