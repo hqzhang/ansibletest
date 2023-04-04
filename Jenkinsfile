@@ -13,7 +13,7 @@ properties([
               
     ])
 ])
-println readConfig()
+println con.readConfig()
 //println writeConfig()
 pipeline {
     agent any
