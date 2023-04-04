@@ -16,3 +16,5 @@ def getCurrent(){
    def cmd='pwd'
    return cmd.execute().text
 }
+
+return this
