@@ -9,11 +9,11 @@ properties([
               string(name: 'UpDirs', defaultValue: 'my_var_params', description: 'input ansble config '),
               string(name: 'MY_VAR_P', defaultValue: '/tmp/file1,     /tmp/file2', description: 'input ansble config '),
               string(name: 'myPath', defaultValue: './ansible/', description: 'input ansble config '),
-              text(name: 'CONFIG', defaultValue: con.readConfig(),description: 'input read file'),
+              text(name: 'CONFIG', defaultValue: con.curlConfig('solution.yaml'),description: 'input read file'),
               
     ])
 ])
-println con.readConfig()
+println con.readConfig('solution.yaml')
 //println writeConfig()
 pipeline {
     agent any

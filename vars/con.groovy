@@ -1,11 +1,16 @@
-def readConfig(){
-     def cmd = "curl https://raw.githubusercontent.com/hqzhang/ansibletest/main/solution.yaml"
+def curlConfig(String fileName){
+     def cmd = "curl https://raw.githubusercontent.com/hqzhang/ansibletest/main/$fileName"
      return cmd.execute().text
 }
-def writeConfig(){
+def readConfig(String fileName){
+    def data=readFile file: fileName
+    return data
+}
+
+def writeConfig(String data){
    def date = new Date()
-   def data = "Hello World\nSecond line\n" + date
-   writeFile(file: 'solution_out.yaml', text: data)
+   data = data + date
+   writeFile file: 'solution_out.yaml', text: data
 }
 
 def getCurrent(){
