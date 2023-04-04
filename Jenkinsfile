@@ -35,19 +35,15 @@ pipeline {
            steps {
                script {
                    echo "WRITE FILE8888888888"
-                   def date = new Date()
-                   def data = "Hello World\nSecond line\n" + date
-                   writeFile(file: 'zorg.txt', text: data)
-                   sh "ls -l"
+                   con.writeConfig()
                }
            }
        }
        stage('read') {
            steps {
                script {
-                    echo "READ FILE8888888888"
-                   def data = readFile(file: 'zorg.txt')
-                   println(data)
+                   echo "READ FILE8888888888"
+                   con.readConfig()
                }
            }
        }
