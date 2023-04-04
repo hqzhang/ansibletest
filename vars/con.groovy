@@ -1,7 +1,5 @@
 def readConfig(){
-     echo "READ FILE8888888888"
      def data = readFile(file: 'solution.yaml')
-     println(data)
      return data
 }
 

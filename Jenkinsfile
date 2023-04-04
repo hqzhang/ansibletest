@@ -1,6 +1,15 @@
 def version = 'main'
 library("my-shared-lib@$version") _
 println "wksp=${env.WORKSPACE}"
+def readConfig(){
+     def data = readFile(file: 'solution.yaml')
+     return data
+}
+def writeConfig(){
+   def date = new Date()
+   def data = "Hello World\nSecond line\n" + date
+   writeFile(file: 'solution_out.yaml', text: data)
+}
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
@@ -12,8 +21,8 @@ properties([
               
     ])
 ])
-println con.readConfig()
-println con.writeConfig()
+println readConfig()
+println writeConfig()
 pipeline {
     agent any
     
