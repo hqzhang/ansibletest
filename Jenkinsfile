@@ -2,8 +2,8 @@ def version = 'main'
 library("my-shared-lib@$version") _
 println "wksp=${env.WORKSPACE}"
 def readConfig(){
-     def data = readFile(file: 'solution.yaml')
-     return data
+     def cmd = "curl https://raw.githubusercontent.com/hqzhang/ansibletest/main/solution.yaml"
+     return cmd.execute().text
 }
 def writeConfig(){
    def date = new Date()
@@ -21,8 +21,8 @@ properties([
               
     ])
 ])
-//println readConfig()
-println writeConfig()
+println readConfig()
+//println writeConfig()
 pipeline {
     agent any
     
