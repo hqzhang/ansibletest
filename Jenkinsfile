@@ -34,6 +34,7 @@ pipeline {
         stage('write') {
            steps {
                script {
+                   echo "WRITE FILE8888888888"
                    def date = new Date()
                    def data = "Hello World\nSecond line\n" + date
                    writeFile(file: 'zorg.txt', text: data)
@@ -44,6 +45,7 @@ pipeline {
        stage('read') {
            steps {
                script {
+                    echo "READ FILE8888888888"
                    def data = readFile(file: 'zorg.txt')
                    println(data)
                }
