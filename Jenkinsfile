@@ -12,8 +12,8 @@ properties([
               
     ])
 ])
-println con.getCurrent()
-println "wksp=${env.WORKSPACE}"
+println con.readConfig()
+println con.writeConfig()
 pipeline {
     agent any
     
