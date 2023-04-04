@@ -36,9 +36,7 @@ pipeline {
            steps {
                script {
                    echo "WRITE FILE8888888888"
-                   def date = new Date()
-                    data = data + date
-                    writeFile file: 'solution_out.yaml', text: env.CONFIG
+                   writeFile file: 'solution_out.yaml', text: env.CONFIG
                }
            }
        }
@@ -46,7 +44,7 @@ pipeline {
            steps {
                script {
                    echo "READ FILE8888888888"
-                   con.readConfig('solution.yaml')
+                   println con.readConfig('solution.yaml')
                }
            }
        }
