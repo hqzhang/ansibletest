@@ -11,7 +11,7 @@ properties([
               
     ])
 ])
-
+println con.getCurrent()
 pipeline {
     agent any
     
