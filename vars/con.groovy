@@ -1,8 +1,7 @@
 def readConfig(){
-     def data = readFile(file: 'solution.yaml')
-     return data
+     def cmd = "curl https://raw.githubusercontent.com/hqzhang/ansibletest/main/solution.yaml"
+     return cmd.execute().text
 }
-
 def writeConfig(){
    def date = new Date()
    def data = "Hello World\nSecond line\n" + date

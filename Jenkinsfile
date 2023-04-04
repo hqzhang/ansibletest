@@ -1,15 +1,7 @@
 def version = 'main'
 library("my-shared-lib@$version") _
 println "wksp=${env.WORKSPACE}"
-def readConfig(){
-     def cmd = "curl https://raw.githubusercontent.com/hqzhang/ansibletest/main/solution.yaml"
-     return cmd.execute().text
-}
-def writeConfig(){
-   def date = new Date()
-   def data = "Hello World\nSecond line\n" + date
-   writeFile(file: 'solution_out.yaml', text: data)
-}
+
 properties([
    pipelineTriggers([githubPush()]),
    parameters([
@@ -17,7 +9,7 @@ properties([
               string(name: 'UpDirs', defaultValue: 'my_var_params', description: 'input ansble config '),
               string(name: 'MY_VAR_P', defaultValue: '/tmp/file1,     /tmp/file2', description: 'input ansble config '),
               string(name: 'myPath', defaultValue: './ansible/', description: 'input ansble config '),
-              text(name: 'CONFIG', defaultValue: 'OK',description: 'input read file'),
+              text(name: 'CONFIG', defaultValue: con.readConfig(),description: 'input read file'),
               
     ])
 ])
