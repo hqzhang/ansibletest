@@ -10,6 +10,7 @@ properties([
               string(name: 'MY_VAR_P', defaultValue: '/tmp/file1,\\n     /tmp/file2', description: 'input ansble config '),
               string(name: 'myPath', defaultValue: './ansible/ \\n 2nd lines', description: 'input ansble config '),
               text(name: 'CONFIG', defaultValue: con.curlConfig('solution.yaml'),description: 'input read file'),
+              choice(name: 'choice1', choices: ['dev \nqa \n prod'], description: 'input cluster'),
               
     ])
 ])
