@@ -6,9 +6,9 @@ properties([
    pipelineTriggers([githubPush()]),
    parameters([
              
-              string(name: 'UpDirs', defaultValue: 'my_var_params\\n second line', description: 'input ansble config '),
+              /*string(name: 'UpDirs', defaultValue: 'my_var_params\\n second line', description: 'input ansble config '),
               string(name: 'MY_VAR_P', defaultValue: '/tmp/file1,\\n     /tmp/file2', description: 'input ansble config '),
-              string(name: 'myPath', defaultValue: './ansible/ \\n 2nd lines', description: 'input ansble config '),
+              string(name: 'myPath', defaultValue: './ansible/ \\n 2nd lines', description: 'input ansble config '),*/
               choice(name: 'choice1', choices: ['solution.yaml', 'config.yaml'], description: 'input cluster'),
               text(name: 'CONFIG', defaultValue: con.curlConfig(env.choice1),description: 'input read file'),
               [$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', 
