@@ -1,57 +1,18 @@
 def version = 'main'
 library("my-shared-lib@$version") _
 println "wksp=${env.WORKSPACE}"
-/*
-properties([
-   pipelineTriggers([githubPush()]),
-   parameters([ choice(name: 'choice1', choices: ['solution.yaml', 'config.yaml'], description: 'input cluster'),
-                text(name: 'CONFIG', defaultValue: con.curlConfig(env.choice1),description: 'input read file'),
-                [$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', 
-                filterLength: 1, filterable: false, name: 'tier', 
-                randomName: 'choice-parameter-116988809562567', 
-                script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], 
-                        script: [classpath: [], oldScript: '', sandbox: false, script: 'return [ \'web\',\'backend\',\'database\']']]
-                [$class: 'DynamicReferenceParameter', 
-                choiceType: 'ET_FORMATTED_HTML', name: 'tier', omitValueField: false, 
-                randomName: 'choice-parameter-116430624038785', referencedParameters: 'choice1', 
-                script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''],
-                        script: [classpath: [], oldScript: '', sandbox: false, 
-                                  script: '''service_tier_map = [
-  "web": [
-    ["service_name": "user_frontend", "release_tag": "1.0.0" ],
-    ["service_name": "admin_frontend", "release_tag": "1.0.2" ],
-  ],
-  "backend": [
-    ["service_name": "admin_service", "release_tag": "2.1.0" ],
-    ["service_name": "finance_service", "release_tag": "2.2.0" ],
-    ["service_name": "payment_service", "release_tag": "3.2.0" ],
-  ],
-  "database": [
-    ["service_name": "dynamo_db", "release_tag": "5.4.1"],
-    ["service_name": "mysql", "release_tag": "3.2.1"],
-    ["service_name": "postgresql", "release_tag": "1.2.3"],
-  ],
-]
-html_to_be_rendered = "<table><tr>"
-service_list = service_tier_map[tier]
-service_list.each { service ->
-  html_to_be_rendered = """
-    ${html_to_be_rendered}
-    <tr>
-    <td>
-    <input name=\\"value\\" alt=\\"${service.service_name}\\" json=\\"${service.service_name}\\" type=\\"checkbox\\" class=\\" \\">
-    <label title=\\"${service.service_name}\\" class=\\" \\">${service.service_name}</label>
-    </td>
-    <td>
-    <input type=\\"text\\" class=\\" \\" name=\\"value\\" value=\\"${service.release_tag}\\"> </br>
-    </td>
-    </tr>
-"""
-}
-return "${html_to_be_rendered}</tr></table>"''']]],     
-              
-    ])
-])*/
+   properties([parameters([
+   extendedChoice(
+              name: 'Branches',
+              description: '',
+              visibleItemCount: 50,
+              multiSelectDelimiter: ',',
+              type: 'PT_SINGLE_SELECT',
+              groovyScript: '''
+                 def mf ="ls /Users/hongqizhang/workspace/groovytest/mydir  ".execute().text
+                 mf.readLines().collect{ it.split()[0].minus('.xml')}
+              ''', ),
+])])
 println con.curlConfig('solution.yaml')
 //println writeConfig()
 pipeline {
@@ -59,50 +20,7 @@ pipeline {
     
     options { timestamps () }
 
-    properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', 
-                             filterLength: 1, filterable: false, name: 'tier', randomName: 'choice-parameter-116988809562567', 
-                             script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], 
-                             script: [classpath: [], oldScript: '', sandbox: false, script: 'return [ \'web\',\'backend\',\'database\']']]],
-    
-                            [$class: 'DynamicReferenceParameter', choiceType: 'ET_FORMATTED_HTML', name: 'CONFIG', omitValueField: false, randomName: 'choice-parameter-117713051930992', referencedParameters: 'fileName', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: false, script: '''service_tier_map = [
-  "web": [
-    ["service_name": "user_frontend", "release_tag": "1.0.0" ],
-    ["service_name": "admin_frontend", "release_tag": "1.0.2" ],
-  ],
-  "backend": [
-    ["service_name": "admin_service", "release_tag": "2.1.0" ],
-    ["service_name": "finance_service", "release_tag": "2.2.0" ],
-    ["service_name": "payment_service", "release_tag": "3.2.0" ],
-  ],
-  "database": [
-    ["service_name": "dynamo_db", "release_tag": "5.4.1"],
-    ["service_name": "mysql", "release_tag": "3.2.1"],
-    ["service_name": "postgresql", "release_tag": "1.2.3"],
-  ],
-]
-
-html_to_be_rendered = "<table><tr>"
-service_list = service_tier_map[tier]
-service_list.each { service ->
-  html_to_be_rendered = """
-    ${html_to_be_rendered}
-    <tr>
-    <td>
-    <input name=\\"value\\" alt=\\"${service.service_name}\\" json=\\"${service.service_name}\\" type=\\"checkbox\\" class=\\" \\">
-    <label title=\\"${service.service_name}\\" class=\\" \\">${service.service_name}</label>
-    </td>
-    <td>
-    <input type=\\"text\\" class=\\" \\" name=\\"value\\" value=\\"${service.release_tag}\\"> </br>
-    </td>
-    </tr>
-"""
-}
-
-
-html_to_be_rendered = "${html_to_be_rendered}</tr></table>"
-
-return html_to_be_rendered
-''']]]])])
+ 
     environment { 
         //Define Gobal Variables can be used name, env.name or params.name
         UpDirs="/usr/local/bin:"
