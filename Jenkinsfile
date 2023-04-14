@@ -11,6 +11,13 @@ properties([
               string(name: 'myPath', defaultValue: './ansible/ \\n 2nd lines', description: 'input ansble config '),
               choice(name: 'choice1', choices: ['solution.yaml', 'config.yaml'], description: 'input cluster'),
               text(name: 'CONFIG', defaultValue: con.curlConfig(env.choice1),description: 'input read file'),
+              [$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', 
+               filterLength: 1, filterable: false, name: 'tier', 
+               randomName: 'choice-parameter-116988809562567', 
+               script: [$class: 'GroovyScript', 
+                        fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], 
+                        script: [classpath: [], oldScript: '', sandbox: false, 
+                                  script: 'return [ \'web\',\'backend\',\'database\']']]
               [$class: 'DynamicReferenceParameter', 
                choiceType: 'ET_FORMATTED_HTML', 
                name: 'tier', omitValueField: false, 
@@ -51,9 +58,7 @@ service_list.each { service ->
     </tr>
 """
 }
-
-return "${html_to_be_rendered}</tr></table>"''']]]])])
-            
+return "${html_to_be_rendered}</tr></table>"''']]],     
               
     ])
 ])
