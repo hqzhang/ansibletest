@@ -1,6 +1,6 @@
 //////
 
-library("ansibletest-shared-lib@master") _
+library("ansibletest-shared-lib@main") _
 
 println menu.getFileList()
 println menu.getFileContent('config')
