@@ -1,6 +1,6 @@
 //////
 
-library("groovytest-shared-lib@master") _
+library("ansibletest-shared-lib@master") _
 
 println menu.getFileList()
 println menu.getFileContent('config')
