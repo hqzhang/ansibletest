@@ -14,7 +14,9 @@ properties([
            script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: false, 
            script: '''
             def mf ="ls /var/root/.jenkins/workspace/workspace/ansibletest/releases".execute().text
+            println "mf=$mf"
             def myls = mf.readLines().collect{ it.split("\\\\.")[0] }
+            println "myls=$myls"
             def map=[:]
             myls.each { map[it]="curl -k https://raw.githubusercontent.com/hqzhang/ansibletest/main/releases/${it}.xml".execute().text 
             map[it]="cat /var/root/.jenkins/workspace/workspace/ansibletest/releases/${it}.xml".execute().text 
