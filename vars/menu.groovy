@@ -18,7 +18,7 @@ def getFileContent(String SolutionDetail){
     convertScript(ret)
 }
 
-def getFileList(String dir){
+def getFileList(){
     def test=''
     def mf ="ls /Users/hongqizhang/.jenkins/workspace/agroovytest/releases".execute().text
     def out=mf.readLines().collect{ it.split("\\.")[0]}
