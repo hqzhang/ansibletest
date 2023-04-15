@@ -23,7 +23,7 @@ def getFileContent(String SolutionDetail){
 
 def getFileList(){
     def test=''
-    def mf ="ls /var/root/.jenkins/workspace/workspace/ansibletest".execute().text
+    def mf ="ls /var/root/.jenkins/workspace/workspace/ansibletest/releases ".execute().text
     def out=mf.readLines().collect{ it.split("\\.")[0]}
     return out
 }
