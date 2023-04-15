@@ -8,13 +8,6 @@ println menu.getFileContent('solution')
 properties([
     pipelineTriggers([githubPush()]),
     parameters([
-           /*extendedChoice(
-              name: 'SolutionDetail',
-              description: '',
-              visibleItemCount: 50,
-              multiSelectDelimiter: ',',
-              type: 'PT_SINGLE_SELECT',
-              groovyScript: menu.getFileList(), ),*/
             choice( name: 'SolutionDetail', description: '', choices: menu.getFileList() ),
            [$class: 'DynamicReferenceParameter', choiceType: 'ET_FORMATTED_HTML', name: 'services', omitValueField: false, 
            randomName: 'choice-parameter-138673186839723', referencedParameters: 'SolutionDetail', 
@@ -27,7 +20,6 @@ properties([
             return """<textarea name=\"value\"  value  class=\"setting-input  \" type=\"text\">${map[SolutionDetail]}</textarea> """
             ''']]],
 
-           
              string(name: 'Backup', defaultValue: 'backupFile.xml', description: 'A file for record'),
 ])
 ])
