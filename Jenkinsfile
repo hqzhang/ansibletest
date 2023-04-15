@@ -1,133 +1,84 @@
-def version = 'main'
-library("my-shared-lib@$version") _
-println "wksp=${env.WORKSPACE}"
-   properties([parameters([
-   extendedChoice(
-              name: 'Branches',
+//////
+
+library("groovytest-shared-lib@master") _
+
+println menu.getFileList()
+println menu.getFileContent('config')
+println menu.getFileContent('solution')
+properties([
+    pipelineTriggers([githubPush()]),
+    parameters([
+           /*extendedChoice(
+              name: 'SolutionDetail',
               description: '',
               visibleItemCount: 50,
               multiSelectDelimiter: ',',
               type: 'PT_SINGLE_SELECT',
-              groovyScript: '''
-                 def mf ="ls /Users/hongqizhang/workspace/groovytest/mydir  ".execute().text
-                 mf.readLines().collect{ it.split()[0].minus('.xml')}
-              ''', ),
-])])
-println con.curlConfig('solution.yaml')
-//println writeConfig()
+              groovyScript: menu.getFileList(), ),*/
+            choice( name: 'SolutionDetail', description: '', choices: menu.getFileList() ),
+           [$class: 'DynamicReferenceParameter', choiceType: 'ET_FORMATTED_HTML', name: 'services', omitValueField: false, 
+           randomName: 'choice-parameter-138673186839723', referencedParameters: 'SolutionDetail', 
+           script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: false, 
+           script: '''
+            def mf ="ls /Users/hongqizhang/workspace/ansibletest/releases  ".execute().text
+            def myls = mf.readLines().collect{ it.split()[0].minus('.xml')}
+            def map=[:]
+            myls.each { map[it]="curl -k https://raw.githubusercontent.com/hqzhang/ansibletest/main/releases/${it}.xml".execute().text }
+            return """<textarea name=\"value\"  value  class=\"setting-input  \" type=\"text\">${map[SolutionDetail]}</textarea> """
+            ''']]],
+
+           
+             string(name: 'Backup', defaultValue: 'backupFile.xml', description: 'A file for record'),
+])
+])
+def map
+def list
 pipeline {
     agent any
-    
-    options { timestamps () }
-
- 
-    environment { 
-        //Define Gobal Variables can be used name, env.name or params.name
-        UpDirs="/usr/local/bin:"
-        MY_VAR_ENV="uiuiu"
-        PATH="/usr/local/bin:$PATH"
-        myenv='Helloworld emily!'
-        private_key='afb3704a-da55-4576-9fb9-9a6265319f2b'
-        //myFiles='/tmp/file1,     /tmp/file2'
-        //myPath='./ansible/'
-        HOME='/var/root'
-    }
-
     stages {
-        stage('write') {
-           steps {
-               script {
-                   echo "WRITE FILE8888888888"
-                   writeFile file: 'solution_out.yaml', text: env.CONFIG
-               }
-           }
-       }
-       stage('read') {
-           steps {
-               script {
-                   echo "READ FILE8888888888"
-                   println con.readConfig('solution.yaml')
-               }
-           }
-       }
-        stage('Stage: Testing grace exit'){
-            steps { 
+        stage('Create List') {
+            steps {
                 script {
-                    echo "Stage: Testing grace exit"
-                    println "wksp=${env.WORKSPACE}"
-                    utils.graceExit()
-                    echo "End: Testing grace exit*********"
-                }
-            }
-        }
-        
-        stage('Stage: Run Ansible Playbook'){
-            steps { 
-                script {
-                    echo "Stage: Run Ansible Playbook..."
-                    echo "Input Parameters: ${params}"
-                    def repo='upload-test'
-                    def cmd='pwd'
-                    def op = sh (script: cmd , returnStdout: true, returnStatus:true)
-                    println op
-                    def std=gitUtils.exeCmd(cmd)
-                    println "outputstd=$std"
-                   
-                    def ws=env.WORKSPACE
-                    def directory="$ws/$repo"
-                    def workbr='feature-test'
-                    def mergebr='main'
-                    def workspace='wave-cloud'
-                    def src="$ws/CI.yml"
-                    def bbapppass='9f2d1708-aeee-449d-b133-7f094a262336'
-                    def bbapitoken='7881845f-cb99-407a-8a31-ead60535fcaa'
-                    def fileName='CI.yml'
+                    echo "STAGE: create List..."
+                    echo "params=$params"
+                    echo "parsing yaml"
+                    def read = readYaml text: env.services
+                    sh """rm -f ${env.Backup}"""
+                    writeYaml file: "releases/${env.Backup}", data: read
                     
-                    sh """ echo  a  >> $fileName  """
-                    println("1.  git clone..")
-                    sh 'pwd; ls -al'
-                    checkout([
-                        $class: 'GitSCM', 
-                        branches: [[name: '*/main']], 
-                        doGenerateSubmoduleConfigurations: false, 
-                        extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: repo ]], 
-                        submoduleCfg: [], 
-                        userRemoteConfigs: [[credentialsId: bbapppass, url: 'https://fredzhang123@bitbucket.org/wave-cloud/upload-test.git']]
-                    ])
-                   
-                    sh 'pwd; ls -al'
-                    withCredentials([usernamePassword(credentialsId: bbapppass, \
-                           usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                            
-                            def dest="$directory/CI.yml"
-                            def project='GRP'
-                            def repoPR="https://api.bitbucket.org/2.0/repositories/$workspace/$repo/pullrequests"
-
-                            println("2.   git config..")
-                            
-                            println "3.   uploadFile().."
-                            def out=gitUtils.uploadFile(fileName, workbr,mergebr,workspace,repo)
-                            println out
-
-                            println "4.   getPrid createPR createPR()..."
-
-                            sh """
-                                pwd
-                                ls -al vars/
-                                chmod a+x vars/createMerge.sh
-                                #./vars/createMerge.sh
-                            """
-                            println gitUtils.getPrid(repoPR)
-                            out=gitUtils.createPR(workbr, mergebr, workspace, repo)
-                            println out
-
-                            println "5.   mergePR ()..."
-                            println gitUtils.mergePR(repoPR)
-                         }
+                    /*def targtServer=params.servers
+                    echo "params=$params"
+                    if ( targtServer.equals('ERROR') ) 
+                    {
+                        targtServer='s23'
+                    }
+                    
+                    echo "targtServer=$targtServer"
+                    workspace=WORKSPACE
+                    println "WS=${env.WORKSPACE}"
+                    println "WS=${WORKSPACE}"
+                    println "pwd="+pwd()
+                    println "workspace=$workspace"
+                    // you may create your list here, lets say reading from a file after checkout
+                    //list = ["Test-1", "Test-2", "Test-3", "Test-4", "Test-5"]
+                    list = readXMLList("${workspace}/manifest_Lynx.xml")
+                    echo "***************"
+                    def jsonText = parseXML("${workspace}/manifest_Lynx.xml")
+                    map = readJSON text: jsonText
+                    echo "#################"
+                     def remote = [:]
+                    remote.name = 'test'
+                    remote.host = '192.168.2.27'
+                    remote.user = 'root'
+                    remote.password = 'password'
+                    remote.allowAnyHosts = true
+    
+                    sshCommand remote: remote, command: "ls -lrt"*/
+    
                 }
             }
-            
         }
-        
-    }
+   }
 }
+
+
