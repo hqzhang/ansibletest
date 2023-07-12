@@ -1,3 +1,6 @@
+import groovy.yaml.YamlSlurper
+import org.yaml.snakeyaml.Yaml
+import org.yaml.snakeyaml.DumperOptions
 
 String buildScript(List values){
     def ret=values.collect { '"'+it+'"' }
@@ -20,6 +23,9 @@ def getFileContent(String SolutionDetail){
     def ret= "<textarea name=\"value\"  value  class=\"setting-input  \" type=\"text\">${map[SolutionDetail]}</textarea>"
     convertScript(ret)
 }
+println getFileContent('dev')
+
+System.exit(1)
 
 def getFileList(){
     def test=''

@@ -1,13 +1,10 @@
-hosts: webservers
+hosts: localhost
 remote_user: root
 
 tasks:
   - name: ensure apache is at the latest version
-    yum:
-      name: httpd
-      state: latest
-  - name: write the apache config file
-    template:
-      src: /srv/httpd.j2
-      dest: /etc/httpd.conf
-
+    register: out
+    find:
+       paths: "/tmp/source"
+       patterns: "*.yml"
+  - debug: var=out.stdout_lines
