@@ -8,8 +8,7 @@
         patterns: '*.yml'           # Specify the pattern to match filenames (e.g., '*' for all files)
       register: found_files     # Register the results in a variable for later use
 
-    - name: Print file details
-      debug:
+    - debug:
         msg: "{{ item.path }} is a {{ item.file_type }}"
       loop: "{{ found_files.files }}"
 
