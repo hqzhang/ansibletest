@@ -1,10 +1,16 @@
-hosts: localhost
-remote_user: root
+---
+- name: Find and print files
+  hosts: all
+  tasks:
+    - name: Find files
+      find:
+        paths: /tmp/source   # Specify the path(s) where you want to search for files
+        patterns: '*.yml'           # Specify the pattern to match filenames (e.g., '*' for all files)
+      register: found_files     # Register the results in a variable for later use
 
-tasks:
-  - name: ensure apache is at the latest version
-    register: out
-    find:
-       paths: "/tmp/source"
-       patterns: "*.yml"
-  - debug: var=out.stdout_lines
+    - name: Print file details
+      debug:
+        msg: "{{ item.path }} is a {{ item.file_type }}"
+      loop: "{{ found_files.files }}"
+
+  

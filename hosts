@@ -1,7 +1,5 @@
 [all:vars]
-ansible_user=ansible-usr
+ansible_user=hongqizhang
 
 [web]
-192.168.2.38
-[localhost]
 127.0.0.1
