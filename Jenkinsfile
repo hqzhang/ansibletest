@@ -21,7 +21,7 @@ pipeline {
                     echo "params=$params"
                     echo "ansible playbook"
                     sh """
-                        
+                        cat main.yaml
                         cat hosts
                         /usr/local/bin/ansible-playbook main.yaml
                     """
