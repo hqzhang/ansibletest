@@ -12,7 +12,10 @@
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: out
-      until: "'ab is running'  in out.stdout"
+      until: "'{{item}} is running'  in out.stdout"
+      loop:
+        - "ab"
+        - "cd"
       retries: 10
       delay: 2
 
