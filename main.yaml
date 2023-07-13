@@ -1,15 +1,16 @@
 ---
-- name: Find and print files
+- name: Ansible Find Example
   hosts: all
   tasks:
-    - name: Find files
-      find:
-        paths: /tmp/source   # Specify the path(s) where you want to search for files
-        patterns: '*.yml'           # Specify the pattern to match filenames (e.g., '*' for all files)
-      register: found_files     # Register the results in a variable for later use
-
-    - debug:
-        msg: "{{ item.path }} is a {{ item.file_type }}"
-      loop: "{{ found_files.files }}"
+   - name: Find files older than 30 days
+     find:
+       paths: /tmp/sources
+       patterns: '*.yaml'
+       age_stamp: mtime
+     register: output
+   - name: copy target to local
+     synchronize:
+       src: ./sources
+       dest: /tmp/
 
   
