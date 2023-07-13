@@ -21,8 +21,9 @@ pipeline {
                     echo "params=$params"
                     echo "ansible playbook"
                     sh """
+                        
                         cat hosts
-                        ansible-playbook main.yaml
+                        /usr/local/bin/ansible-playbook main.yaml
                     """
                     
                     /*def targtServer=params.servers
