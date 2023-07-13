@@ -3,7 +3,7 @@
   hosts: all
   tasks:
     - name: Validate if the file is present
-      shell: ls -lrt /tmp/myprocess.pid
+      shell: ls -lrt /tmp/test
       register: lsresult
       until: "lsresult is not failed"
       retries: 10
