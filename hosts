@@ -1,5 +1,5 @@
 [all:vars]
-ansible_user=hongqizhang
+ansible_user=root
 
 [web]
-127.0.0.1
+192.168.0.16

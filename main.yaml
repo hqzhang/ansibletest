@@ -2,15 +2,10 @@
 - name: Ansible Find Example
   hosts: all
   tasks:
-   - name: Find files older than 30 days
-     find:
-       paths: /tmp/sources
-       patterns: '*.yaml'
-       age_stamp: mtime
-     register: output
    - name: copy target to local
      synchronize:
-       src: ./sources
-       dest: /tmp/
+       src:  mytest/
+       dest: /tmp/sources
+       mode: pull
 
   
