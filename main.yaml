@@ -5,7 +5,7 @@
    - name: copy target to local
      synchronize:
        src:  mytest/
-       dest: /tmp/sources
+       dest: .
        mode: pull
 
   
