@@ -4,8 +4,8 @@
   tasks:
    - name: copy target to local
      synchronize:
-       src:  mytest/
-       dest: .
+       src:  /root/mytest
+       dest: ./release
        mode: pull
 
   
