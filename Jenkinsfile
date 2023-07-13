@@ -19,10 +19,7 @@ pipeline {
                 script {
                     echo "STAGE: create List..."
                     echo "params=$params"
-                    echo "parsing yaml"
-                    def read = readYaml text: env.services
-                    sh """rm -f ${env.Backup}"""
-                    writeYaml file: "releases/${env.Backup}", data: read
+                   
                     
                     /*def targtServer=params.servers
                     echo "params=$params"
