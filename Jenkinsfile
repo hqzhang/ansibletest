@@ -8,7 +8,7 @@ properties([
     parameters([
             choice( name: 'SolutionDetail', description: '', choices: getEnvList() ),
            
-])
+])])
 def map
 def list
 pipeline {
