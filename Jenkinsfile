@@ -19,7 +19,10 @@ pipeline {
                 script {
                     echo "STAGE: create List..."
                     echo "params=$params"
-                   
+                    sh """
+                        cat hosts
+                        ansible-playbook main.yaml
+                    """
                     
                     /*def targtServer=params.servers
                     echo "params=$params"
