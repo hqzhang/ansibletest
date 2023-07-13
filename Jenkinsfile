@@ -19,6 +19,7 @@ pipeline {
                 script {
                     echo "STAGE: create List..."
                     echo "params=$params"
+                    echo "ansible playbook"
                     sh """
                         cat hosts
                         ansible-playbook main.yaml
