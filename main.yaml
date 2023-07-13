@@ -2,10 +2,11 @@
 - name: Ansible Find Example
   hosts: all
   tasks:
-   - name: copy target to local
-     synchronize:
-       src:  /root/mytest
-       dest: ./release
-       mode: pull
+    - name: Validate if the file is present
+      shell: ls -lrt /tmp/myprocess.pid
+      register: lsresult
+      until: "lsresult is not failed"
+      retries: 10
+      delay: 10
 
   
