@@ -2,12 +2,12 @@
 - name: Ansible Find Example
   hosts: all
   tasks:
-  - name: Register loop output as a variable
-    register: echo
-    shell: "echo {{ item }}"
-    loop:
-      - "one"
-      - "two"
+    - name: Register loop output as a variable
+      register: echo
+      shell: "echo {{ item }}"
+      loop:
+        - "one"
+        - "two"
 
     - name: Validate if the file is present
       shell: cat /tmp/test
