@@ -3,11 +3,12 @@
   hosts: all
   tasks:
   - name: Register loop output as a variable
+    register: echo
     shell: "echo {{ item }}"
     loop:
       - "one"
       - "two"
-  register: echo
+
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: out
