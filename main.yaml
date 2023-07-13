@@ -3,10 +3,10 @@
   hosts: all
   tasks:
     - name: Validate if the file is present
-      shell: ls -lrt /tmp/test
-      register: lsresult
-      until: "lsresult is not failed"
+      shell: cat /tmp/test
+      register: out
+      until: "ab in {{out.stdout_lines}}"
       retries: 10
-      delay: 10
+      delay: 2
 
   
