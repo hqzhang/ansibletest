@@ -1,31 +1,13 @@
 //////
+def getEnvList(){
+    return ['DEV','BAT']
+}
 
-library("ansibletest-shared-lib@main") _
-
-println menu.getFileList()
-println menu.getFileContent('config')
-println menu.getFileContent('solution')
 properties([
     pipelineTriggers([githubPush()]),
     parameters([
-            choice( name: 'SolutionDetail', description: '', choices: menu.getFileList() ),
-           [$class: 'DynamicReferenceParameter', choiceType: 'ET_FORMATTED_HTML', name: 'services', omitValueField: false, 
-           randomName: 'choice-parameter-138673186839723', referencedParameters: 'SolutionDetail', 
-           script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: false, 
-           script: '''
-            def mf ="ls /var/root/.jenkins/workspace/workspace/ansibletest/releases".execute().text
-            println "mf=$mf"
-            def myls = mf.readLines().collect{ it.split("\\\\.")[0] }
-            println "myls=$myls"
-            def map=[:]
-            myls.each { map[it]="curl -k https://raw.githubusercontent.com/hqzhang/ansibletest/main/releases/${it}.xml".execute().text 
-            map[it]="cat /var/root/.jenkins/workspace/workspace/ansibletest/releases/${it}.xml".execute().text 
-            }
-            return """<textarea name=\"value\"  value  class=\"setting-input  \" type=\"text\">${map[SolutionDetail]}</textarea> """
-            ''']]],
-
-             string(name: 'Backup', defaultValue: 'backupFile.xml', description: 'A file for record'),
-])
+            choice( name: 'SolutionDetail', description: '', choices: getEnvList() ),
+           
 ])
 def map
 def list
