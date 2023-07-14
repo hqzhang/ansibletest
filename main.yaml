@@ -6,7 +6,7 @@
   vars:
     data: "ab,cd"
     cond_list_variable:
-      - "'ab is running' in out.stdout"
+      - "'abc is running' in out.stdout"
       - "'cd is running' in out.stdout"
   tasks:
     - name: Split string into list
@@ -20,9 +20,7 @@
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: out
-      until: 
-        - "'abc is running' in out.stdout"
-        - "'cd is running' in out.stdout"
+      until: "{{cond_list_variable}}"
       retries: 10
       delay: 2
     
