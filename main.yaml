@@ -1,17 +1,16 @@
 ---
-- name: Ansible Find Example
-  hosts: all
+- name: Ansible  Example
+  hosts: localhost
   vars:
     data: "ab,cd"
     output_variable:
-      - abc
-      - cde
+      - 'abc'
+      - 'cde'
     condition_variable:
       - "'abcd' in out.stdout"
       - "'cdef' in out.stdout"
   tasks:
-    - name: Validate if the file is present
-      shell: echo {{output_variable}}
+    - shell: echo {{output_variable}}
       register: out
       until: condition_variable
       retries: 10
