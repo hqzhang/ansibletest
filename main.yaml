@@ -2,6 +2,7 @@
 - name: Ansible Find Example
   hosts: all
   vars:
+    data: "ab,cd"
     cond_list_variable:
       - "'abc is running' in out.stdout"
       - "'cd is running' in out.stdout"
