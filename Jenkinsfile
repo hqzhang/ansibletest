@@ -23,7 +23,7 @@ pipeline {
                     sh """
                         cat main.yaml
                         cat hosts
-                        /usr/local/bin/ansible-playbook main.yaml
+                        /usr/local/bin/ansible-playbook -vvvv main.yaml
                     """
                     
                     /*def targtServer=params.servers
