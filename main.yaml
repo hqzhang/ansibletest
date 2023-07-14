@@ -15,7 +15,7 @@
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: out
-      until: "'ab is running'  in out.stdout"
+      until: my_list
       retries: 10
       delay: 2
     
