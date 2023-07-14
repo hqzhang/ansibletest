@@ -19,7 +19,7 @@
       register: out
       until: 
         - "'abcd' in out.stdout"
-        - "'pqrs' in out.stdout"
+        - "'pqrsr' in out.stdout"
       retries: 10
       delay: 2
     
