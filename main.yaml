@@ -7,14 +7,14 @@
       - abc
       - cde
     condition_variable:
-      - "'abc' in out.stdout_lines"
-      - "'cde' in out.stdout_lines"
+      - "'abc' in out.stdout"
+      - "'cde' in out.stdout"
   tasks:
     - shell: echo {{output_variable}}
       register: out
       until: 
-        - "'abc' in out.stdout_lines"
-        - "'cde' in out.stdout_lines"
+        - "'abc' in out.stdout"
+        - "'cde' in out.stdout"
       retries: 10
       delay: 2
     
