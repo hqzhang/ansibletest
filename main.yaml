@@ -7,8 +7,8 @@
       - 'abc'
       - 'cde'
     condition_variable:
-      - "'abcd' in out.stdout"
-      - "'cdef' in out.stdout"
+      - "'abcd' in out.stdout_lines"
+      - "'cdef' in out.stdout_lines"
   tasks:
     - shell: echo {{output_variable}}
       register: out
