@@ -1,11 +1,8 @@
 ---
 - name: Ansible Find Example
   hosts: all
-  vars_files:
-    - default_step.yml
   vars:
     data: "ab,cd"
-
   tasks:
     - name: show file content
       shell: cat /tmp/test
