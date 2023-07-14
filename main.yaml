@@ -5,8 +5,9 @@
   vars:
     command: "cat /tmp/test"
     keys_required:
-      - abcd
-      - pqrs
+      - 'abcd'
+      - 'pqrs'
+    keys_query: "['abcd', 'pqrs']"
   tasks:
     - name: Run command and register output
       shell: "{{ command }}"
@@ -14,5 +15,4 @@
       until: command_output.stdout | from_json | json_query(keys_query) == keys_required
       retries: 10
       delay: 2
-      vars:
-        keys_query: "[abcd, pqrs]"
+     
