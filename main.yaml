@@ -1,22 +1,29 @@
 ---
 - name: Ansible Find Example
   hosts: all
+  vars:
+    my_list:
+      - "apple"
+      - "mango"
+      - "orange"
   tasks:
-    - name: Register loop output as a variable
-      register: echo
-      shell: "echo {{ item }}"
-      loop:
-        - "one"
-        - "two"
-
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: out
-      until: "'item is running'  in out.stdout"
-      loop:
-        - "ab"
-        - "cd"
+      until: "'ab is running'  in out.stdout"
       retries: 10
       delay: 2
+    
+    - name: Print the List
+      debug:
+        msg: "{{ my_list }}"
+
+    - name: Concatenate a list to string
+      set_fact:
+        my_string: "{{ my_list | join(',') }}"
+
+    - name: Print the String
+      debug:
+        msg: "{{ my_string }}"
 
   
