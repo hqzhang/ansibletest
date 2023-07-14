@@ -2,7 +2,7 @@
 - name: Ansible Find Example
   hosts: all
   vars:
-    data: "ab,cd"
+    data: "abcd,pqrs"
   tasks:
     - name: show file content
       shell: cat /tmp/test
