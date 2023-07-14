@@ -3,6 +3,8 @@
   hosts: localhost
   vars:
     data: "ab,cd"
+    cond1: "'abc' in out.stdout"
+    cond2: "'cde' in out.stdout"
     output_variable:
       - abc
       - cde
@@ -13,8 +15,8 @@
     - shell: echo {{output_variable}}
       register: out
       until: 
-        - "'abc' in out.stdout"
-        - "'cde' in out.stdout"
+        - cond1
+        - cond2
       retries: 10
       delay: 2
     
