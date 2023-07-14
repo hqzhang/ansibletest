@@ -13,7 +13,7 @@
     - name: Validate if the file is present
       shell: echo {{output_variable}}
       register: out
-      until: cond_list_variable
+      until: condition_variable
       retries: 10
       delay: 2
     
