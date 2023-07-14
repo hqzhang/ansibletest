@@ -23,6 +23,7 @@ pipeline {
                     sh """
                         cat main.yaml
                         cat hosts
+                        cat /tmp/test
                         /usr/local/bin/ansible-playbook main.yaml
                     """
                     
