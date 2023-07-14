@@ -4,11 +4,11 @@
   vars:
     data: "ab,cd"
     output_variable:
-      - 'abc'
-      - 'cde'
+      - abc
+      - cde
     condition_variable:
-      - "'abcd' in out.stdout_lines"
-      - "'cdef' in out.stdout_lines"
+      - "'abc' in out.stdout_lines"
+      - "'cde' in out.stdout_lines"
   tasks:
     - shell: echo {{output_variable}}
       register: out
