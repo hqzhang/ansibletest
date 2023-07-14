@@ -12,7 +12,9 @@
   tasks:
     - shell: echo {{output_variable}}
       register: out
-      until: condition_variable
+      until: 
+        - "'abcd' in out.stdout_lines"
+        - "'cdef' in out.stdout_lines"
       retries: 10
       delay: 2
     
