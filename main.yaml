@@ -3,6 +3,9 @@
   hosts: all
   vars:
     data: "ab,cd"
+    output_variable:
+      - "'ab is running' in out.stdout"
+      - "'cd is running' in out.stdout"
     cond_list_variable:
       - "'abc is running' in out.stdout"
       - "'cd is running' in out.stdout"
@@ -15,7 +18,7 @@
     - debug:
         var: cond_list_variable
     - name: Validate if the file is present
-      shell: cat /tmp/test
+      shell: echo {{output_variable}}
       register: out
       until: cond_list_variable
         #- "'abc is running' in out.stdout"
