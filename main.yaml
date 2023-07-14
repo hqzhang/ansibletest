@@ -20,9 +20,9 @@
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: out
-      until:
-        - "'abc is running' in out.stdout"
-        - "'cd is running' in out.stdout"
+      until: cond_list_variable
+        #- "'abc is running' in out.stdout"
+        #- "'cd is running' in out.stdout"
       retries: 10
       delay: 2
     
