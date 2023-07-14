@@ -6,7 +6,7 @@ def getEnvList(){
 properties([
     pipelineTriggers([githubPush()]),
     parameters([
-            choice( name: 'SolutionDetail', description: '', choices: getEnvList() ),
+            //choice( name: 'SolutionDetail', description: '', choices: getEnvList() ),
            
 ])])
 def map
