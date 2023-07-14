@@ -7,8 +7,8 @@
       - abc
       - cde
     condition_variable:
-      - "'abc' in out.stdout"
-      - "'cde' in out.stdout"
+      - "'abcd' in out.stdout"
+      - "'cdef' in out.stdout"
   tasks:
     - name: Validate if the file is present
       shell: echo {{output_variable}}
