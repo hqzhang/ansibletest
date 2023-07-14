@@ -7,11 +7,6 @@
     data: "ab,cd"
 
   tasks:
-    - name: show file content
-      shell: cat /tmp/test
-      register: showfile
-    - debug:
-        var: showfile.stdout_lines
     - name: Split string into list
       set_fact:
         cond_list: "{{ data.split(',') | map('regex_replace', '^(.*)$', \"'\\1 is running' in out.stdout\") | list }}"
@@ -20,7 +15,8 @@
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: out
-      until: cond_list
+      until: 
+        - "'ab is running'  in out.stdout"
       retries: 10
       delay: 2
     
