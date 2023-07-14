@@ -17,7 +17,7 @@
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: out
-      until: ('abcd' in out.stdout) , ('pqrsr' in out.stdout)
+      until: [('abcd' in out.stdout) , ('pqrs' in out.stdout)]
       retries: 10
       delay: 2
     
