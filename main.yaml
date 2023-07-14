@@ -3,7 +3,7 @@
   hosts: localhost
   vars:
     data: "ab,cd"
-    cond1: "'abc' in out.stdout"
+    cond1: "'abcd' in out.stdout"
     cond2: "'cde' in out.stdout"
     output_variable:
       - abc
