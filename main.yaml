@@ -1,10 +1,7 @@
 ---
 - name: Ansible Find Example
   hosts: all
-  vars_files:
-    - default_step.yml
   vars:
-    data: "ab,cd"
     cond_list_variable:
       - "'abc is running' in out.stdout"
       - "'cd is running' in out.stdout"
@@ -16,7 +13,6 @@
         var: cond_list
     - debug:
         var: cond_list_variable
-
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: out
