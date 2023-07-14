@@ -19,16 +19,6 @@
       retries: 10
       delay: 2
     
-    - name: Print the List
-      debug:
-        msg: "{{ my_list }}"
-
-    - name: Concatenate a list to string
-      set_fact:
-        my_string: "{{ my_list | join(',') }}"
-
-    - name: Print the String
-      debug:
-        msg: "{{ my_string }}"
+    
 
   
