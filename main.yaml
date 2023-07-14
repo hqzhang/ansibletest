@@ -1,18 +1,29 @@
 ---
-- name: Ansible Example
+- name: Ansible Find Example
   hosts: all
-  gather_facts: false
+  vars_files:
+    - default_step.yml
   vars:
-    command: "cat /tmp/test"
-    keys_required:
-      - 'abcd'
-      - 'pqrs'
-    keys_query: "['abcd', 'pqrs']"
+    data: "ab,cd"
+
   tasks:
-    - name: Run command and register output
-      shell: "{{ command }}"
-      register: command_output
-      until: command_output.stdout | from_json | json_query(keys_query) == keys_required
+    - name: show file content
+      shell: cat /tmp/test
+      register: showfile
+    - debug:
+        var: showfile.stdout_lines
+    - name: Split string into list
+      set_fact:
+        cond_list: "{{ data.split(',') | map('regex_replace', '^(.*)$', \"'\\1 is running' in out.stdout\") | list }}"
+    - debug:
+        var: cond_list
+    - name: Validate if the file is present
+      shell: cat /tmp/test
+      register: out
+      until: cond_list
       retries: 10
       delay: 2
-     
+    
+    
+
+  
