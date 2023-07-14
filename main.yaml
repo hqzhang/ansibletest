@@ -16,7 +16,7 @@
       shell: cat /tmp/test
       register: out
       until: 
-        - "'ab is running' in out.stdout"
+        - "'abc is running' in out.stdout"
       retries: 10
       delay: 2
     
