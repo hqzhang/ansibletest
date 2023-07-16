@@ -2,8 +2,8 @@
 - name: Ansible Find Example
   hosts: all
   vars:
-    data: "abcde,pqrsr"
-    my_regex: 'abcd|pqrsr'
+    #my_regex: "abcd|pqrs"
+    my_regex: 'abcdt|pqrs'
   tasks:
     - name: show file content
       shell: cat /tmp/test
