@@ -2,8 +2,14 @@
 - name: Ansible Find Example
   hosts: all
   vars:
-    data: "abcd,pqrs"
+    data: "abcd,pqrsr"
   tasks:
+    - name: Replace string in file
+      replace:
+        path: /path/to/your/file.txt  # Specify the path to your file
+        regexp: 'abcde'  # Regular expression to match the string you want to replace
+        replace: 'ab\\cd'  # The replacement string
+    
     - debug:
          var: my_regex
     - name: show file content
@@ -13,7 +19,7 @@
         var: "showfile.stdout_lines"
     - name: Split string into list
       set_fact:
-        my_regex: "{{ data | replace(',', '|') }}"
+        my_regex: "{{ data | replace(',', '\\|') }}"
     - debug:
         var: "my_regex"
     - name: Validate if the file is present
