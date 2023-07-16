@@ -3,29 +3,22 @@
   hosts: all
   vars:
     data: "abcd,pqrsr"
+    my_regex: 'abcd\npqrsr'
   tasks:
-    - name: Replace string in file
-      replace:
-        path: /path/to/your/file.txt  # Specify the path to your file
-        regexp: 'abcde'  # Regular expression to match the string you want to replace
-        replace: 'ab\\cd'  # The replacement string
-    
-    - debug:
-         var: my_regex
-    - name: show file content
-      shell: cat /tmp/test
-      register: showfile
-    - debug:
-        var: "showfile.stdout_lines"
     - name: Split string into list
       set_fact:
-        my_regex: "{{ data | replace(',', '\\|') }}"
+        condlist: "{{ data.split(',') | map('regex_replace', '^(.*)$', \"component \\1 is running\"  ) | list }}"
     - debug:
-        var: "my_regex"
+        var: condlist
+    - name: Split string into list
+      set_fact:
+        cond_list: "{{ data | regex_replace(',', '\\n') }}"
+    - debug:
+        var: " cond_list"
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: result
-      until: result.stdout is search(my_regex)
+      until: result.stdout is search(cond_list)
       #until: [('abcde' in out.stdout) , ('pqrsr' in out.stdout)]
       retries: 2
       delay: 2
