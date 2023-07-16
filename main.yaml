@@ -2,20 +2,23 @@
 - name: Ansible Find Example
   hosts: all
   vars:
-    #my_regex: "abcd|pqrs"
-    my_regex: 'pqrs'
+    data: "abcd,pqrs"
+    my_regex: data.replace(",", "\\|")
   tasks:
+    - debug:
+         var: my_regex
     - name: show file content
       shell: cat /tmp/test
       register: showfile
     - debug:
         var: "showfile.stdout_lines"
+   
     - name: Split string into list
       set_fact:
-        cond_list: [('abcde' in out.stdout) , ('pqrsr' in out.stdout)]
-        #cond_list: "{{ data.split(',') | map('regex_replace', '^(.*)$', \"('\\1' in out.stdout)\"  ) | list }}"
+        #cond_list: [('abcde' in out.stdout) , ('pqrsr' in out.stdout)]
+        my_regex: "{{ data | replace(',', '\|') }}"
     - debug:
-        var: " cond_list"
+        var: " my_regex"
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: result
