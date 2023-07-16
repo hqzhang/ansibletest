@@ -8,12 +8,12 @@
       shell: cat /tmp/test
       register: showfile
     - debug:
-        var: showfile.stdout_lines
+        var: "'showfile:' showfile.stdout_lines"
     - name: Split string into list
       set_fact:
         cond_list: "{{ data.split(',') | map('regex_replace', '^(.*)$', \"('\\1 is running' in out.stdout)\"  ) | list }}"
     - debug:
-        var: cond_list
+        var: "'cond_list:' cond_list"
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: out
