@@ -7,7 +7,7 @@
   tasks:
     - name: Split string into list
       set_fact:
-        condlist: "{{ data.split(',') | map('regex_replace', '^(.*)$', \"component \\1 is running\"  ) | list }}"
+        condlist: "{{ data.split(',') | map('regex_replace', '^(.*)$', \"component \\1 is running\"  ) | join('\n') }}"
     - debug:
         var: condlist
     - name: Split string into list
@@ -18,7 +18,7 @@
     - name: Validate if the file is present
       shell: cat /tmp/test
       register: result
-      until: result.stdout is search(cond_list)
+      until: result.stdout is search(condlist)
       #until: [('abcde' in out.stdout) , ('pqrsr' in out.stdout)]
       retries: 2
       delay: 2
