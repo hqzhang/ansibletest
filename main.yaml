@@ -18,8 +18,8 @@
       shell: cat /tmp/test
       register: out
       #until: cond_list
-      until: ["('abcd' in out.stdout)" , "('pqrsr' in out.stdout)"]
-      retries: 10
+      until: [('abcd' in out.stdout) , ('pqrs' in out.stdout)]
+      retries: 2
       delay: 2
     
     
