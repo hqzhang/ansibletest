@@ -13,7 +13,7 @@
         var: "showfile.stdout_lines"
     - name: Split string into list
       set_fact:
-        my_regex: "{{ data | replace(",", "\|") }}"
+        my_regex: "{{ data | replace(',', '|') }}"
     - debug:
         var: "my_regex"
     - name: Validate if the file is present
