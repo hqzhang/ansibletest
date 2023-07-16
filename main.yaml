@@ -3,7 +3,7 @@
   hosts: all
   vars:
     #my_regex: "abcd|pqrs"
-    my_regex: 'abcdt|pqrs'
+    my_regex: 'pqrs'
   tasks:
     - name: show file content
       shell: cat /tmp/test
